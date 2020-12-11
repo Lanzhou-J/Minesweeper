@@ -24,11 +24,11 @@ namespace MinesweeperTests
         }
         
         [Fact]
-        public void CreateBoardShould_CreateABoardWithMineSquare_WhenInputIs1()
+        public void CreateBoardShould_CreateABoardWithEmptySquare_WhenInputIs1()
         {
             var board = Board.CreateBoard(1);
             var expectedResult = new []{
-                new[]{_mine}
+                new[]{_empty}
             };
             Assert.Equal(expectedResult, board.Squares);
         }

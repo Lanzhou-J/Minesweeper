@@ -4,7 +4,8 @@ namespace Minesweeper
     {
         private Square _empty = Square.Empty;
         private Square _mine = Square.Mine;
-        public Board(int size)
+
+        private Board(int size)
         {
             Size = size;
             Squares = SetSquares();
@@ -12,9 +13,16 @@ namespace Minesweeper
 
         private Square[][] SetSquares()
         {
-            return new []{
-                new[]{_mine}
-            };
+            var squares = new Square[Size][];
+            for (int i = 0; i < Size; i++)
+            {
+                squares[i] = new Square[Size];
+                for (int j = 0; j < Size; j++)
+                {
+                    squares[i][j] = _empty;
+                }
+            }
+            return squares;
         }
 
         public Square[][] Squares { get; private set; }
