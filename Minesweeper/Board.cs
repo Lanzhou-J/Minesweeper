@@ -12,7 +12,11 @@ namespace Minesweeper
 
         public static Board CreateBoard( int size)
         {
-            return null;
+            if (size == 0)
+            {
+                return null;
+            }
+            return new Board(size);
         }
     }
 }
