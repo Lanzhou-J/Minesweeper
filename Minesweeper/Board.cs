@@ -10,21 +10,20 @@ namespace Minesweeper
             Squares = SetSquares();
         }
 
-        private Square[][] SetSquares()
+        private Square[,] SetSquares()
         {
-            var squares = new Square[Size][];
+            var squares = new Square[Size,Size];
             for (var i = 0; i < Size; i++)
             {
-                squares[i] = new Square[Size];
                 for (var j = 0; j < Size; j++)
                 {
-                    squares[i][j] = Empty;
+                    squares[i,j] = Empty;
                 }
             }
             return squares;
         }
 
-        public Square[][] Squares { get; private set; }
+        public Square[,] Squares { get; private set; }
         public int Size { get; private set; }
 
         public static Board CreateBoard( int size)

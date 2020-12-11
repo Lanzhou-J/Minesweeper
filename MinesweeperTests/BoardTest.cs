@@ -20,15 +20,16 @@ namespace MinesweeperTests
         {
             var board = Board.CreateBoard(1);
             Assert.Equal(1, board.Size);
-            Assert.Single(board.Squares);
+            Assert.Equal(1, board.Squares.GetLength(0));
+            Assert.Equal(1, board.Squares.GetLength(1));
         }
         
         [Fact]
         public void CreateBoardShould_CreateABoardWithEmptySquare_WhenInputIs1()
         {
             var board = Board.CreateBoard(1);
-            var expectedResult = new []{
-                new[]{_empty}
+            var expectedResult = new Square[1,1]{
+                {_empty}
             };
             Assert.Equal(expectedResult, board.Squares);
         }
@@ -38,7 +39,8 @@ namespace MinesweeperTests
         {
             var board = Board.CreateBoard(2);
             Assert.Equal(2, board.Size);
-            Assert.Equal(2, board.Squares.Length);
+            Assert.Equal(2, board.Squares.GetLength(0));
+            Assert.Equal(2, board.Squares.GetLength(1));
         }
     }
 }
