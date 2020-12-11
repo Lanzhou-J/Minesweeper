@@ -12,5 +12,12 @@ namespace MinesweeperTests
             var board = Board.CreateBoard(0);
             Assert.Null(board);
         }
+        
+        [Fact]
+        public void CreateBoardShould_ReturnABoardWithOneSquare_WhenInputIs1()
+        {
+            var board = Board.CreateBoard(1);
+
+        }
     }
 }
