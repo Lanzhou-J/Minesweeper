@@ -1,4 +1,5 @@
 using System;
+using Minesweeper;
 using Xunit;
 
 namespace MinesweeperTests
@@ -8,7 +9,7 @@ namespace MinesweeperTests
         [Fact]
         public void CreateBoardShould_ReturnNull_WhenInputIs0()
         {
-            var board = Board.createBoard(0);
+            var board = Board.CreateBoard(0);
             Assert.Null(board);
         }
     }
