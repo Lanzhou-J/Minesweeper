@@ -14,10 +14,10 @@ namespace MinesweeperTests
         }
         
         [Fact]
-        public void CreateBoardShould_ReturnABoardWithOneSquare_WhenInputIs1()
+        public void CreateBoardShould_CreateASize1Board_WhenInputIs1()
         {
             var board = Board.CreateBoard(1);
-
+            Assert.Equal(1, board.Size);
         }
     }
 }
