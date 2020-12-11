@@ -26,7 +26,7 @@ namespace Minesweeper
         public Square[,] Squares { get; private set; }
         public int Size { get; private set; }
 
-        public static Board CreateBoard( int size)
+        public static Board CreateEmptyBoard( int size)
         {
             if (size == 0)
             {
