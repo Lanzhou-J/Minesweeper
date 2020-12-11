@@ -9,7 +9,8 @@ namespace MinesweeperTests
         [Fact]
         public void StartShould_SetAnEmptyBoardWith4RowsAnd4Columns_WhenInputDifficultyLevelIs4()
         {
-            var input = new MockInput();
+            var difficultyLevelInput = "4";
+            var input = new MockInput(new[]{difficultyLevelInput});
             var output = new MockOutput();
             var game = new Game(input, output);
             game.Start();
@@ -19,6 +20,8 @@ namespace MinesweeperTests
                 {_empty, _empty, _empty, _empty},
                 {_empty, _empty, _empty, _empty},
             };
+            
+            Assert.Equal(expectedResult, game.Board.Squares);
 
         }
     }
