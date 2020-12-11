@@ -3,5 +3,6 @@
   &lt;TestAncestor&gt;
     &lt;TestId&gt;xUnit::150195C4-0644-49AE-8F45-C4D378EB2837::.NETCoreApp,Version=v3.1::MinesweeperTests.BoardTest.CreateBoardShould_ReturnNull_WhenInputIs0&lt;/TestId&gt;
     &lt;TestId&gt;xUnit::150195C4-0644-49AE-8F45-C4D378EB2837::.NETCoreApp,Version=v3.1::MinesweeperTests.BoardTest.CreateBoardShould_CreateASize1Board_WhenInputIs1&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::150195C4-0644-49AE-8F45-C4D378EB2837::.NETCoreApp,Version=v3.1::MinesweeperTests.BoardTest.CreateBoardShould_CreateASize1BoardWithEmptySquareState_WhenInputIs1&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
