@@ -6,8 +6,8 @@ namespace MinesweeperTests
 {
     public class BoardTest
     {
-        private SquareState _empty = SquareState.Empty;
-        private SquareState _mine = SquareState.Mine;
+        private Square _empty = Square.Empty;
+        private Square _mine = Square.Mine;
         [Fact]
         public void CreateBoardShould_ReturnNull_WhenInputIs0()
         {
@@ -23,11 +23,11 @@ namespace MinesweeperTests
         }
         
         [Fact]
-        public void CreateBoardShould_CreateASize1BoardWithEmptySquareState_WhenInputIs1()
+        public void CreateBoardShould_CreateASize1BoardWithMineSquareState_WhenInputIs1()
         {
             var board = Board.CreateBoard(1);
             var expectedResult = new []{
-                new[]{_empty}
+                new[]{_mine}
             };
             Assert.Equal(expectedResult, board.Squares);
         }

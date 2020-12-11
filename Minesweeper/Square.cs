@@ -1,6 +1,6 @@
 namespace Minesweeper
 {
-    public enum SquareState
+    public enum Square
     {
         Empty,
         Mine

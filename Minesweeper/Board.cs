@@ -2,22 +2,22 @@ namespace Minesweeper
 {
     public class Board
     {
-        private SquareState _empty = SquareState.Empty;
-        private SquareState _mine = SquareState.Mine;
+        private Square _empty = Square.Empty;
+        private Square _mine = Square.Mine;
         public Board(int size)
         {
             Size = size;
             Squares = SetSquares();
         }
 
-        private SquareState[][] SetSquares()
+        private Square[][] SetSquares()
         {
             return new []{
-                new[]{_empty}
+                new[]{_mine}
             };
         }
 
-        public SquareState[][] Squares { get; private set; }
+        public Square[][] Squares { get; private set; }
         public int Size { get; private set; }
 
         public static Board CreateBoard( int size)
