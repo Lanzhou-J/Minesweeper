@@ -2,8 +2,7 @@ namespace Minesweeper
 {
     public class Board
     {
-        private Square _empty = Square.Empty;
-        private Square _mine = Square.Mine;
+        private const Square Empty = Square.Empty;
 
         private Board(int size)
         {
@@ -14,12 +13,12 @@ namespace Minesweeper
         private Square[][] SetSquares()
         {
             var squares = new Square[Size][];
-            for (int i = 0; i < Size; i++)
+            for (var i = 0; i < Size; i++)
             {
                 squares[i] = new Square[Size];
-                for (int j = 0; j < Size; j++)
+                for (var j = 0; j < Size; j++)
                 {
-                    squares[i][j] = _empty;
+                    squares[i][j] = Empty;
                 }
             }
             return squares;
