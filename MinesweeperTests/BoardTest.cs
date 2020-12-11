@@ -3,7 +3,7 @@ using Xunit;
 
 namespace MinesweeperTests
 {
-    public class UnitTest1
+    public class BoardTest
     {
         [Fact]
         public void Test1()
