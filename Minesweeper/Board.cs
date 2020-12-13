@@ -34,5 +34,10 @@ namespace Minesweeper
             }
             return new Board(size);
         }
+
+        public void PlaceMines(int difficulty)
+        {
+            
+        }
     }
 }

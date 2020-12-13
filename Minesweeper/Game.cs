@@ -2,7 +2,7 @@ namespace Minesweeper
 {
     public class Game
     {
-        private IInput _input;
+        private readonly IInput _input;
         private IOutput _output;
         public Board Board { get; private set; }
 
