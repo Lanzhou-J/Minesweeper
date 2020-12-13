@@ -40,5 +40,20 @@ namespace MinesweeperTests
             Assert.Equal(2, board.Squares.GetLength(0));
             Assert.Equal(2, board.Squares.GetLength(1));
         }
+        
+        [Fact]
+        public void CreateEmptyBoardShould_CreateABoardWithSquaresNotMine_WhenInputIs2()
+        {
+            var board = Board.CreateEmptyBoard(2);
+
+            for (int i = 0; i < 2; i++)
+            {
+                for (int j = 0; j < 2; j++)
+                {
+                    var square = board.Squares[i, j];
+                    Assert.False(square.IsMine);
+                }
+            }
+        }
     }
 }
