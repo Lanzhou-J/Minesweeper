@@ -7,7 +7,7 @@ namespace MinesweeperTests
     public class BoardTest
     {
         [Fact]
-        public void CreateBoardShould_ReturnNull_WhenInputIs0()
+        public void CreateEmptyBoardShould_ReturnNull_WhenInputIs0()
         {
             var board = Board.CreateEmptyBoard(0);
             Assert.Null(board);
@@ -33,7 +33,7 @@ namespace MinesweeperTests
         }
         
         [Fact]
-        public void CreateBoardShould_CreateASize2BoardWithSquaresLengthOf2_WhenInputIs2()
+        public void CreateEmptyBoardShould_CreateASize2BoardWithSquaresLengthOf2_WhenInputIs2()
         {
             var board = Board.CreateEmptyBoard(2);
             Assert.Equal(2, board.Size);
