@@ -6,8 +6,6 @@ namespace MinesweeperTests
 {
     public class BoardTest
     {
-        private Square _empty = Square.Empty;
-        private Square _mine = Square.Mine;
         [Fact]
         public void CreateBoardShould_ReturnNull_WhenInputIs0()
         {
@@ -16,7 +14,7 @@ namespace MinesweeperTests
         }
         
         [Fact]
-        public void CreateBoardShould_CreateASize1Board_WhenInputIs1()
+        public void CreateEmptyBoardShould_CreateASize1Board_WhenInputIs1()
         {
             var board = Board.CreateEmptyBoard(1);
             Assert.Equal(1, board.Size);
@@ -25,13 +23,13 @@ namespace MinesweeperTests
         }
         
         [Fact]
-        public void CreateBoardShould_CreateABoardWithEmptySquare_WhenInputIs1()
+        public void CreateEmptyBoardShould_CreateABoardWithASquareNotMine_WhenInputIs1()
         {
             var board = Board.CreateEmptyBoard(1);
-            var expectedResult = new Square[1,1]{
-                {_empty}
-            };
-            Assert.Equal(expectedResult, board.Squares);
+
+            var square = board.Squares[0, 0];
+
+            Assert.False(square.IsMine);
         }
         
         [Fact]
@@ -41,16 +39,6 @@ namespace MinesweeperTests
             Assert.Equal(2, board.Size);
             Assert.Equal(2, board.Squares.GetLength(0));
             Assert.Equal(2, board.Squares.GetLength(1));
-        }
-        
-        [Fact]
-        public void CreateBoardShould_CreateABoardWithAllEmptyItems_WhenInputIs2()
-        {
-            var board = Board.CreateEmptyBoard(2);
-            var expectedResult = new Square[2,2]{
-                {_empty, _empty},
-                {_empty, _empty}
-            };
         }
     }
 }

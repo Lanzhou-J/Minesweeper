@@ -2,8 +2,6 @@ namespace Minesweeper
 {
     public class Board
     {
-        private const Square Empty = Square.Empty;
-
         private Board(int size)
         {
             Size = size;
@@ -17,7 +15,7 @@ namespace Minesweeper
             {
                 for (var j = 0; j < Size; j++)
                 {
-                    squares[i,j] = Empty;
+                    squares[i,j] = new Square();
                 }
             }
             return squares;
@@ -33,11 +31,6 @@ namespace Minesweeper
                 return null;
             }
             return new Board(size);
-        }
-
-        public void PlaceMines(int difficulty)
-        {
-            
         }
     }
 }
