@@ -3,11 +3,11 @@ namespace Minesweeper
     public class Hint : ISquare
     {
         
-        public Hint(Location location)
+        public Hint(Location location, int value)
         {
             IsRevealed = false;
             Location = location;
-            Value = 0;
+            Value = value;
         }
 
         public int Value { get; set; }
