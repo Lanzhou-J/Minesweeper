@@ -51,22 +51,6 @@ namespace Minesweeper
                 Squares.Add(newMine);
             }
         }
-        
-        // public List<Mine> ToSquareList()
-        // {
-        //     var squares = new List<Mine>();
-        //     var rowLength = Squares.GetLength(0);
-        //     var columnLength = Squares.GetLength(1);
-        //     for (int i = 0; i < rowLength; i++)
-        //     {
-        //         for (int j = 0; j < columnLength; j++)
-        //         {
-        //             squares.Add(Squares[i, j]);
-        //         }
-        //     }
-        //
-        //     return squares;
-        // }
 
     }
 }
