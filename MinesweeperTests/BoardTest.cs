@@ -32,9 +32,9 @@ namespace MinesweeperTests
             var board = Board.CreateEmptyBoard(1);
             Assert.Equal(1, board.Size);
         }
-        
 
-        
+
+
         // [Fact]
         // public void CreateEmptyBoardShould_CreateABoardWithAHintOfValue0_WhenInputIs1()
         // {
