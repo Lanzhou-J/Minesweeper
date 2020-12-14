@@ -33,8 +33,21 @@ namespace MinesweeperTests
             Assert.Equal(1, board.Size);
         }
         
-
-        //
+        [Theory]
+        [InlineData(1)]
+        [InlineData(5)]
+        [InlineData(10)]
+        public void CreateMinesShould_ChangeCorrectNumberOfMines(int number)
+        {
+            var size = number;
+            var board = Board.CreateEmptyBoard(size);
+            board.CreateMines(number);
+            var squares = board.Squares;
+            var mines = squares.FindAll(x => x.GetType() == typeof(Mine));
+            Assert.Equal(number, mines.Count);
+        }
+        
+        
         // [Fact]
         // public void CreateEmptyBoardShould_CreateABoardWithAHintOfValue0_WhenInputIs1()
         // {
@@ -91,17 +104,6 @@ namespace MinesweeperTests
         //     Assert.Equal(expectedY, locationY);
         // }
         //
-        // [Theory]
-        // [InlineData(1)]
-        // [InlineData(5)]
-        // [InlineData(10)]
-        // public void SetMinesShould_ChangeCorrectNumberOfSquareToMine(int number)
-        // {
-        //     var board = Board.CreateEmptyBoard(number);
-        //     board.SetMines(number);
-        //     var squares = board.Squares;
-        //     var mines = squares.FindAll(x => x.GetType() == typeof(Mine));
-        //     Assert.Equal(number, mines.Count);
-        // }
+
     }
 }

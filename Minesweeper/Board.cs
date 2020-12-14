@@ -60,7 +60,7 @@ namespace Minesweeper
 
 
 
-        public void SetMines(int numberOfMines)
+        public void CreateMines(int numberOfMines)
         {
             var selectedSquares = Squares.OrderBy(x => _random.Next()).Take(numberOfMines);
             foreach (var item in selectedSquares)
