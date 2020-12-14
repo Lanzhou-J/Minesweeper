@@ -54,7 +54,7 @@ namespace Minesweeper
             return squares;
         }
 
-        public List<ISquare> Squares { get; private set; }
+        public List<ISquare> Squares { get; private set; } = new List<ISquare>();
         public List<Location> Locations { get; private set; }
         public int Size { get; private set; }
 
@@ -62,12 +62,10 @@ namespace Minesweeper
 
         public void CreateMines(int numberOfMines)
         {
-            var selectedSquares = Squares.OrderBy(x => _random.Next()).Take(numberOfMines);
-            foreach (var item in selectedSquares)
+            var selectedLocations = Locations.OrderBy(x => _random.Next()).Take(numberOfMines);
+            foreach (var item in selectedLocations)
             {
-                var location = item.Location;
-                var newMine = new Mine(location);
-                Squares.Remove(item);
+                var newMine = new Mine(item);
                 Squares.Add(newMine);
             }
         }

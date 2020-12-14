@@ -37,7 +37,7 @@ namespace MinesweeperTests
         [InlineData(1)]
         [InlineData(5)]
         [InlineData(10)]
-        public void CreateMinesShould_ChangeCorrectNumberOfMines(int number)
+        public void CreateMinesShould_CreateCorrectNumberOfMines(int number)
         {
             var size = number;
             var board = Board.CreateEmptyBoard(size);
