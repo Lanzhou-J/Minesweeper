@@ -57,12 +57,16 @@ namespace MinesweeperTests
             }
         }
         
-        [Fact]
-        public void CreateEmptyBoardShould_CreateABoardWithSquareOneOneIndexEqualTo4_WhenInputIs2()
+        [Theory]
+        [InlineData(1,1,4)]
+        [InlineData(0,0,1)]
+        [InlineData(0,1,2)]
+        [InlineData(1,0,3)]
+        public void CreateEmptyBoardShould_CreateABoardWithSquaresThatHaveCorrectIndexValues(int x, int y, int expectedIndex)
         {
             var board = Board.CreateEmptyBoard(2);
-            var index = board.Squares[1, 1].Index;
-            Assert.Equal(4, index);
+            var index = board.Squares[x, y].Index;
+            Assert.Equal(expectedIndex, index);
         }
 
         [Fact]
