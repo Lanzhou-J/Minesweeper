@@ -88,15 +88,15 @@ namespace MinesweeperTests
             Assert.Equal(expectedY, locationY);
         }
         
-        // [Fact]
-        // public void SetMinesShould_Change1SquareToMine_WhenInputIs1()
-        // {
-        //     var board = Board.CreateEmptyBoard(1);
-        //     board.SetMines(1);
-        //     var squares = board.ToSquareList();
-        //     var mines = squares.FindAll(x => x.IsMine);
-        //     Assert.Single(mines);
-        // }
+        [Fact]
+        public void SetMinesShould_Change1SquareToMine_WhenInputIs1()
+        {
+            var board = Board.CreateEmptyBoard(1);
+            board.SetMines(1);
+            var squares = board.Squares;
+            var mines = squares.FindAll(x => x.GetType() == typeof(Mine));
+            Assert.Single(mines);
+        }
         //
         // [Fact]
         // public void SetMinesShould_Change5SquareToMine_WhenInputIs5()

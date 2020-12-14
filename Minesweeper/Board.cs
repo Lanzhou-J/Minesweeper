@@ -40,15 +40,17 @@ namespace Minesweeper
             return new Board(size);
         }
 
-        // public void SetMines(int numberOfMines)
-        // {
-        //     var squares = ToSquareList();
-        //     var selectedSquares = squares.OrderBy(x => _random.Next()).Take(numberOfMines);
-        //     foreach (var item in selectedSquares)
-        //     {
-        //         item.IsMine = true;
-        //     }
-        // }
+        public void SetMines(int numberOfMines)
+        {
+            var selectedSquares = Squares.OrderBy(x => _random.Next()).Take(numberOfMines);
+            foreach (var item in selectedSquares)
+            {
+                var location = item.Location;
+                var newMine = new Mine(location);
+                Squares.Remove(item);
+                Squares.Add(newMine);
+            }
+        }
         
         // public List<Mine> ToSquareList()
         // {
