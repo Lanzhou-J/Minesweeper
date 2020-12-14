@@ -88,36 +88,17 @@ namespace MinesweeperTests
             Assert.Equal(expectedY, locationY);
         }
         
-        [Fact]
-        public void SetMinesShould_Change1SquareToMine_WhenInputIs1()
+        [Theory]
+        [InlineData(1)]
+        [InlineData(5)]
+        [InlineData(10)]
+        public void SetMinesShould_ChangeCorrectNumberOfSquareToMine(int number)
         {
-            var board = Board.CreateEmptyBoard(1);
-            board.SetMines(1);
+            var board = Board.CreateEmptyBoard(number);
+            board.SetMines(number);
             var squares = board.Squares;
             var mines = squares.FindAll(x => x.GetType() == typeof(Mine));
-            Assert.Single(mines);
+            Assert.Equal(number, mines.Count);
         }
-        
-        [Fact]
-        public void SetMinesShould_Change5SquareToMine_WhenInputIs5()
-        {
-            var board = Board.CreateEmptyBoard(5);
-            board.SetMines(5);
-            var squares = board.Squares;
-            var mines = squares.FindAll(x => x.GetType() == typeof(Mine));
-            Assert.Equal(5, mines.Count);
-        }
-        //
-        // [Fact]
-        // public void SetMinesShould_Change5SquareToMine_WhenInputIs10()
-        // {
-        //     var board = Board.CreateEmptyBoard(10);
-        //     board.SetMines(10);
-        //     var squares = board.ToSquareList();
-        //     var mines = squares.FindAll(x => x.IsMine);
-        //     Assert.Equal(10, mines.Count);
-        // }
-
-
     }
 }
