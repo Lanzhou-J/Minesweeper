@@ -5,7 +5,7 @@ namespace Minesweeper
         bool IsRevealed { get; set; }
         Location Location { get; set; }
 
-        string ToString();
+        string ToAString();
 
 
     }
