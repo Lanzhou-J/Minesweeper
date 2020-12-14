@@ -15,6 +15,10 @@ namespace Minesweeper
 
         public string ToAString()
         {
+            if (IsRevealed == true)
+            {
+                return "*";
+            }
             return ".";
         }
     }
