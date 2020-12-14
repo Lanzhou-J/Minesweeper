@@ -10,7 +10,33 @@ namespace Minesweeper
         private Board(int size)
         {
             Size = size;
-            Squares = SetSquares();
+            Locations = CreateLocations();
+        }
+        
+        private List<Location> CreateLocations()
+        {
+            var locations = new List<Location>();
+            if (Size == 0)
+            {
+                locations = null;
+            }
+            else
+            {
+                for (var i = 0; i < Size; i++)
+                {
+                    for (var j = 0; j < Size; j++)
+                    {
+                        var location = new Location(i, j);
+                        locations.Add(location);
+                    }
+                }
+            }
+            return locations;
+        }
+
+        public static Board CreateEmptyBoard(int size)
+        {
+            return new Board(size);
         }
 
         private List<ISquare> SetSquares()
@@ -29,16 +55,10 @@ namespace Minesweeper
         }
 
         public List<ISquare> Squares { get; private set; }
+        public List<Location> Locations { get; private set; }
         public int Size { get; private set; }
 
-        public static Board CreateEmptyBoard( int size)
-        {
-            if (size == 0)
-            {
-                return null;
-            }
-            return new Board(size);
-        }
+
 
         public void SetMines(int numberOfMines)
         {
