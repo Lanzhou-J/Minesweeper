@@ -13,22 +13,22 @@ namespace Minesweeper
             Squares = SetSquares();
         }
 
-        private Mine[,] SetSquares()
+        private List<ISquare> SetSquares()
         {
-            var index = 1;
-            var squares = new Mine[Size,Size];
+            var squares = new List<ISquare>();
             for (var i = 0; i < Size; i++)
             {
                 for (var j = 0; j < Size; j++)
                 {
-                    squares[i,j] = new Mine(index);
-                    index++;
+                    var location = new Location(i, j);
+                    var square = new Hint(location);
+                    squares.Add(square);
                 }
             }
             return squares;
         }
 
-        public Mine[,] Squares { get; private set; }
+        public List<ISquare> Squares { get; private set; }
         public int Size { get; private set; }
 
         public static Board CreateEmptyBoard( int size)
@@ -40,31 +40,31 @@ namespace Minesweeper
             return new Board(size);
         }
 
-        public void SetMines(int numberOfMines)
-        {
-            var squares = ToSquareList();
-            var selectedSquares = squares.OrderBy(x => _random.Next()).Take(numberOfMines);
-            foreach (var item in selectedSquares)
-            {
-                item.IsMine = true;
-            }
-        }
+        // public void SetMines(int numberOfMines)
+        // {
+        //     var squares = ToSquareList();
+        //     var selectedSquares = squares.OrderBy(x => _random.Next()).Take(numberOfMines);
+        //     foreach (var item in selectedSquares)
+        //     {
+        //         item.IsMine = true;
+        //     }
+        // }
         
-        public List<Mine> ToSquareList()
-        {
-            var squares = new List<Mine>();
-            var rowLength = Squares.GetLength(0);
-            var columnLength = Squares.GetLength(1);
-            for (int i = 0; i < rowLength; i++)
-            {
-                for (int j = 0; j < columnLength; j++)
-                {
-                    squares.Add(Squares[i, j]);
-                }
-            }
-
-            return squares;
-        }
+        // public List<Mine> ToSquareList()
+        // {
+        //     var squares = new List<Mine>();
+        //     var rowLength = Squares.GetLength(0);
+        //     var columnLength = Squares.GetLength(1);
+        //     for (int i = 0; i < rowLength; i++)
+        //     {
+        //         for (int j = 0; j < columnLength; j++)
+        //         {
+        //             squares.Add(Squares[i, j]);
+        //         }
+        //     }
+        //
+        //     return squares;
+        // }
 
     }
 }

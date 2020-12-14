@@ -11,6 +11,8 @@ namespace Minesweeper
         public bool IsRevealed { get; set; }
 
         public Location Location { get; set; }
+        public int Value { get; set; }
+
         public string ToAString()
         {
             throw new System.NotImplementedException();

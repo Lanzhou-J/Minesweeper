@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Minesweeper;
 using Xunit;
 
@@ -37,10 +38,10 @@ namespace MinesweeperTests
             var board = Board.CreateEmptyBoard(1);
 
             var squares = board.Squares;
-            
-            var hint = squares
 
-            Assert.Equal(0, );
+            var hint = squares.First();
+
+            Assert.Equal(0, hint.Value);
         }
         
         // [Fact]
