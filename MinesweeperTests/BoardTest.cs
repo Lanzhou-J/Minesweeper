@@ -44,29 +44,33 @@ namespace MinesweeperTests
             Assert.Equal(0, hint.Value);
         }
         
-        // [Fact]
-        // public void CreateEmptyBoardShould_CreateASize2BoardWithSquaresLengthOf2_WhenInputIs2()
-        // {
-        //     var board = Board.CreateEmptyBoard(2);
-        //     Assert.Equal(2, board.Size);
-        //     Assert.Equal(2, board.Squares.GetLength(0));
-        //     Assert.Equal(2, board.Squares.GetLength(1));
-        // }
-        //
-        // [Fact]
-        // public void CreateEmptyBoardShould_CreateABoardWithSquaresNotMine_WhenInputIs2()
-        // {
-        //     var board = Board.CreateEmptyBoard(2);
-        //
-        //     for (int i = 0; i < 2; i++)
-        //     {
-        //         for (int j = 0; j < 2; j++)
-        //         {
-        //             var square = board.Squares[i, j];
-        //             Assert.False(square.IsMine);
-        //         }
-        //     }
-        // }
+        [Fact]
+        public void CreateEmptyBoardShould_CreateASize2BoardWithSquaresLengthOf2_WhenInputIs2()
+        {
+            var board = Board.CreateEmptyBoard(2);
+            Assert.Equal(2, board.Size);
+        }
+        
+        [Fact]
+        public void CreateEmptyBoardShould_CreateABoardWith4Squares_WhenInputIs2()
+        {
+            var board = Board.CreateEmptyBoard(2);
+
+            var squares = board.Squares;
+
+            Assert.Equal(4, squares.Count);
+        }
+        
+        [Fact]
+        public void CreateEmptyBoardShould_CreateABoardWithHintsOfValue0_WhenInputIs2()
+        {
+            var board = Board.CreateEmptyBoard(2);
+
+            foreach (var item in board.Squares)
+            {
+                Assert.Equal(0, item.Value);
+            }
+        }
         //
         // [Theory]
         // [InlineData(1,1,4)]
