@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Minesweeper;
 using Xunit;
 
@@ -55,5 +56,33 @@ namespace MinesweeperTests
                 }
             }
         }
+
+        [Fact]
+        public void SetMinesShould_Change1SquareToMine_WhenInputIs1()
+        {
+            var board = Board.CreateEmptyBoard(1);
+            board.SetMines(1);
+            var squares = ToSquareList(board);
+            var mines = squares.FindAll(x => x.IsMine);
+            Assert.Single(mines);
+        }
+        
+        private static List<Square> ToSquareList(Board board)
+        {
+            var squares = new List<Square>();
+            var rowLength = board.Squares.GetLength(0);
+            var columnLength = board.Squares.GetLength(1);
+            for (int i = 0; i < rowLength; i++)
+            {
+                for (int j = 0; j < columnLength; j++)
+                {
+                    squares.Add(board.Squares[i, j]);
+                }
+            }
+
+            return squares;
+        }
+
+  
     }
 }

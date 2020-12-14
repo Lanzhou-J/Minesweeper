@@ -32,5 +32,6 @@ namespace Minesweeper
             }
             return new Board(size);
         }
+        
     }
 }
