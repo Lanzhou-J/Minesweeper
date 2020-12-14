@@ -16,7 +16,11 @@ namespace Minesweeper
         public Location Location { get; set; }
         public string ToAString()
         {
-            throw new System.NotImplementedException();
+            if (IsRevealed)
+            {
+                return Value.ToString();
+            }
+            return ".";
         }
     }
 }
