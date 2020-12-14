@@ -39,21 +39,6 @@ namespace Minesweeper
             return new Board(size);
         }
 
-        // private List<ISquare> SetSquares()
-        // {
-        //     var squares = new List<ISquare>();
-        //     for (var i = 0; i < Size; i++)
-        //     {
-        //         for (var j = 0; j < Size; j++)
-        //         {
-        //             var location = new Location(i, j);
-        //             var square = new Hint(location);
-        //             squares.Add(square);
-        //         }
-        //     }
-        //     return squares;
-        // }
-
         public List<ISquare> Squares { get; private set; } = new List<ISquare>();
         public List<Location> Locations { get; private set; }
         public int Size { get; private set; }
