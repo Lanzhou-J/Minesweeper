@@ -10,12 +10,14 @@ namespace Minesweeper
 
         private Square[,] SetSquares()
         {
+            var index = 1;
             var squares = new Square[Size,Size];
             for (var i = 0; i < Size; i++)
             {
                 for (var j = 0; j < Size; j++)
                 {
-                    squares[i,j] = new Square();
+                    squares[i,j] = new Square(index);
+                    index++;
                 }
             }
             return squares;
@@ -32,6 +34,11 @@ namespace Minesweeper
             }
             return new Board(size);
         }
-        
+
+        public void SetMines(int numberOfMines)
+        {
+            
+        }
+
     }
 }

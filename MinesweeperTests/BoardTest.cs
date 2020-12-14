@@ -56,6 +56,14 @@ namespace MinesweeperTests
                 }
             }
         }
+        
+        [Fact]
+        public void CreateEmptyBoardShould_CreateABoardWithSquareOneOneIndexEqualTo4_WhenInputIs2()
+        {
+            var board = Board.CreateEmptyBoard(2);
+            var index = board.Squares[1, 1].Index;
+            Assert.Equal(4, index);
+        }
 
         [Fact]
         public void SetMinesShould_Change1SquareToMine_WhenInputIs1()
