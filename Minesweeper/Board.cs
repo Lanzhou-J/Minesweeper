@@ -43,7 +43,7 @@ namespace Minesweeper
         public void SetMines(int numberOfMines)
         {
             var squares = ToSquareList();
-            var selectedSquares = squares.OrderBy(x => _random.Next()).Take(5);
+            var selectedSquares = squares.OrderBy(x => _random.Next()).Take(numberOfMines);
             foreach (var item in selectedSquares)
             {
                 item.IsMine = true;

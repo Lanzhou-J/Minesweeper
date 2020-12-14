@@ -78,6 +78,26 @@ namespace MinesweeperTests
             var mines = squares.FindAll(x => x.IsMine);
             Assert.Single(mines);
         }
+        
+        [Fact]
+        public void SetMinesShould_Change5SquareToMine_WhenInputIs5()
+        {
+            var board = Board.CreateEmptyBoard(5);
+            board.SetMines(5);
+            var squares = board.ToSquareList();
+            var mines = squares.FindAll(x => x.IsMine);
+            Assert.Equal(5, mines.Count);
+        }
+        
+        [Fact]
+        public void SetMinesShould_Change5SquareToMine_WhenInputIs10()
+        {
+            var board = Board.CreateEmptyBoard(10);
+            board.SetMines(10);
+            var squares = board.ToSquareList();
+            var mines = squares.FindAll(x => x.IsMine);
+            Assert.Equal(10, mines.Count);
+        }
 
 
     }
