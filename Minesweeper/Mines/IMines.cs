@@ -4,7 +4,7 @@ namespace Minesweeper
 {
     public interface IMines
     {
-        public List<Mine> CreateMines(int numbers);
+        public List<Mine> CreateMines(int number, List<Location> locations);
         public List<Mine> MineList { get; }
     }
 }
