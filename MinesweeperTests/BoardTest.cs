@@ -26,22 +26,14 @@ namespace MinesweeperTests
            Assert.Equal(expectedY, locationY);
        }
         
-        // [Fact]
-        // public void CreateEmptyBoardShould_CreateASize1Board_WhenInputIs1()
-        // {
-        //     var board = Board.CreateEmptyBoard(1);
-        //     Assert.Equal(1, board.Size);
-        // }
-        //
-        // [Fact]
-        // public void CreateEmptyBoardShould_CreateABoardWithOneSquare_WhenInputIs1()
-        // {
-        //     var board = Board.CreateEmptyBoard(1);
-        //
-        //     var squares = board.Squares;
-        //
-        //     Assert.Single(squares);
-        // }
+        [Fact]
+        public void CreateEmptyBoardShould_CreateASize1Board_WhenInputIs1()
+        {
+            var board = Board.CreateEmptyBoard(1);
+            Assert.Equal(1, board.Size);
+        }
+        
+
         //
         // [Fact]
         // public void CreateEmptyBoardShould_CreateABoardWithAHintOfValue0_WhenInputIs1()
