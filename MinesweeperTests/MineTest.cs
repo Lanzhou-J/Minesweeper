@@ -6,12 +6,12 @@ namespace MinesweeperTests
     public class MineTest
     {
         [Fact]
-        public void ToAStringShould_ReturnAStarString_WhenMineIsRevealed()
+        public void ToAStringShould_ReturnADotString_WhenMineIsRevealed()
         {
             var location = new Location(1,1);
             var mine = new Mine(location);
             var result = mine.ToAString();
-            Assert.Equal("*", result);
+            Assert.Equal(".", result);
         }
     }
 }

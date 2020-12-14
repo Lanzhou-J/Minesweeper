@@ -15,7 +15,7 @@ namespace Minesweeper
 
         public string ToAString()
         {
-            return "*";
+            return ".";
         }
     }
 }
