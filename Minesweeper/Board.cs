@@ -1,7 +1,11 @@
+using System;
+using System.Collections.Generic;
+
 namespace Minesweeper
 {
     public class Board
     {
+        private readonly Random _random = new Random();
         private Board(int size)
         {
             Size = size;
@@ -37,7 +41,23 @@ namespace Minesweeper
 
         public void SetMines(int numberOfMines)
         {
-            
+           
+        }
+        
+        public List<Square> ToSquareList()
+        {
+            var squares = new List<Square>();
+            var rowLength = Squares.GetLength(0);
+            var columnLength = Squares.GetLength(1);
+            for (int i = 0; i < rowLength; i++)
+            {
+                for (int j = 0; j < columnLength; j++)
+                {
+                    squares.Add(Squares[i, j]);
+                }
+            }
+
+            return squares;
         }
 
     }
