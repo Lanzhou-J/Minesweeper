@@ -5,7 +5,7 @@ namespace Minesweeper
         public Mine(Location location)
         {
             IsRevealed = false;
-            Location = location
+            Location = location;
         }
 
         public bool IsRevealed { get; set; }
