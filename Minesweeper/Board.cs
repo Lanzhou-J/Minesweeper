@@ -13,22 +13,22 @@ namespace Minesweeper
             Squares = SetSquares();
         }
 
-        private Square[,] SetSquares()
+        private Mine[,] SetSquares()
         {
             var index = 1;
-            var squares = new Square[Size,Size];
+            var squares = new Mine[Size,Size];
             for (var i = 0; i < Size; i++)
             {
                 for (var j = 0; j < Size; j++)
                 {
-                    squares[i,j] = new Square(index);
+                    squares[i,j] = new Mine(index);
                     index++;
                 }
             }
             return squares;
         }
 
-        public Square[,] Squares { get; private set; }
+        public Mine[,] Squares { get; private set; }
         public int Size { get; private set; }
 
         public static Board CreateEmptyBoard( int size)
@@ -50,9 +50,9 @@ namespace Minesweeper
             }
         }
         
-        public List<Square> ToSquareList()
+        public List<Mine> ToSquareList()
         {
-            var squares = new List<Square>();
+            var squares = new List<Mine>();
             var rowLength = Squares.GetLength(0);
             var columnLength = Squares.GetLength(1);
             for (int i = 0; i < rowLength; i++)
