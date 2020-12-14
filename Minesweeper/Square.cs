@@ -9,7 +9,7 @@ namespace Minesweeper
             Index = index;
         }
 
-        public bool IsMine { get; private set; }
+        public bool IsMine { get; set; }
         public int Hint { get; set; }
 
         public int Index { get; set; }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Minesweeper
 {
@@ -41,7 +42,12 @@ namespace Minesweeper
 
         public void SetMines(int numberOfMines)
         {
-           
+            var squares = ToSquareList();
+            var selectedSquares = squares.OrderBy(x => _random.Next()).Take(5);
+            foreach (var item in selectedSquares)
+            {
+                item.IsMine = true;
+            }
         }
         
         public List<Square> ToSquareList()
