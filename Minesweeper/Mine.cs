@@ -15,7 +15,7 @@ namespace Minesweeper
 
         public string ToAString()
         {
-            throw new System.NotImplementedException();
+            return "*";
         }
     }
 }
