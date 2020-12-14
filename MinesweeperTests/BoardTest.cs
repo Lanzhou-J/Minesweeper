@@ -47,7 +47,6 @@ namespace MinesweeperTests
             Assert.Equal(number, mines.Count);
         }
         
-        
         // [Fact]
         // public void CreateEmptyBoardShould_CreateABoardWithAHintOfValue0_WhenInputIs1()
         // {
