@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Minesweeper
 {
     public class Location
@@ -10,5 +12,10 @@ namespace Minesweeper
 
         public  int X {get; private set; }
         public  int Y {get; private set; }
+
+        public List<Location> GetNeighboursLocations()
+        {
+            return null;
+        }
     }
 }
