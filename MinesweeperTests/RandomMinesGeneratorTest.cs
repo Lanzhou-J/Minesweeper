@@ -4,7 +4,7 @@ using Xunit;
 
 namespace MinesweeperTests
 {
-    public class RandomMinesTest
+    public class RandomMinesGeneratorTest
     {
         [Theory]
         [InlineData(1)]
@@ -13,9 +13,10 @@ namespace MinesweeperTests
         public void NewRandomMinesShould_CreateCorrectNumberOfMines(int number)
         {
             var locations = GetThreeByThreeBoardLocations();
+            var minesGenerator = new RandomMinesGenerator();
 
-            var mines = new RandomMines(number, locations);
-            Assert.Equal(number, mines.MineList.Count);
+            var mines = minesGenerator.CreateMines(number, locations);
+            Assert.Equal(number, mines.Count);
         }
 
         private static List<Location> GetThreeByThreeBoardLocations()

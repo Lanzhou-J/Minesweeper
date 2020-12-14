@@ -4,14 +4,10 @@ using System.Linq;
 
 namespace Minesweeper
 {
-    public class RandomMines : IMines
+    public class RandomMinesGenerator : IGenerateMines
     {
         
         private readonly Random _random = new Random();
-        public RandomMines(int number, List<Location> locations)
-        {
-            MineList = CreateMines(number, locations);
-        }
 
         public List<Mine> CreateMines(int number, List<Location> locations)
         {
@@ -25,7 +21,6 @@ namespace Minesweeper
 
             return mines;
         }
-
-        public List<Mine> MineList { get; }
+        
     }
 }
