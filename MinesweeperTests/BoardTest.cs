@@ -71,19 +71,23 @@ namespace MinesweeperTests
                 Assert.Equal(0, item.Value);
             }
         }
-        //
-        // [Theory]
-        // [InlineData(1,1,4)]
-        // [InlineData(0,0,1)]
-        // [InlineData(0,1,2)]
-        // [InlineData(1,0,3)]
-        // public void CreateEmptyBoardShould_CreateABoardWithSquaresThatHaveCorrectIndexValues(int x, int y, int expectedIndex)
-        // {
-        //     var board = Board.CreateEmptyBoard(2);
-        //     var index = board.Squares[x, y].Index;
-        //     Assert.Equal(expectedIndex, index);
-        // }
-        //
+        
+        [Theory]
+        [InlineData(1,1,3)]
+        [InlineData(0,0,0)]
+        [InlineData(0,1,1)]
+        [InlineData(1,0,2)]
+        public void CreateEmptyBoardShould_CreateABoardWithSquaresThatHaveCorrectLocations(int expectedX, int expectedY, int index)
+        {
+            var board = Board.CreateEmptyBoard(2);
+            var square = board.Squares[index];
+            var locationX = square.Location.X;
+            var locationY = square.Location.Y;
+            
+            Assert.Equal(expectedX, locationX);
+            Assert.Equal(expectedY, locationY);
+        }
+        
         // [Fact]
         // public void SetMinesShould_Change1SquareToMine_WhenInputIs1()
         // {
