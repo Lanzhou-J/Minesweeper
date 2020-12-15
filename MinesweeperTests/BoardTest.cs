@@ -41,13 +41,13 @@ namespace MinesweeperTests
         }
 
         [Fact]
-        public void CreateHintsShould_ReturnNull_WhenThereIsOnly1MineSquare()
+        public void CreateHintsShould_ReturnEmptyList_WhenThereIsOnly1MineSquare()
         {
             var board = Board.CreateEmptyBoard(1);
             board.PlaceMines(1);
 
             var hints = board.CreateHints();
-            Assert.Null(hints);
+            Assert.Empty(hints);
         }
         
         [Fact]

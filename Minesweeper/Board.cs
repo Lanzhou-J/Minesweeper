@@ -59,7 +59,19 @@ namespace Minesweeper
 
         public List<Hint> CreateHints()
         {
-            return null;
+            foreach (var mine in _mines)
+            {
+                Locations.Remove(mine.Location);
+            }
+            
+            var hints = new List<Hint>();
+
+            foreach (var item in Locations)
+            {
+                var hint = new Hint(item, 0);
+                hints.Add(hint);
+            }
+            return hints;
         }
         //     var hints = new List<Hint>();
         //     var value = 0;
