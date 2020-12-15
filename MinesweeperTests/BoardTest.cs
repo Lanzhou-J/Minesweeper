@@ -68,7 +68,26 @@ namespace MinesweeperTests
 
             var hints = board.CreateHints();
             Assert.Equal(4, hints.Count);
-            Assert.Equal(0, hints.First().Value);
+            foreach (var item in hints)
+            {
+                Assert.Equal(0, item.Value);
+            }
+            
+        }
+        
+        [Fact]
+        public void CreateHintsShould_Return3HintsWithValue1_WhenThereIs1Mine_InASize2Board()
+        {
+            var board = Board.CreateEmptyBoardBasedOnSize(2);
+            board.PlaceMines(1);
+
+            var hints = board.CreateHints();
+            Assert.Equal(3, hints.Count);
+            foreach (var item in hints)
+            {
+                Assert.Equal(1, item.Value);
+            }
+            
         }
 
     }
