@@ -91,18 +91,18 @@ namespace MinesweeperTests
         [Fact]
         public void ToStringShould_ReturnExpectedString_WhenThereIsNoMinesInASize1Board()
         {
-            var expectedString = ".";
+            const string expectedString = ".";
             var board = Board.CreateEmptyBoardBasedOnSize(1);
             Assert.Equal(expectedString, board.ToString());
         }
         
-        // [Fact]
-        // public void ToStringShould_ReturnExpectedString_WhenThereIsNoMinesInASize2Board()
-        // {
-        //     var expectedString = ". .\n" + ". .\n";
-        //     var board = Board.CreateEmptyBoardBasedOnSize(2);
-        //     Assert.Equal(expectedString, board.ToString());
-        // }
+        [Fact]
+        public void ToStringShould_ReturnExpectedString_WhenThereIsNoMinesInASize2Board()
+        {
+            var expectedString = ". . \n" + ". . \n";
+            var board = Board.CreateEmptyBoardBasedOnSize(2);
+            Assert.Equal(expectedString, board.ToString());
+        }
 
     }
 }
