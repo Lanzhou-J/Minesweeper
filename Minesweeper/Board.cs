@@ -90,7 +90,7 @@ namespace Minesweeper
             {
                 for (int j = 0; j < Size; j++)
                 {
-                    message += ".";
+                    message += FindSquareUsingLocationValue(i,j).ToAString();
                     message += " ";
                 }
 
@@ -112,6 +112,12 @@ namespace Minesweeper
             {
                 item.IsRevealed = true;
             }
+        }
+        
+        public ISquare FindSquareUsingLocationValue(int x, int y)
+        {
+            var square = Squares.Find(item => item.Location.X.Equals(x) && item.Location.Y.Equals(y));
+            return square;
         }
 
         //     var hints = new List<Hint>();

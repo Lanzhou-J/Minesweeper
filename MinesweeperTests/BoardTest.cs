@@ -108,6 +108,8 @@ namespace MinesweeperTests
         {
             const string expectedString = ". \n";
             var board = Board.CreateEmptyBoardBasedOnSize(1);
+            board.PlaceMines(0);
+            board.PlaceHints();
             Assert.Equal(expectedString, board.ToString());
         }
         
@@ -116,17 +118,25 @@ namespace MinesweeperTests
         {
             var expectedString = ". . \n" + ". . \n";
             var board = Board.CreateEmptyBoardBasedOnSize(2);
+            board.PlaceMines(0);
+            board.PlaceHints();
             Assert.Equal(expectedString, board.ToString());
         }
         
         [Fact]
         public void ToStringShould_ReturnExpectedString_WhenThereIs1RevealedMineInASize1Board()
         {
-            const string expectedString = "* \n";
+            const string expectedHiddenString = ". \n";
+            const string expectedRevealedString = "* \n";
             var board = Board.CreateEmptyBoardBasedOnSize(1);
+            board.PlaceMines(1);
+            board.PlaceHints();
+            Assert.Equal(expectedHiddenString, board.ToString());
             board.RevealSquares();
-            Assert.Equal(expectedString, board.ToString());
+            Assert.Equal(expectedRevealedString, board.ToString());
         }
+
+
 
     }
 }
