@@ -9,12 +9,12 @@ namespace Minesweeper
         private List<ISquare> Squares { get; set; } = new List<ISquare>();
         public List<Location> Locations { get; private set; }
         public int Size { get; private set; }
-        private readonly IGenerateMines _mineGenerator;
+        public IGenerateMines MineGenerator { get; set; }
         private List<Mine> _mines;
         private readonly Random _random = new Random();
         private Board(int size, IGenerateMines mineGenerator)
         {
-            _mineGenerator = mineGenerator;
+            MineGenerator = mineGenerator;
             Size = size;
             Locations = CreateLocations();
         }
@@ -40,14 +40,19 @@ namespace Minesweeper
             return locations;
         }
 
-        public static Board CreateEmptyBoard(int size)
+        public static Board CreateEmptyBoardBasedOnSize(int size)
         {
             return new Board(size, new RandomMinesGenerator());
         }
         
+        public static Board CreateEmptyBoardBasedOnSize(int size, IGenerateMines minesGenerator)
+        {
+            return new Board(size, minesGenerator);
+        }
+        
         public void PlaceMines(int number)
         {
-            _mines = _mineGenerator.CreateMines(number, Locations);
+            _mines = MineGenerator.CreateMines(number, Locations);
             Squares.AddRange(_mines);
         }
         

@@ -7,8 +7,7 @@ using Xunit;
 namespace MinesweeperTests
 {
     public class BoardTest
-    {
-       
+    { 
         [Theory]
        [InlineData(1,1,3)]
        [InlineData(0,0,0)]
@@ -16,7 +15,7 @@ namespace MinesweeperTests
        [InlineData(1,0,2)]
        public void CreateEmptyBoardShould_CreateCorrectLocations_AccordingToTheSizeOfTheBoard(int expectedX, int expectedY, int index)
        {
-           var board = Board.CreateEmptyBoard(2);
+           var board = Board.CreateEmptyBoardBasedOnSize(2);
            var locations = board.Locations;
            var location = locations[index];
            var locationX = location.X;
@@ -29,21 +28,21 @@ namespace MinesweeperTests
         [Fact]
         public void CreateEmptyBoardShould_CreateASize1Board_WhenInputIs1()
         {
-            var board = Board.CreateEmptyBoard(1);
+            var board = Board.CreateEmptyBoardBasedOnSize(1);
             Assert.Equal(1, board.Size);
         }
         
         [Fact]
         public void CreateEmptyBoardShould_CreateASize2BoardWithSquaresLengthOf2_WhenInputIs2()
         {
-            var board = Board.CreateEmptyBoard(2);
+            var board = Board.CreateEmptyBoardBasedOnSize(2);
             Assert.Equal(2, board.Size);
         }
 
         [Fact]
         public void CreateHintsShould_ReturnEmptyList_WhenThereIsOnly1MineSquare()
         {
-            var board = Board.CreateEmptyBoard(1);
+            var board = Board.CreateEmptyBoardBasedOnSize(1);
             board.PlaceMines(1);
 
             var hints = board.CreateHints();
@@ -53,7 +52,7 @@ namespace MinesweeperTests
         [Fact]
         public void CreateHintsShould_ReturnAHintWithValue0_WhenThereIs0MineSquare()
         {
-            var board = Board.CreateEmptyBoard(1);
+            var board = Board.CreateEmptyBoardBasedOnSize(1);
             board.PlaceMines(0);
 
             var hints = board.CreateHints();
@@ -64,36 +63,13 @@ namespace MinesweeperTests
         [Fact]
         public void CreateHintsShould_Return4HintsWithValue0_WhenThereIsNoMine_InASize2Board()
         {
-            var board = Board.CreateEmptyBoard(2);
+            var board = Board.CreateEmptyBoardBasedOnSize(2);
             board.PlaceMines(0);
 
             var hints = board.CreateHints();
             Assert.Equal(4, hints.Count);
             Assert.Equal(0, hints.First().Value);
         }
-
-        // [Fact]
-        // public void CreateEmptyBoardShould_CreateABoardWith4Squares_WhenInputIs2()
-        // {
-        //     var board = Board.CreateEmptyBoard(2);
-        //
-        //     var squares = board.Squares;
-        //
-        //     Assert.Equal(4, squares.Count);
-        // }
-        //
-        // [Fact]
-        // public void CreateEmptyBoardShould_CreateABoardWithHintsOfValue0_WhenInputIs2()
-        // {
-        //     var board = Board.CreateEmptyBoard(2);
-        //
-        //     foreach (var item in board.Squares)
-        //     {
-        //         Assert.Equal(0, item.Value);
-        //     }
-        // }
-        //
-        //
 
     }
 }

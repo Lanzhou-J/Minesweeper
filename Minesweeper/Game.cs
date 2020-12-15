@@ -17,7 +17,7 @@ namespace Minesweeper
         {
             var difficultyInput = _input.Ask("Difficulty:");
             var difficulty = int.Parse(difficultyInput);
-            Board = Board.CreateEmptyBoard(difficulty);
+            Board = Board.CreateEmptyBoardBasedOnSize(difficulty);
             Board.PlaceMines(difficulty);
             
         }
