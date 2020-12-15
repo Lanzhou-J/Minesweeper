@@ -91,7 +91,7 @@ namespace MinesweeperTests
         [Fact]
         public void ToStringShould_ReturnExpectedString_WhenThereIsNoMinesInASize1Board()
         {
-            const string expectedString = ".";
+            const string expectedString = ". \n";
             var board = Board.CreateEmptyBoardBasedOnSize(1);
             Assert.Equal(expectedString, board.ToString());
         }

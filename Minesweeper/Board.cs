@@ -85,7 +85,19 @@ namespace Minesweeper
 
         public override string ToString()
         {
-            return ".";
+            var message = "";
+            for (int i = 0; i < Size; i++)
+            {
+                for (int j = 0; j < Size; j++)
+                {
+                    message += ".";
+                    message += " ";
+                }
+
+                message += "\n";
+            }
+
+            return message;
         }
 
         public void PlaceHints()
