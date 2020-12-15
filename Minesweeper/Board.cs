@@ -50,19 +50,10 @@ namespace Minesweeper
             _mines = _mineGenerator.CreateMines(number, Locations);
             Squares.AddRange(_mines);
         }
-
-        // public void AddHintsToSquares()
-        // {
-        //     var hints = CreateHints();
-        //     Squares.AddRange(hints);
-        // }
-
+        
         public List<Hint> CreateHints()
         {
-            foreach (var mine in _mines)
-            {
-                Locations.Remove(mine.Location);
-            }
+            RemoveMinesLocationsFromLocationsList();
             
             var hints = new List<Hint>();
 
@@ -73,6 +64,21 @@ namespace Minesweeper
             }
             return hints;
         }
+
+        private void RemoveMinesLocationsFromLocationsList()
+        {
+            foreach (var mine in _mines)
+            {
+                Locations.Remove(mine.Location);
+            }
+        }
+        
+        // public void AddHintsToSquares()
+        // {
+        //     var hints = CreateHints();
+        //     Squares.AddRange(hints);
+        // }
+        
         //     var hints = new List<Hint>();
         //     var value = 0;
         //     foreach (var item in Locations)
