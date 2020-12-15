@@ -64,7 +64,12 @@ namespace Minesweeper
 
             foreach (var item in Locations)
             {
-                var hint = new Hint(item, 0);
+                var neighbourMineCount = 0;
+                if (Squares.Count>0)
+                {
+                    neighbourMineCount = 1;
+                }
+                var hint = new Hint(item, neighbourMineCount);
                 hints.Add(hint);
             }
             return hints;

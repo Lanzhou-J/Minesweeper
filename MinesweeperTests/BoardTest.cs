@@ -72,7 +72,6 @@ namespace MinesweeperTests
             {
                 Assert.Equal(0, item.Value);
             }
-            
         }
         
         [Fact]
@@ -87,7 +86,6 @@ namespace MinesweeperTests
             {
                 Assert.Equal(1, item.Value);
             }
-            
         }
 
     }

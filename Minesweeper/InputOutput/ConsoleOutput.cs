@@ -8,5 +8,6 @@ namespace Minesweeper
         {
             Console.WriteLine(message);
         }
+        
     }
 }
