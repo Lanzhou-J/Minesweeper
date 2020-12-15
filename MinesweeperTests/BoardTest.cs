@@ -89,10 +89,27 @@ namespace MinesweeperTests
         }
         
         [Fact]
+        public void RevealSquaresShould_SetAllSquaresToIsRevealed()
+        {
+            var board = Board.CreateEmptyBoardBasedOnSize(2);
+            foreach (var item in board.Squares)
+            {
+                Assert.False(item.IsRevealed);
+            }
+            board.RevealSquares();
+            foreach (var item in board.Squares)
+            {
+                Assert.True(item.IsRevealed);
+            }
+        }
+
+        [Fact]
         public void ToStringShould_ReturnExpectedString_WhenThereIsNoMinesInASize1Board()
         {
             const string expectedString = ". \n";
             var board = Board.CreateEmptyBoardBasedOnSize(1);
+            board.PlaceMines(0);
+            board.PlaceHints();
             Assert.Equal(expectedString, board.ToString());
         }
         
@@ -101,8 +118,37 @@ namespace MinesweeperTests
         {
             var expectedString = ". . \n" + ". . \n";
             var board = Board.CreateEmptyBoardBasedOnSize(2);
+            board.PlaceMines(0);
+            board.PlaceHints();
             Assert.Equal(expectedString, board.ToString());
         }
+        
+        [Fact]
+        public void ToStringShould_ReturnExpectedString_WhenThereIs1RevealedMineInASize1Board()
+        {
+            const string expectedHiddenString = ". \n";
+            const string expectedRevealedString = "* \n";
+            var board = Board.CreateEmptyBoardBasedOnSize(1);
+            board.PlaceMines(1);
+            board.PlaceHints();
+            Assert.Equal(expectedHiddenString, board.ToString());
+            board.RevealSquares();
+            Assert.Equal(expectedRevealedString, board.ToString());
+        }
+        
+        [Fact]
+        public void ToStringShould_ReturnExpectedString_WhenThereIs1RevealedTopLeftMineInASize2Board()
+        {
+            var mineGenerator = new MockMinesGenerator();
+            const string expectedString = "* 1 \n" + "1 1 \n";
+            var board = Board.CreateEmptyBoardBasedOnSize(2, mineGenerator);
+            board.PlaceMines(1);
+            board.PlaceHints();
+            board.RevealSquares();
+            Assert.Equal(expectedString, board.ToString());
+        }
+
+
 
     }
 }

@@ -6,7 +6,7 @@ namespace Minesweeper
 {
     public class Board
     {
-        private List<ISquare> Squares { get; set; } = new List<ISquare>();
+        public List<ISquare> Squares { get; set; } = new List<ISquare>();
         public List<Location> Locations { get; private set; }
         public int Size { get; private set; }
         public IGenerateMines MineGenerator { get; set; }
@@ -90,7 +90,7 @@ namespace Minesweeper
             {
                 for (int j = 0; j < Size; j++)
                 {
-                    message += ".";
+                    message += FindSquareUsingLocationValue(i,j).ToAString();
                     message += " ";
                 }
 
@@ -105,7 +105,21 @@ namespace Minesweeper
             var hints = CreateHints();
             Squares.AddRange(hints);
         }
+
+        public void RevealSquares()
+        {
+            foreach (var item in Squares.Where(item => item.IsRevealed == false))
+            {
+                item.IsRevealed = true;
+            }
+        }
         
+        public ISquare FindSquareUsingLocationValue(int x, int y)
+        {
+            var square = Squares.Find(item => item.Location.X.Equals(x) && item.Location.Y.Equals(y));
+            return square;
+        }
+
         //     var hints = new List<Hint>();
         //     var value = 0;
         //     foreach (var item in Locations)
