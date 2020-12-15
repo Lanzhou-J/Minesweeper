@@ -19,6 +19,8 @@ namespace Minesweeper
             var difficulty = int.Parse(difficultyInput);
             Board = Board.CreateEmptyBoardBasedOnSize(difficulty);
             Board.PlaceMines(difficulty);
+            Board.PlaceHints();
+            _output.Write(Board.ToString());
             
         }
     }

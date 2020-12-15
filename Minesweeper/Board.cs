@@ -82,12 +82,17 @@ namespace Minesweeper
                 Locations.Remove(mine.Location);
             }
         }
-        
-        // public void AddHintsToSquares()
-        // {
-        //     var hints = CreateHints();
-        //     Squares.AddRange(hints);
-        // }
+
+        public override string ToString()
+        {
+            return ".";
+        }
+
+        public void PlaceHints()
+        {
+            var hints = CreateHints();
+            Squares.AddRange(hints);
+        }
         
         //     var hints = new List<Hint>();
         //     var value = 0;
