@@ -16,6 +16,7 @@ namespace Minesweeper
             foreach (var item in selectedLocations)
             {
                 var newMine = new Mine(item);
+                locations.Remove(item);
                 mines.Add(newMine);
             }
 
