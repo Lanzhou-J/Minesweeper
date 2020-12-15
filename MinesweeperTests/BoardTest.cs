@@ -135,6 +135,18 @@ namespace MinesweeperTests
             board.RevealSquares();
             Assert.Equal(expectedRevealedString, board.ToString());
         }
+        
+        [Fact]
+        public void ToStringShould_ReturnExpectedString_WhenThereIs1RevealedTopLeftMineInASize2Board()
+        {
+            var mineGenerator = new MockMinesGenerator();
+            const string expectedString = "* 1 \n" + "1 1 \n";
+            var board = Board.CreateEmptyBoardBasedOnSize(2, mineGenerator);
+            board.PlaceMines(1);
+            board.PlaceHints();
+            board.RevealSquares();
+            Assert.Equal(expectedString, board.ToString());
+        }
 
 
 
