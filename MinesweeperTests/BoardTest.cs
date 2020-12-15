@@ -49,6 +49,17 @@ namespace MinesweeperTests
             var hints = board.CreateHints();
             Assert.Null(hints);
         }
+        
+        [Fact]
+        public void CreateHintsShould_ReturnAHintWithValue0_WhenThereIs0MineSquare()
+        {
+            var board = Board.CreateEmptyBoard(1);
+            board.PlaceMines(0);
+
+            var hints = board.CreateHints();
+            Assert.Single(hints);
+            Assert.Equal(0, hints.First().Value);
+        }
 
         // [Fact]
         // public void CreateEmptyBoardShould_CreateABoardWith4Squares_WhenInputIs2()
