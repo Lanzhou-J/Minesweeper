@@ -32,28 +32,24 @@ namespace MinesweeperTests
             var board = Board.CreateEmptyBoard(1);
             Assert.Equal(1, board.Size);
         }
+        
+        [Fact]
+        public void CreateEmptyBoardShould_CreateASize2BoardWithSquaresLengthOf2_WhenInputIs2()
+        {
+            var board = Board.CreateEmptyBoard(2);
+            Assert.Equal(2, board.Size);
+        }
 
+        [Fact]
+        public void CreateHintsShould_ReturnNull_WhenThereIsOnly1MineSquare()
+        {
+            var board = Board.CreateEmptyBoard(1);
+            board.PlaceMines(1);
 
+            var hints = board.CreateHints();
+            Assert.Null(hints);
+        }
 
-        // [Fact]
-        // public void CreateEmptyBoardShould_CreateABoardWithAHintOfValue0_WhenInputIs1()
-        // {
-        //     var board = Board.CreateEmptyBoard(1);
-        //
-        //     var squares = board.Squares;
-        //
-        //     var hint = squares.First();
-        //
-        //     Assert.Equal(0, hint.Value);
-        // }
-        //
-        // [Fact]
-        // public void CreateEmptyBoardShould_CreateASize2BoardWithSquaresLengthOf2_WhenInputIs2()
-        // {
-        //     var board = Board.CreateEmptyBoard(2);
-        //     Assert.Equal(2, board.Size);
-        // }
-        //
         // [Fact]
         // public void CreateEmptyBoardShould_CreateABoardWith4Squares_WhenInputIs2()
         // {
@@ -75,21 +71,6 @@ namespace MinesweeperTests
         //     }
         // }
         //
-        // [Theory]
-        // [InlineData(1,1,3)]
-        // [InlineData(0,0,0)]
-        // [InlineData(0,1,1)]
-        // [InlineData(1,0,2)]
-        // public void CreateEmptyBoardShould_CreateABoardWithSquaresThatHaveCorrectLocations(int expectedX, int expectedY, int index)
-        // {
-        //     var board = Board.CreateEmptyBoard(2);
-        //     var square = board.Squares[index];
-        //     var locationX = square.Location.X;
-        //     var locationY = square.Location.Y;
-        //     
-        //     Assert.Equal(expectedX, locationX);
-        //     Assert.Equal(expectedY, locationY);
-        // }
         //
 
     }
