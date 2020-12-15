@@ -89,6 +89,21 @@ namespace MinesweeperTests
         }
         
         [Fact]
+        public void RevealSquaresShould_SetAllSquaresToIsRevealed()
+        {
+            var board = Board.CreateEmptyBoardBasedOnSize(2);
+            foreach (var item in board.Squares)
+            {
+                Assert.False(item.IsRevealed);
+            }
+            board.RevealSquares();
+            foreach (var item in board.Squares)
+            {
+                Assert.True(item.IsRevealed);
+            }
+        }
+
+        [Fact]
         public void ToStringShould_ReturnExpectedString_WhenThereIsNoMinesInASize1Board()
         {
             const string expectedString = ". \n";
@@ -101,6 +116,15 @@ namespace MinesweeperTests
         {
             var expectedString = ". . \n" + ". . \n";
             var board = Board.CreateEmptyBoardBasedOnSize(2);
+            Assert.Equal(expectedString, board.ToString());
+        }
+        
+        [Fact]
+        public void ToStringShould_ReturnExpectedString_WhenThereIs1RevealedMineInASize1Board()
+        {
+            const string expectedString = "* \n";
+            var board = Board.CreateEmptyBoardBasedOnSize(1);
+            board.RevealSquares();
             Assert.Equal(expectedString, board.ToString());
         }
 

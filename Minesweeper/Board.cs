@@ -6,7 +6,7 @@ namespace Minesweeper
 {
     public class Board
     {
-        private List<ISquare> Squares { get; set; } = new List<ISquare>();
+        public List<ISquare> Squares { get; set; } = new List<ISquare>();
         public List<Location> Locations { get; private set; }
         public int Size { get; private set; }
         public IGenerateMines MineGenerator { get; set; }
@@ -105,7 +105,15 @@ namespace Minesweeper
             var hints = CreateHints();
             Squares.AddRange(hints);
         }
-        
+
+        public void RevealSquares()
+        {
+            foreach (var item in Squares.Where(item => item.IsRevealed == false))
+            {
+                item.IsRevealed = true;
+            }
+        }
+
         //     var hints = new List<Hint>();
         //     var value = 0;
         //     foreach (var item in Locations)
