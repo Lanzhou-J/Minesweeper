@@ -78,9 +78,9 @@ namespace Minesweeper
             foreach (var item in Locations)
             {
                 var neighbourMineCount = 0;
-                if (Squares.Count>0)
+                if (_mines.Count>0)
                 {
-                    neighbourMineCount = 1;
+                    neighbourMineCount = _mines.Count;
                 }
                 var hint = new Hint(item, neighbourMineCount);
                 hints.Add(hint);
