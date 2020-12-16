@@ -89,6 +89,20 @@ namespace MinesweeperTests
         }
         
         [Fact]
+        public void CreateHintsShould_Return2HintsWithValue2_WhenThereAre2Mines_InASize2Board()
+        {
+            var board = Board.CreateEmptyBoardBasedOnSize(2);
+            board.PlaceMines(2);
+
+            var hints = board.CreateHints();
+            Assert.Equal(2, hints.Count);
+            foreach (var item in hints)
+            {
+                Assert.Equal(2, item.Value);
+            }
+        }
+        
+        [Fact]
         public void RevealSquaresShould_SetAllSquaresToIsRevealed()
         {
             var board = Board.CreateEmptyBoardBasedOnSize(2);

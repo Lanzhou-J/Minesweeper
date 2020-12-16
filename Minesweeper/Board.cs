@@ -6,10 +6,10 @@ namespace Minesweeper
 {
     public class Board
     {
+        public int Size { get; private set; }
         public List<ISquare> Squares { get; set; } = new List<ISquare>();
         public List<Location> Locations { get; private set; }
-        public int Size { get; private set; }
-        public IGenerateMines MineGenerator { get; set; }
+        private IGenerateMines MineGenerator { get; set; }
         private List<Mine> _mines;
         private readonly Random _random = new Random();
         private Board(int size, IGenerateMines mineGenerator)
@@ -28,16 +28,21 @@ namespace Minesweeper
             }
             else
             {
-                for (var i = 0; i < Size; i++)
-                {
-                    for (var j = 0; j < Size; j++)
-                    {
-                        var location = new Location(i, j);
-                        locations.Add(location);
-                    }
-                }
+                AddEachNewLocationToLocations(locations);
             }
             return locations;
+        }
+
+        private void AddEachNewLocationToLocations(List<Location> locations)
+        {
+            for (var i = 0; i < Size; i++)
+            {
+                for (var j = 0; j < Size; j++)
+                {
+                    var location = new Location(i, j);
+                    locations.Add(location);
+                }
+            }
         }
 
         public static Board CreateEmptyBoardBasedOnSize(int size)
@@ -54,6 +59,14 @@ namespace Minesweeper
         {
             _mines = MineGenerator.CreateMines(number, Locations);
             Squares.AddRange(_mines);
+        }
+
+
+
+        public void PlaceHints()
+        {
+            var hints = CreateHints();
+            Squares.AddRange(hints);
         }
         
         public List<Hint> CreateHints()
@@ -74,12 +87,20 @@ namespace Minesweeper
             }
             return hints;
         }
-
+        
         private void RemoveMinesLocationsFromLocationsList()
         {
             foreach (var mine in _mines)
             {
                 Locations.Remove(mine.Location);
+            }
+        }
+
+        public void RevealSquares()
+        {
+            foreach (var item in Squares.Where(item => item.IsRevealed == false))
+            {
+                item.IsRevealed = true;
             }
         }
 
@@ -99,22 +120,8 @@ namespace Minesweeper
 
             return message;
         }
-
-        public void PlaceHints()
-        {
-            var hints = CreateHints();
-            Squares.AddRange(hints);
-        }
-
-        public void RevealSquares()
-        {
-            foreach (var item in Squares.Where(item => item.IsRevealed == false))
-            {
-                item.IsRevealed = true;
-            }
-        }
         
-        public ISquare FindSquareUsingLocationValue(int x, int y)
+        private ISquare FindSquareUsingLocationValue(int x, int y)
         {
             var square = Squares.Find(item => item.Location.X.Equals(x) && item.Location.Y.Equals(y));
             return square;
