@@ -103,6 +103,16 @@ namespace MinesweeperTests
         }
         
         [Fact]
+        public void CreateHintsShould_Return8Hints_WhenThereIs1Mine_InASize3Board()
+        {
+            var board = Board.CreateEmptyBoardBasedOnSize(3);
+            board.PlaceMines(1);
+
+            var hints = board.CreateHints();
+            Assert.Equal(8, hints.Count);
+        }
+        
+        [Fact]
         public void RevealSquaresShould_SetAllSquaresToIsRevealed()
         {
             var board = Board.CreateEmptyBoardBasedOnSize(2);
