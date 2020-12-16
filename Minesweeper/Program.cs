@@ -11,7 +11,7 @@ namespace Minesweeper
            
            var game = new Game(input, output);
            
-           game.Start();
+           game.SetUp();
         }
     }
 }

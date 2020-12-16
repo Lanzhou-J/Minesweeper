@@ -13,7 +13,7 @@ namespace Minesweeper
             _output = output;
         }
 
-        public void Start()
+        public void SetUp()
         {
             var difficulty = SetDifficultyValue();
             Board = Board.CreateEmptyBoardBasedOnSize(difficulty);

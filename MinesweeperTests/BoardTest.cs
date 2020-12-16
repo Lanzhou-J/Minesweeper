@@ -148,7 +148,5 @@ namespace MinesweeperTests
             Assert.Equal(expectedString, board.ToString());
         }
 
-
-
     }
 }
