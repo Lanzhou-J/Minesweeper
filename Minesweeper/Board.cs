@@ -70,29 +70,31 @@ namespace Minesweeper
         
         public List<Hint> CreateHints()
         {
-            RemoveMinesLocationsFromLocationsList();
+            var mineLocations = _mines.Select(mine => mine.Location).ToList();
+
+            var hintLocations = Locations.FindAll(x => !mineLocations.Contains(x));
+            
             var hints = new List<Hint>();
 
-            foreach (var item in Locations)
+            foreach (var item in hintLocations)
             {
-                var neighbourMineCount = 0;
-                if (_mines.Count>0)
-                {
-                    neighbourMineCount = _mines.Count;
-                }
+                var neighbours = item.FindNeighboursFromLocations(Locations);
+                var mineNeighbours = mineLocations.FindAll(x => neighbours.Contains(x));
+                var neighbourMineCount = mineNeighbours.Count;
+                
                 var hint = new Hint(item, neighbourMineCount);
                 hints.Add(hint);
             }
             return hints;
         }
         
-        private void RemoveMinesLocationsFromLocationsList()
-        {
-            foreach (var mine in _mines)
-            {
-                Locations.Remove(mine.Location);
-            }
-        }
+        // private void RemoveMinesLocationsFromLocationsList()
+        // {
+        //     foreach (var mine in _mines)
+        //     {
+        //         Locations.Remove(mine.Location);
+        //     }
+        // }
 
         public void RevealSquares()
         {
