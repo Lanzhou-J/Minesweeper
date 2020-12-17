@@ -49,13 +49,12 @@ namespace MinesweeperTests
             var locations = new List<Location>(){left, middle, right};
             
             var leftNeighbours = left.GetNeighboursLocations(locations);
-            Assert.Equal(2, leftNeighbours.Count);
+            Assert.Single(leftNeighbours);
             Assert.Contains(middle, leftNeighbours);
-            Assert.Contains(right, leftNeighbours);
         }
         
         [Fact]
-        public void GetNeighboursLocationsShould_ReturnAListO3Locations_WhenThereAre4LocationsInList()
+        public void GetNeighboursLocationsShould_ReturnAListO3Locations_WhenLocationsRepresentA2by2Area()
         {
             var topLeft = new Location(0,0);
             var topRight = new Location(0,1);
@@ -64,8 +63,28 @@ namespace MinesweeperTests
             
             var locations = new List<Location>(){topLeft, topRight, bottomLeft, bottomRight};
             
-            var result = topLeft.GetNeighboursLocations(locations);
-            Assert.Equal(3, result.Count);
+            var topLeftNeighbours = topLeft.GetNeighboursLocations(locations);
+            Assert.Equal(3, topLeftNeighbours.Count);
+            Assert.Contains(topRight, topLeftNeighbours);
+            Assert.Contains(bottomLeft, topLeftNeighbours);
+            Assert.Contains(bottomRight, topLeftNeighbours);
+        }
+        
+        [Fact]
+        public void GetNeighboursLocationsShould_ReturnAListO8Locations_WhenThereAre4LocationsInList()
+        {
+            var topLeft = new Location(0,0);
+            var topRight = new Location(0,1);
+            var bottomLeft = new Location(1,0);
+            var bottomRight = new Location(1,1);
+            
+            var locations = new List<Location>(){topLeft, topRight, bottomLeft, bottomRight};
+            
+            var topLeftNeighbours = topLeft.GetNeighboursLocations(locations);
+            Assert.Equal(3, topLeftNeighbours.Count);
+            Assert.Contains(topRight, topLeftNeighbours);
+            Assert.Contains(bottomLeft, topLeftNeighbours);
+            Assert.Contains(bottomRight, topLeftNeighbours);
         }
     }
 }
