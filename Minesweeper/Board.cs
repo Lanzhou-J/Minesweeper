@@ -70,9 +70,9 @@ namespace Minesweeper
         
         public List<Hint> CreateHints()
         {
-            var mineLocations = _mines.Select(mine => mine.Location).ToList();
+            var mineLocations = DetermineMinesLocations();
 
-            var hintLocations = Locations.FindAll(x => !mineLocations.Contains(x));
+            var hintLocations = DetermineHintsLocations(mineLocations);
             
             var hints = new List<Hint>();
 
@@ -80,21 +80,23 @@ namespace Minesweeper
             {
                 var neighbours = item.FindNeighboursFromLocations(Locations);
                 var mineNeighbours = mineLocations.FindAll(x => neighbours.Contains(x));
-                var neighbourMineCount = mineNeighbours.Count;
+                var mineNeighboursCount = mineNeighbours.Count;
                 
-                var hint = new Hint(item, neighbourMineCount);
+                var hint = new Hint(item, mineNeighboursCount);
                 hints.Add(hint);
             }
             return hints;
         }
-        
-        // private void RemoveMinesLocationsFromLocationsList()
-        // {
-        //     foreach (var mine in _mines)
-        //     {
-        //         Locations.Remove(mine.Location);
-        //     }
-        // }
+
+        private List<Location> DetermineHintsLocations(List<Location> mineLocations)
+        {
+            return Locations.FindAll(x => !mineLocations.Contains(x));
+        }
+
+        private List<Location> DetermineMinesLocations()
+        {
+            return _mines.Select(mine => mine.Location).ToList();
+        }
 
         public void RevealSquares()
         {
@@ -126,19 +128,6 @@ namespace Minesweeper
             var square = Squares.Find(item => item.Location.X.Equals(x) && item.Location.Y.Equals(y));
             return square;
         }
-
-        //     var hints = new List<Hint>();
-        //     var value = 0;
-        //     foreach (var item in Locations)
-        //     {
-        //         var neighboursLocations = item.GetNeighboursLocations();
-        //         value += (from location in neighboursLocations from mine in _mines where mine.Location.X == location.X && mine.Location.Y == location.Y select location).Count();
-        //         var hint = new Hint(item, value);
-        //         hints.Add(hint);
-        //     }
-        //     
-        //     return hints;
-        // }
 
     }
 }
