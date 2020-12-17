@@ -19,7 +19,7 @@ namespace Minesweeper
             Board = Board.CreateEmptyBoardBasedOnSize(difficulty);
             Board.PlaceMines(difficulty);
             Board.PlaceHints();
-            // Board.RevealSquares();
+            Board.RevealSquares();
             DisplayBoard();
         }
 

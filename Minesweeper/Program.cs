@@ -9,6 +9,7 @@
            var game = new Game(input, output);
            
            game.SetUp();
+           // game.Play();
         }
     }
 }

@@ -121,7 +121,7 @@ namespace Minesweeper
             return message;
         }
         
-        private ISquare FindSquareUsingLocationValue(int x, int y)
+        public ISquare FindSquareUsingLocationValue(int x, int y)
         {
             var square = Squares.Find(item => item.Location.X.Equals(x) && item.Location.Y.Equals(y));
             return square;

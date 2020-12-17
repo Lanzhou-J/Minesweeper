@@ -105,11 +105,14 @@ namespace MinesweeperTests
         [Fact]
         public void CreateHintsShould_Return8Hints_WhenThereIs1Mine_InASize3Board()
         {
-            var board = Board.CreateEmptyBoardBasedOnSize(3);
+            var board = Board.CreateEmptyBoardBasedOnSize(3, new MockMinesGenerator());
             board.PlaceMines(1);
 
             var hints = board.CreateHints();
             Assert.Equal(8, hints.Count);
+            var square = board.FindSquareUsingLocationValue(0, 1);
+            board.calculateHint(square);
+            // Assert.equal(1, square.value)
         }
         
         [Fact]
