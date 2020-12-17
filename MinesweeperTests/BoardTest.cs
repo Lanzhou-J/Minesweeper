@@ -103,16 +103,27 @@ namespace MinesweeperTests
         }
         
         [Fact]
-        public void CreateHintsShould_Return8Hints_WhenThereIs1Mine_InASize3Board()
+        public void CreateHintsShould_Return8Hints_WhenThereIs1TopLeftMine_InASize3Board()
         {
             var board = Board.CreateEmptyBoardBasedOnSize(3, new MockMinesGenerator());
             board.PlaceMines(1);
 
             var hints = board.CreateHints();
             Assert.Equal(8, hints.Count);
-            var square = board.FindSquareUsingLocationValue(0, 1);
-            // board.calculateHint(square);
-            // Assert.equal(1, square.value)
+
+            var bottomRightHint = hints.Find(x => x.Location.X == 2 && x.Location.Y == 2);
+            var bottomMiddleHint = hints.Find(x => x.Location.X == 2 && x.Location.Y == 1);
+            var bottomLeftHint = hints.Find(x => x.Location.X == 2 && x.Location.Y == 0);
+            var topMiddleHint = hints.Find(x => x.Location.X == 0 && x.Location.Y == 1);
+            var middleLeftHint = hints.Find(x => x.Location.X == 1 && x.Location.Y == 0);
+            var centerHint = hints.Find(x => x.Location.X == 1 && x.Location.Y == 1);
+            Assert.Equal(0, bottomRightHint.Value);
+            Assert.Equal(0, bottomMiddleHint.Value);
+            Assert.Equal(0, bottomLeftHint.Value);
+            Assert.Equal(1, topMiddleHint.Value);
+            Assert.Equal(1, middleLeftHint.Value);
+            Assert.Equal(1, centerHint.Value);
+            
         }
         
         [Fact]
