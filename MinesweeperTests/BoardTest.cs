@@ -111,7 +111,7 @@ namespace MinesweeperTests
             var hints = board.CreateHints();
             Assert.Equal(8, hints.Count);
             var square = board.FindSquareUsingLocationValue(0, 1);
-            board.calculateHint(square);
+            // board.calculateHint(square);
             // Assert.equal(1, square.value)
         }
         
