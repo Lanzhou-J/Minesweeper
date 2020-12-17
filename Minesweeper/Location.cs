@@ -14,18 +14,37 @@ namespace Minesweeper
         public  int X {get; private set; }
         public  int Y {get; private set; }
 
-        public List<Location> GetNeighboursLocations()
+        public List<Location> FindNeighboursFromLocations()
         {
             return null;
         }
         
-        public List<Location> GetNeighboursLocations(List<Location> locations)
+        public List<Location> FindNeighboursFromLocations(List<Location> locations)
         {
-            var neighboursLocation = new List<Location>();
+            var neighbours = new List<Location>();
             if (locations.Count <= 1) return null;
-            neighboursLocation.AddRange(locations.Where(item => item.X != X || item.Y != Y));
 
-            return neighboursLocation;
+            for (int i = -1; i <= 1; i++)
+            {
+                for (int j = -1; j <= 1; j++)
+                {
+                    if (i==0 && j==0) continue;
+                    var xValue = X + i;
+                    var yValue = Y + j;
+                    
+                    var neighbour = locations.Find(item => item.X == xValue && item.Y == yValue);
+                    if (NeighbourExistInLocations(neighbour))
+                    {
+                        neighbours.Add(neighbour);  
+                    }
+                }
+            }
+            return neighbours;
+        }
+
+        private static bool NeighbourExistInLocations(Location neighbour)
+        {
+            return neighbour != null;
         }
     }
 }

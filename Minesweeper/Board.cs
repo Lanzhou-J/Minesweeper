@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml.XPath;
 
 namespace Minesweeper
 {
@@ -61,8 +62,6 @@ namespace Minesweeper
             Squares.AddRange(_mines);
         }
 
-
-
         public void PlaceHints()
         {
             var hints = CreateHints();
@@ -72,7 +71,6 @@ namespace Minesweeper
         public List<Hint> CreateHints()
         {
             RemoveMinesLocationsFromLocationsList();
-            
             var hints = new List<Hint>();
 
             foreach (var item in Locations)
