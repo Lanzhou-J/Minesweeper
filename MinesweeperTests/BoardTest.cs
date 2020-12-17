@@ -89,6 +89,33 @@ namespace MinesweeperTests
         }
         
         [Fact]
+        public void CreateHintsShould_Return2HintsWithValue2_WhenThereAre2Mines_InASize2Board()
+        {
+            var board = Board.CreateEmptyBoardBasedOnSize(2);
+            board.PlaceMines(2);
+
+            var hints = board.CreateHints();
+            Assert.Equal(2, hints.Count);
+            foreach (var item in hints)
+            {
+                Assert.Equal(2, item.Value);
+            }
+        }
+        
+        [Fact]
+        public void CreateHintsShould_Return8Hints_WhenThereIs1Mine_InASize3Board()
+        {
+            var board = Board.CreateEmptyBoardBasedOnSize(3, new MockMinesGenerator());
+            board.PlaceMines(1);
+
+            var hints = board.CreateHints();
+            Assert.Equal(8, hints.Count);
+            var square = board.FindSquareUsingLocationValue(0, 1);
+            // board.calculateHint(square);
+            // Assert.equal(1, square.value)
+        }
+        
+        [Fact]
         public void RevealSquaresShould_SetAllSquaresToIsRevealed()
         {
             var board = Board.CreateEmptyBoardBasedOnSize(2);
@@ -147,8 +174,6 @@ namespace MinesweeperTests
             board.RevealSquares();
             Assert.Equal(expectedString, board.ToString());
         }
-
-
 
     }
 }

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Minesweeper
+﻿namespace Minesweeper
 {
     class Program
     {
@@ -8,10 +6,10 @@ namespace Minesweeper
         {
            var input = new ConsoleInput();
            var output = new ConsoleOutput();
-           
            var game = new Game(input, output);
            
-           game.Start();
+           game.SetUp();
+           // game.Play();
         }
     }
 }
