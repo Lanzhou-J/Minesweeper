@@ -46,5 +46,10 @@ namespace Minesweeper
         {
             return neighbour != null;
         }
+
+        public bool Equal(Location location)
+        {
+            return X == location.X && Y == location.Y;
+        }
     }
 }

@@ -127,7 +127,15 @@ namespace MinesweeperTests
         {
             var location1 = new Location(1,1);
             var location2 = new Location(1,1);
-            location1.Equal(location2);
+            Assert.True(location1.Equal(location2));
+        }
+        
+        [Fact]
+        public void EqualShould_ReturnFalse_When2LocationsXValueAndYValueAreTheSame()
+        {
+            var location1 = new Location(1,1);
+            var location2 = new Location(1,2);
+            Assert.False(location1.Equal(location2));
         }
     }
 }
