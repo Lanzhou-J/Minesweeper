@@ -8,8 +8,8 @@
            var output = new ConsoleOutput();
            var game = new Game(input, output);
            
-           game.SetUp();
-           // game.Play();
+           game.SetUpBoard();
+           game.Play();
         }
     }
 }
