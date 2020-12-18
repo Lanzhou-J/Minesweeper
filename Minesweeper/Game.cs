@@ -4,12 +4,14 @@ namespace Minesweeper
     {
         private readonly IInput _input;
         private readonly IOutput _output;
+        private readonly InputParser _inputParser;
         public Board Board { get; set; }
         
-        public Game(IInput input, IOutput output)
+        public Game(IInput input, IOutput output, InputParser inputParser)
         {
             _input = input;
             _output = output;
+            _inputParser = inputParser;
         }
 
         public void SetUpBoard()
@@ -38,7 +40,7 @@ namespace Minesweeper
             while (BoardIsNotRevealed())
             {
                 var locationInput = _input.Ask("Please input a coordinate (e.g. 0,0):");
-                var newLocation = CreateLocationBasedOnInput(locationInput);
+                var newLocation = _inputParser.CreateLocationBasedOnInput(locationInput);
 
                 var isMine = Board.CheckMine(newLocation);
                 
@@ -59,18 +61,5 @@ namespace Minesweeper
             return Board.IsRevealed != true;
         }
 
-        private Location CreateLocationBasedOnInput(string input)
-        {
-            var xInput = input[0].ToString();
-            var yInput = input[2].ToString();
-            var xValue = int.Parse(xInput);
-            var yValue = int.Parse(yInput);
-            var newLocation = new Location(xValue, yValue);
-            return newLocation;
-        }
-
-     
-
- 
     }
 }
