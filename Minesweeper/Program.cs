@@ -7,7 +7,8 @@
            var input = new ConsoleInput();
            var output = new ConsoleOutput();
            var inputParser = new InputParser();
-           var game = new Game(input, output, inputParser);
+           var player = new Player();
+           var game = new Game(input, output, inputParser, player);
            
            game.SetUpBoard();
            game.Play();

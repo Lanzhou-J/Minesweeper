@@ -1,3 +1,5 @@
+using System.Data;
+
 namespace Minesweeper
 {
     public class Game
@@ -5,13 +7,15 @@ namespace Minesweeper
         private readonly IInput _input;
         private readonly IOutput _output;
         private readonly InputParser _inputParser;
+        private Player _player;
         public Board Board { get; set; }
         
-        public Game(IInput input, IOutput output, InputParser inputParser)
+        public Game(IInput input, IOutput output, InputParser inputParser, Player player)
         {
             _input = input;
             _output = output;
             _inputParser = inputParser;
+            _player = player;
         }
 
         public void SetUpBoard()
@@ -30,8 +34,8 @@ namespace Minesweeper
         
         private int SetDifficultyValue()
         {
-            var difficultyInput = _input.Ask("Difficulty:");
-            var difficulty = int.Parse(difficultyInput);
+            var difficultyInput = _input.Ask("Difficulty (a number larger than 0):");
+            var difficulty = _inputParser.SetDifficultyLevel(difficultyInput);
             return difficulty;
         }
 
@@ -47,11 +51,21 @@ namespace Minesweeper
                 if (isMine)
                 {
                     Board.RevealAllSquares();
+                    _player.State = PlayerState.Lose;
+                    _output.Write("Player is lost!");
                 }
                 else
                 {
                     Board.RevealOneSquare(newLocation);
+                    
+                    if (Board.AllHintsAreRevealed())
+                    {
+                        _player.State = PlayerState.Win;
+                        _output.Write("Player wins!!");
+                        Board.RevealAllSquares();
+                    }
                 }
+
                 DisplayBoard();
             }
         }

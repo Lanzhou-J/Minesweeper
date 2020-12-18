@@ -12,7 +12,8 @@ namespace MinesweeperTests
             var input = new MockInput(new[]{difficultyLevelInput});
             var output = new MockOutput();
             var inputParser = new InputParser();
-            var game = new Game(input, output, inputParser);
+            var player = new Player();
+            var game = new Game(input, output, inputParser, player);
             game.SetUpBoard();
             var result = game.Board.ToString();
             const string expectedResult = ". . . . \n" + ". . . . \n" + ". . . . \n" + ". . . . \n";
