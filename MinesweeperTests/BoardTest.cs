@@ -134,7 +134,7 @@ namespace MinesweeperTests
             {
                 Assert.False(item.IsRevealed);
             }
-            board.RevealSquares();
+            board.RevealAllSquares();
             foreach (var item in board.Squares)
             {
                 Assert.True(item.IsRevealed);
@@ -170,7 +170,7 @@ namespace MinesweeperTests
             board.PlaceMines(1);
             board.PlaceHints();
             Assert.Equal(expectedHiddenString, board.ToString());
-            board.RevealSquares();
+            board.RevealAllSquares();
             Assert.Equal(expectedRevealedString, board.ToString());
         }
         
@@ -182,7 +182,7 @@ namespace MinesweeperTests
             var board = Board.CreateEmptyBoardBasedOnSize(2, mineGenerator);
             board.PlaceMines(1);
             board.PlaceHints();
-            board.RevealSquares();
+            board.RevealAllSquares();
             Assert.Equal(expectedString, board.ToString());
         }
 
