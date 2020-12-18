@@ -46,26 +46,20 @@ namespace Minesweeper
                 var locationInput = _input.Ask("Please input a coordinate (e.g. 0,0):");
                 var newLocation = _inputParser.CreateLocationBasedOnInput(locationInput);
 
-                var isMine = Board.CheckMine(newLocation);
-                
-                if (isMine)
+                Board.RevealOneSquare(newLocation);
+
+                if (Board.OneMineIsRevealed())
                 {
                     Board.RevealAllSquares();
-                    _player.State = PlayerState.Lose;
-                    _output.Write("Player is lost!");
+                    _player.State = PlayerState.Loser;
+                    _output.Write("You are " + _player.ToString());
                 }
-                else
+                else if (Board.AllHintsAreRevealed())
                 {
-                    Board.RevealOneSquare(newLocation);
-                    
-                    if (Board.AllHintsAreRevealed())
-                    {
-                        _player.State = PlayerState.Win;
-                        _output.Write("Player wins!!");
-                        Board.RevealAllSquares();
-                    }
+                    Board.RevealAllSquares();
+                    _player.State = PlayerState.Winner;
+                    _output.Write("You are " + _player.ToString());
                 }
-
                 DisplayBoard();
             }
         }

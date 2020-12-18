@@ -8,5 +8,10 @@ namespace Minesweeper
         }
 
         public PlayerState State { get; set; }
+
+        public override string ToString()
+        {
+            return $"{State}";
+        }
     }
 }

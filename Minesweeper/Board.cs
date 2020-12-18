@@ -120,16 +120,9 @@ namespace Minesweeper
             square.IsRevealed = true;
         }
 
-        public bool CheckMine(Location location)
+        public bool OneMineIsRevealed()
         {
-            foreach (var item in _mines)
-            {
-                if (location.Equal(item.Location))
-                {
-                    return true;
-                }
-            }
-            return false;
+            return _mines.Any(item => item.IsRevealed);
         }
 
         public override string ToString()
@@ -157,15 +150,7 @@ namespace Minesweeper
 
         public bool AllHintsAreRevealed()
         {
-            foreach (var item in _hints)
-            {
-                if (item.IsRevealed == false)
-                {
-                    return false;
-                }
-            }
-
-            return true;
+            return _hints.All(item => item.IsRevealed);
         }
 
     }
