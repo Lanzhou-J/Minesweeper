@@ -34,16 +34,8 @@ namespace Minesweeper
 
         public override string ToString()
         {
-            if (IsMine && IsRevealed)
-            {
-                return "*";
-            }
-
-            if (!IsMine && IsRevealed)
-            {
-                return Value.ToString();
-            }
-            return ".";
+            if (!IsRevealed) return ".";
+            return IsMine ? "*" : Value.ToString();
         }
     }
 }
