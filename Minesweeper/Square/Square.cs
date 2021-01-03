@@ -38,6 +38,11 @@ namespace Minesweeper
             {
                 return "*";
             }
+
+            if (!IsMine && IsRevealed)
+            {
+                return Value.ToString();
+            }
             return ".";
         }
     }
