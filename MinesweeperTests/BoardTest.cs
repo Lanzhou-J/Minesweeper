@@ -39,20 +39,6 @@ namespace MinesweeperTests
 
         //
         // [Fact]
-        // public void CreateHintsShould_Return3HintsWithValue1_WhenThereIs1Mine_InASize2Board()
-        // {
-        //     var board = Board.CreateEmptyBoardBasedOnSize(2);
-        //     board.PlaceMines(1);
-        //
-        //     var hints = board.CreateHints();
-        //     Assert.Equal(3, hints.Count);
-        //     foreach (var item in hints)
-        //     {
-        //         Assert.Equal(1, item.Value);
-        //     }
-        // }
-        //
-        // [Fact]
         // public void CreateHintsShould_Return2HintsWithValue2_WhenThereAre2Mines_InASize2Board()
         // {
         //     var board = Board.CreateEmptyBoardBasedOnSize(2);
