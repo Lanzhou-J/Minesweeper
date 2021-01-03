@@ -4,7 +4,7 @@ namespace Minesweeper
 {
     public interface IGenerateMines
     {
-        public List<Mine> CreateMines(int number, List<Location> locations);
+        public void PlaceMines(int number, Board board);
 
     }
 }

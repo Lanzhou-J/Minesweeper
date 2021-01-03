@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Minesweeper;
 using Xunit;
 
@@ -10,26 +11,13 @@ namespace MinesweeperTests
         [InlineData(1)]
         [InlineData(5)]
         [InlineData(9)]
-        public void NewRandomMinesShould_CreateCorrectNumberOfMines(int number)
+        public void PlaceMinesShould_CreateCorrectNumberOfMines(int number)
         {
-            var locations = GetThreeByThreeBoardLocations();
+            var board = Board.CreateEmptyBoard(3);
             var minesGenerator = new RandomMinesGenerator();
-
-            var mines = minesGenerator.CreateMines(number, locations);
-            Assert.Equal(number, mines.Count);
-        }
-
-        private static List<Location> GetThreeByThreeBoardLocations()
-        {
-            var locations = new List<Location>();
-            for (var i = 0; i < 3; i++)
-            {
-                for (var j = 0; j < 3; j++)
-                {
-                    locations.Add(new Location(i, j));
-                }
-            }
-            return locations;
+            minesGenerator.PlaceMines(number, board);
+            var mines = board.Squares.Where(item => item.IsMine);
+            Assert.Equal(number, mines.Count());
         }
     }
 }
