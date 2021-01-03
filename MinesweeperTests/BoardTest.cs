@@ -13,7 +13,7 @@ namespace MinesweeperTests
         [InlineData(0,1,1)]
         [InlineData(1,0,2)]
         [InlineData(1,1,3)]
-       public void CreateEmptyBoardShould_CreateSquaresWithCorrectLocations_AccordingToTheSizeOfTheBoard(int expectedX, int expectedY, int index)
+       public void CreateEmptyBoardBasedOnSizeShould_CreateSquaresWithCorrectLocations(int expectedX, int expectedY, int index)
        {
            var board = Board.CreateEmptyBoardBasedOnSize(2);
            var squares = board.Squares;
@@ -26,7 +26,7 @@ namespace MinesweeperTests
        }
         
         [Fact]
-        public void CreateEmptyBoardShould_CreateASize1Board_WhenInputIs1()
+        public void CreateEmptyBoardBasedOnSizeShould_CreateASize1Board_WhenInputIs1()
         {
             var board = Board.CreateEmptyBoardBasedOnSize(1);
             Assert.Equal(1, board.Size);
