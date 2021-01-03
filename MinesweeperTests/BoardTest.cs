@@ -25,12 +25,12 @@ namespace MinesweeperTests
            Assert.Equal(expectedY, locationY);
        }
         
-        // [Fact]
-        // public void CreateEmptyBoardShould_CreateASize1Board_WhenInputIs1()
-        // {
-        //     var board = Board.CreateEmptyBoardBasedOnSize(1);
-        //     Assert.Equal(1, board.Size);
-        // }
+        [Fact]
+        public void CreateEmptyBoardShould_CreateASize1Board_WhenInputIs1()
+        {
+            var board = Board.CreateEmptyBoardBasedOnSize(1);
+            Assert.Equal(1, board.Size);
+        }
         //
         // [Fact]
         // public void CreateEmptyBoardShould_CreateASize2BoardWithSquaresLengthOf2_WhenInputIs2()
