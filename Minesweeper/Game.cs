@@ -8,20 +8,22 @@ namespace Minesweeper
         private readonly IOutput _output;
         private readonly InputParser _inputParser;
         private Player _player;
+        private readonly IGenerateMines _minesGenerator;
         public Board Board { get; set; }
         
-        public Game(IInput input, IOutput output, InputParser inputParser, Player player)
+        public Game(IInput input, IOutput output, InputParser inputParser, Player player, IGenerateMines minesGenerator)
         {
             _input = input;
             _output = output;
             _inputParser = inputParser;
             _player = player;
+            _minesGenerator = minesGenerator;
         }
 
         public void SetUpBoard()
         {
             var difficulty = SetDifficultyValue();
-            Board = Board.CreateEmptyBoardBasedOnSize(difficulty);
+            Board = Board.CreateEmptyBoardBasedOnSize(difficulty, _minesGenerator);
             Board.PlaceMines(difficulty);
             Board.PlaceHints();
             DisplayBoard();

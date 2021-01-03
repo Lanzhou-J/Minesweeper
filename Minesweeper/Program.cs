@@ -8,7 +8,8 @@
            var output = new ConsoleOutput();
            var inputParser = new InputParser();
            var player = new Player();
-           var game = new Game(input, output, inputParser, player);
+           var minesGenerator = new RandomMinesGenerator();
+           var game = new Game(input, output, inputParser, player, minesGenerator);
            
            game.SetUpBoard();
            game.Play();

@@ -15,7 +15,6 @@ namespace Minesweeper
         private List<Hint> _hints; 
         private List<Location> _mineLocations;
         public bool IsRevealed { get; set; } = false;
-        private readonly Random _random = new Random();
         private Board(int size, IGenerateMines mineGenerator)
         {
             MineGenerator = mineGenerator;
