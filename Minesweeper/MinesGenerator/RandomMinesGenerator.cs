@@ -22,7 +22,7 @@ namespace Minesweeper
         // }
 
 
-        public void CreateMines(int number, Board board)
+        public void PlaceMines(int number, Board board)
         {
             var selectedSquares = board.Squares.OrderBy(x => _random.Next()).Take(number);
             foreach (var item in selectedSquares)

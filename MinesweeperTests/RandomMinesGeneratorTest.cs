@@ -11,11 +11,11 @@ namespace MinesweeperTests
         [InlineData(1)]
         [InlineData(5)]
         [InlineData(9)]
-        public void CreateMinesShould_CreateCorrectNumberOfMines(int number)
+        public void PlaceMinesShould_CreateCorrectNumberOfMines(int number)
         {
-            var board = Board.CreateEmptyBoardBasedOnSize(3);
+            var board = Board.CreateEmptyBoard(3);
             var minesGenerator = new RandomMinesGenerator();
-            minesGenerator.CreateMines(number, board);
+            minesGenerator.PlaceMines(number, board);
             var mines = board.Squares.Where(item => item.IsMine);
             Assert.Equal(number, mines.Count());
         }

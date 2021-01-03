@@ -35,7 +35,7 @@ namespace Minesweeper
             return squares;
         }
 
-        public static Board CreateEmptyBoardBasedOnSize(int size)
+        public static Board CreateEmptyBoard(int size)
         {
             return new Board(size);
         }

@@ -10,9 +10,9 @@ namespace MinesweeperTests
         [InlineData(0,1,1)]
         [InlineData(1,0,2)]
         [InlineData(1,1,3)]
-       public void CreateEmptyBoardBasedOnSizeShould_CreateSquaresWithCorrectLocations(int expectedX, int expectedY, int index)
+       public void CreateEmptyBoardShould_CreateSquaresWithCorrectLocations(int expectedX, int expectedY, int index)
        {
-           var board = Board.CreateEmptyBoardBasedOnSize(2);
+           var board = Board.CreateEmptyBoard(2);
            var squares = board.Squares;
            var location = squares[index].Location;
            var locationX = location.X;
@@ -23,16 +23,16 @@ namespace MinesweeperTests
        }
         
         [Fact]
-        public void CreateEmptyBoardBasedOnSizeShould_CreateASize1Board_WhenInputIs1()
+        public void CreateEmptyBoardShould_CreateASize1Board_WhenInputIs1()
         {
-            var board = Board.CreateEmptyBoardBasedOnSize(1);
+            var board = Board.CreateEmptyBoard(1);
             Assert.Equal(1, board.Size);
         }
         
         [Fact]
-        public void CreateEmptyBoardBasedOnSizeShould_CreateASize2Board_WhenInputIs2()
+        public void CreateEmptyBoardShould_CreateASize2Board_WhenInputIs2()
         {
-            var board = Board.CreateEmptyBoardBasedOnSize(2);
+            var board = Board.CreateEmptyBoard(2);
             Assert.Equal(2, board.Size);
         }
 
