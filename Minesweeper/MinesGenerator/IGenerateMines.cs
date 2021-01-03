@@ -1,10 +1,10 @@
-// using System.Collections.Generic;
-//
-// namespace Minesweeper
-// {
-//     public interface IGenerateMines
-//     {
-//         public List<Mine> CreateMines(int number, List<Location> locations);
-//
-//     }
-// }
+using System.Collections.Generic;
+
+namespace Minesweeper
+{
+    public interface IGenerateMines
+    {
+        public void CreateMines(Board board);
+
+    }
+}

@@ -24,12 +24,12 @@ namespace Minesweeper
             Value = value;
         }
 
-        protected bool IsMine { get; private set; }
+        private bool IsMine { get; set; }
 
-        protected bool IsRevealed { get; private set; }
+        private bool IsRevealed { get; set; }
 
-        protected int Value { get; private set; }
-        protected Location Location { get;}
+        private int Value { get; set; }
+        public Location Location { get;}
         
 
         public override string ToString()

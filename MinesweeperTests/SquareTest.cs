@@ -46,6 +46,5 @@ namespace MinesweeperTests
             var result = square.ToString();
             Assert.Equal("1", result);
         }
-        
     }
 }
