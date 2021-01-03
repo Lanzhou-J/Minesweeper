@@ -91,26 +91,30 @@ namespace MinesweeperTests
         //     }
         // }
         //
-        // [Fact]
-        // public void ToStringShould_ReturnExpectedString_WhenThereIsNoMinesInASize1Board()
-        // {
-        //     const string expectedString = ". \n";
-        //     var board = Board.CreateEmptyBoardBasedOnSize(1);
-        //     board.PlaceMines(0);
-        //     board.PlaceHints();
-        //     Assert.Equal(expectedString, board.ToString());
-        // }
-        //
-        // [Fact]
-        // public void ToStringShould_ReturnExpectedString_WhenThereIsNoMinesInASize2Board()
-        // {
-        //     var expectedString = ". . \n" + ". . \n";
-        //     var board = Board.CreateEmptyBoardBasedOnSize(2);
-        //     board.PlaceMines(0);
-        //     board.PlaceHints();
-        //     Assert.Equal(expectedString, board.ToString());
-        // }
-        //
+        [Fact]
+        public void ToStringShould_ReturnExpectedString_WhenThereIsNoMinesInASize1Board()
+        {
+            const string expectedString = ". \n";
+            var board = Board.CreateEmptyBoard(1);
+            var minesGenerator = new RandomMinesGenerator();
+            var hintsCalculator = new HintCalculator();
+            minesGenerator.PlaceMines(0, board);
+            hintsCalculator.SetHints(board);
+            Assert.Equal(expectedString, board.ToString());
+        }
+        
+        [Fact]
+        public void ToStringShould_ReturnExpectedString_WhenThereIsNoMinesInASize2Board()
+        {
+            var expectedString = ". . \n" + ". . \n";
+            var board = Board.CreateEmptyBoard(2);
+            var minesGenerator = new RandomMinesGenerator();
+            var hintsCalculator = new HintCalculator();
+            minesGenerator.PlaceMines(0, board);
+            hintsCalculator.SetHints(board);
+            Assert.Equal(expectedString, board.ToString());
+        }
+        
         [Fact]
         public void ToStringShould_ReturnExpectedString_WhenThereIs1RevealedMineInASize1Board()
         {
