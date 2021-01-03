@@ -35,41 +35,8 @@ namespace MinesweeperTests
             var board = Board.CreateEmptyBoard(2);
             Assert.Equal(2, board.Size);
         }
+        
 
-        // [Fact]
-        // public void CreateHintsShould_ReturnEmptyList_WhenThereIsOnly1MineSquare()
-        // {
-        //     var board = Board.CreateEmptyBoardBasedOnSize(1);
-        //     board.PlaceMines(1);
-        //
-        //     var hints = board.CreateHints();
-        //     Assert.Empty(hints);
-        // }
-        //
-        // [Fact]
-        // public void CreateHintsShould_ReturnAHintWithValue0_WhenThereIs0MineSquare()
-        // {
-        //     var board = Board.CreateEmptyBoardBasedOnSize(1);
-        //     board.PlaceMines(0);
-        //
-        //     var hints = board.CreateHints();
-        //     Assert.Single(hints);
-        //     Assert.Equal(0, hints.First().Value);
-        // }
-        //
-        // [Fact]
-        // public void CreateHintsShould_Return4HintsWithValue0_WhenThereIsNoMine_InASize2Board()
-        // {
-        //     var board = Board.CreateEmptyBoardBasedOnSize(2);
-        //     board.PlaceMines(0);
-        //
-        //     var hints = board.CreateHints();
-        //     Assert.Equal(4, hints.Count);
-        //     foreach (var item in hints)
-        //     {
-        //         Assert.Equal(0, item.Value);
-        //     }
-        // }
         //
         // [Fact]
         // public void CreateHintsShould_Return3HintsWithValue1_WhenThereIs1Mine_InASize2Board()
