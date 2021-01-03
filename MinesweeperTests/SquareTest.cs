@@ -41,7 +41,7 @@ namespace MinesweeperTests
         {
             var location = new Location(1,1);
             var square = new Square(location);
-            square.SetValue(1);
+            square.SetHintValue(1);
             square.Reveal();
             var result = square.ToString();
             Assert.Equal("1", result);

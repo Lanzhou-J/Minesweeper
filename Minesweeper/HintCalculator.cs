@@ -9,12 +9,10 @@ namespace Minesweeper
             foreach (var item in board.Squares)
             {
                 if (board.Size < 2) continue;
-                if (board.Squares.Any(item=>item.IsMine))
+                if (!board.Squares.Any(square => square.IsMine)) continue;
+                if (!item.IsMine)
                 {
-                    if (!item.IsMine)
-                    {
-                        item.SetValue(1);
-                    }
+                    item.SetHintValue(1);
                 }
             }
         }

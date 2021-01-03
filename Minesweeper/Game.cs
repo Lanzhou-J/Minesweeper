@@ -9,7 +9,7 @@ namespace Minesweeper
         private readonly InputParser _inputParser;
         private readonly Player _player;
         private readonly IGenerateMines _minesGenerator;
-        private readonly HintCalculator _hintCalculator;
+        private readonly HintCalculator _hintsCalculator;
         private Board Board { get; set; }
         
         public Game(IInput input, IOutput output, InputParser inputParser, Player player, IGenerateMines minesGenerator)
@@ -19,7 +19,7 @@ namespace Minesweeper
             _inputParser = inputParser;
             _player = player;
             _minesGenerator = minesGenerator;
-            _hintCalculator = new HintCalculator();
+            _hintsCalculator = new HintCalculator();
         }
 
         public void SetUpBoard()
@@ -29,7 +29,7 @@ namespace Minesweeper
             Board = Board.CreateEmptyBoard(size);
             var numberOfMines = difficulty;
             _minesGenerator.PlaceMines(numberOfMines, Board);
-            _hintCalculator.SetHints(Board);
+            _hintsCalculator.SetHints(Board);
             DisplayBoard();
         }
         

@@ -111,18 +111,20 @@ namespace MinesweeperTests
         //     Assert.Equal(expectedString, board.ToString());
         // }
         //
-        // [Fact]
-        // public void ToStringShould_ReturnExpectedString_WhenThereIs1RevealedMineInASize1Board()
-        // {
-        //     const string expectedHiddenString = ". \n";
-        //     const string expectedRevealedString = "* \n";
-        //     var board = Board.CreateEmptyBoardBasedOnSize(1);
-        //     board.PlaceMines(1);
-        //     board.PlaceHints();
-        //     Assert.Equal(expectedHiddenString, board.ToString());
-        //     board.RevealAllSquares();
-        //     Assert.Equal(expectedRevealedString, board.ToString());
-        // }
+        [Fact]
+        public void ToStringShould_ReturnExpectedString_WhenThereIs1RevealedMineInASize1Board()
+        {
+            const string expectedHiddenString = ". \n";
+            const string expectedRevealedString = "* \n";
+            var board = Board.CreateEmptyBoard(1);
+            var minesGenerator = new RandomMinesGenerator();
+            var hintsCalculator = new HintCalculator();
+            minesGenerator.PlaceMines(1,board);
+            hintsCalculator.SetHints(board);
+            Assert.Equal(expectedHiddenString, board.ToString());
+            board.RevealAllSquares();
+            Assert.Equal(expectedRevealedString, board.ToString());
+        }
         //
         // [Fact]
         // public void ToStringShould_ReturnExpectedString_WhenThereIs1RevealedTopLeftMineInASize2Board()

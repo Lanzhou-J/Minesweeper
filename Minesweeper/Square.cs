@@ -19,14 +19,14 @@ namespace Minesweeper
         {
             IsMine = true;
         }
-        public void SetValue(int value)
+        public void SetHintValue(int value)
         {
             Hint = value;
         }
 
         public bool IsMine { get; set; }
 
-        private bool IsRevealed { get; set; }
+        public bool IsRevealed { get; set; }
 
         public int Hint { get; set; }
         public Location Location { get;}
