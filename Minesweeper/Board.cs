@@ -12,9 +12,9 @@ namespace Minesweeper
         public List<Location> Locations { get; private set; }
         private IGenerateMines MineGenerator { get; set; }
         private List<Mine> _mines;
+        private List<Hint> _hints; 
         private List<Location> _mineLocations;
         public bool IsRevealed { get; set; } = false;
-        private readonly Random _random = new Random();
         private Board(int size, IGenerateMines mineGenerator)
         {
             MineGenerator = mineGenerator;
@@ -76,7 +76,7 @@ namespace Minesweeper
 
             var hintLocations = DetermineHintsLocations(_mineLocations);
             
-            var hints = new List<Hint>();
+            _hints = new List<Hint>();
 
             foreach (var item in hintLocations)
             {
@@ -85,10 +85,10 @@ namespace Minesweeper
                 var mineNeighboursCount = mineNeighbours.Count;
                 
                 var hint = new Hint(item, mineNeighboursCount);
-                hints.Add(hint);
+                _hints.Add(hint);
             }
             
-            return hints;
+            return _hints;
         }
 
         private List<Location> DetermineHintsLocations(List<Location> mineLocations)
@@ -119,17 +119,9 @@ namespace Minesweeper
             square.IsRevealed = true;
         }
 
-        public bool CheckMine(Location location)
+        public bool OneMineIsRevealed()
         {
-            foreach (var item in _mines)
-            {
-                if (item.Location.X == location.X && item.Location.Y == location.Y)
-                {
-                    return true;
-                }
-            }
-
-            return false;
+            return _mines.Any(item => item.IsRevealed);
         }
 
         public override string ToString()
@@ -148,11 +140,16 @@ namespace Minesweeper
 
             return message;
         }
-        
-        public ISquare FindSquareUsingLocationValue(int x, int y)
+
+        private ISquare FindSquareUsingLocationValue(int x, int y)
         {
             var square = Squares.Find(item => item.Location.X == x && item.Location.Y == y);
             return square;
+        }
+
+        public bool AllHintsAreRevealed()
+        {
+            return _hints.All(item => item.IsRevealed);
         }
 
     }

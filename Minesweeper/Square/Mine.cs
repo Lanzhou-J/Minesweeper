@@ -8,7 +8,7 @@ namespace Minesweeper
             Location = location;
         }
 
-        public int Value { get; set; } = -1;
+        // public int Value { get; set; } = -1;
         public bool IsRevealed { get; set; }
 
         public Location Location { get; set; }

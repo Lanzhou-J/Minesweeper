@@ -121,5 +121,21 @@ namespace MinesweeperTests
             Assert.Contains(middleLeft, topLeftNeighbours);
             Assert.Contains(center, topLeftNeighbours);
         }
+
+        [Fact]
+        public void EqualShould_ReturnTrue_When2LocationsXValueAndYValueAreTheSame()
+        {
+            var location1 = new Location(1,1);
+            var location2 = new Location(1,1);
+            Assert.True(location1.Equal(location2));
+        }
+        
+        [Fact]
+        public void EqualShould_ReturnFalse_When2LocationsXValueAndYValueAreTheSame()
+        {
+            var location1 = new Location(1,1);
+            var location2 = new Location(1,2);
+            Assert.False(location1.Equal(location2));
+        }
     }
 }

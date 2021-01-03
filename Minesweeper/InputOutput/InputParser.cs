@@ -11,5 +11,10 @@ namespace Minesweeper
             var newLocation = new Location(xValue, yValue);
             return newLocation;
         }
+
+       public int SetDifficultyLevel(string input)
+       {
+           return int.Parse(input);
+       }
     }
 }
