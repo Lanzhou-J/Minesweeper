@@ -19,11 +19,18 @@ namespace Minesweeper
         {
             IsMine = true;
         }
+        public void SetValue(int value)
+        {
+            Value = value;
+        }
 
         protected bool IsMine { get; private set; }
 
         protected bool IsRevealed { get; private set; }
+
+        protected int Value { get; private set; }
         protected Location Location { get;}
+        
 
         public override string ToString()
         {
