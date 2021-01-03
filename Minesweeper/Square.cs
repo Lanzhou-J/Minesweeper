@@ -21,21 +21,21 @@ namespace Minesweeper
         }
         public void SetValue(int value)
         {
-            Value = value;
+            Hint = value;
         }
 
         public bool IsMine { get; set; }
 
         private bool IsRevealed { get; set; }
 
-        private int Value { get; set; }
+        public int Hint { get; set; }
         public Location Location { get;}
-        
+
 
         public override string ToString()
         {
             if (!IsRevealed) return ".";
-            return IsMine ? "*" : Value.ToString();
+            return IsMine ? "*" : Hint.ToString();
         }
     }
 }
