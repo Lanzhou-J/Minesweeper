@@ -1,23 +1,14 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Xml.XPath;
 
 namespace Minesweeper
 {
     public class Board
     {
         public int Size { get; private set; }
-        public List<Square> Squares { get; set; } = new List<Square>();
-        // public List<Location> Locations { get; private set; }
-        private IGenerateMines MineGenerator { get; set; }
-        // private List<Mine> _mines;
-        // private List<Hint> _hints; 
-        // private List<Location> _mineLocations;
+        public List<Square> Squares { get; private set; }
         public bool IsRevealed { get; set; } = false;
-        private Board(int size, IGenerateMines mineGenerator)
+        private Board(int size)
         {
-            MineGenerator = mineGenerator;
             Size = size;
             Squares = CreateSquares();
         }
@@ -46,19 +37,9 @@ namespace Minesweeper
 
         public static Board CreateEmptyBoardBasedOnSize(int size)
         {
-            return new Board(size, new RandomMinesGenerator());
+            return new Board(size);
         }
         
-        // public static Board CreateEmptyBoardBasedOnSize(int size, IGenerateMines minesGenerator)
-        // {
-        //     return new Board(size, minesGenerator);
-        // }
-        
-        // public void PlaceMines(int number)
-        // {
-        //     _mines = MineGenerator.CreateMines(number, Locations);
-        //     Squares.AddRange(_mines);
-        // }
         //
         // public void PlaceHints()
         // {
@@ -127,7 +108,7 @@ namespace Minesweeper
         //     {
         //         for (int j = 0; j < Size; j++)
         //         {
-        //             message += FindSquareUsingLocationValue(i,j).ToAString();
+        //             message += FindSquareUsingLocationValue(i,j).ToString();
         //             message += " ";
         //         }
         //
@@ -137,7 +118,7 @@ namespace Minesweeper
         //     return message;
         // }
         //
-        // private ISquare FindSquareUsingLocationValue(int x, int y)
+        // private Square FindSquareUsingLocationValue(int x, int y)
         // {
         //     var square = Squares.Find(item => item.Location.X == x && item.Location.Y == y);
         //     return square;

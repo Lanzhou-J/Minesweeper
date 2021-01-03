@@ -21,7 +21,8 @@ namespace Minesweeper
         //     return mines;
         // }
 
-        public void CreateMines(Board board)
+
+        public Board CreateMines(int number, Board board)
         {
             throw new NotImplementedException();
         }

@@ -24,7 +24,7 @@ namespace Minesweeper
             Value = value;
         }
 
-        private bool IsMine { get; set; }
+        public bool IsMine { get; set; }
 
         private bool IsRevealed { get; set; }
 

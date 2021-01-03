@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Minesweeper;
 using Xunit;
 
@@ -31,14 +28,14 @@ namespace MinesweeperTests
             var board = Board.CreateEmptyBoardBasedOnSize(1);
             Assert.Equal(1, board.Size);
         }
-        //
-        // [Fact]
-        // public void CreateEmptyBoardShould_CreateASize2BoardWithSquaresLengthOf2_WhenInputIs2()
-        // {
-        //     var board = Board.CreateEmptyBoardBasedOnSize(2);
-        //     Assert.Equal(2, board.Size);
-        // }
-        //
+        
+        [Fact]
+        public void CreateEmptyBoardBasedOnSizeShould_CreateASize2Board_WhenInputIs2()
+        {
+            var board = Board.CreateEmptyBoardBasedOnSize(2);
+            Assert.Equal(2, board.Size);
+        }
+
         // [Fact]
         // public void CreateHintsShould_ReturnEmptyList_WhenThereIsOnly1MineSquare()
         // {
