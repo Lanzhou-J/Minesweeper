@@ -4,7 +4,7 @@ namespace Minesweeper
 {
     public interface IGenerateMines
     {
-        public Board CreateMines(int number, Board board);
+        public void CreateMines(int number, Board board);
 
     }
 }

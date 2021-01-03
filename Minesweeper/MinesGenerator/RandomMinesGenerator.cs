@@ -22,9 +22,13 @@ namespace Minesweeper
         // }
 
 
-        public Board CreateMines(int number, Board board)
+        public void CreateMines(int number, Board board)
         {
-            throw new NotImplementedException();
+            var selectedSquares = board.Squares.OrderBy(x => _random.Next()).Take(number);
+            foreach (var item in selectedSquares)
+            {
+                item.SetMine();
+            }
         }
     }
 }

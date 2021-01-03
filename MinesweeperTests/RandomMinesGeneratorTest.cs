@@ -15,8 +15,7 @@ namespace MinesweeperTests
         {
             var board = Board.CreateEmptyBoardBasedOnSize(3);
             var minesGenerator = new RandomMinesGenerator();
-
-            var newBoard = minesGenerator.CreateMines(number, board);
+            minesGenerator.CreateMines(number, board);
             var mines = board.Squares.Where(item => item.IsMine);
             Assert.Equal(number, mines.Count());
         }
