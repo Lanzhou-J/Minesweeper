@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using Minesweeper;
 using Xunit;
 
@@ -44,6 +46,17 @@ namespace MinesweeperTests
             var neighbours = board.GetNeighbours(square);
             Assert.Empty(neighbours);
         }
+
+        [Fact]
+        public void GetNeighboursShould_ReturnAListOf3Item_WhenBoardSizeIs2()
+        {
+            var board = Board.CreateEmptyBoard(2);
+            var square = board.Squares[0];
+            var neighbours = board.GetNeighbours(square);
+            Assert.Equal(3, neighbours.Count());
+        }
+
+
         // [Fact]
         // public void CreateHintsShould_Return2HintsWithValue2_WhenThereAre2Mines_InASize2Board()
         // {
