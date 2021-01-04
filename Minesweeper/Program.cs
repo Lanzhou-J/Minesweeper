@@ -12,7 +12,7 @@
            var game = new Game(input, output, inputParser, player, minesGenerator);
            
            game.SetUpBoard();
-           // game.Play();
+           game.Play();
         }
     }
 }

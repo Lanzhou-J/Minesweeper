@@ -9,6 +9,7 @@ namespace MinesweeperTests
         [InlineData(1,1, "1,1")]
         [InlineData(2,1, "2,1")]
         [InlineData(5,5, "5,5")]
+        [InlineData(20,20, "20,20")]
         public void CreateLocationBasedOnInputShould_ReturnLocationWithCorrectPropertyValue_BasedOnInput(int xValue, int yValue, string input)
         {
             var inputParser = new InputParser();
