@@ -41,17 +41,6 @@ namespace Minesweeper
             return new Board(size);
         }
 
-        //
-        // private List<Location> DetermineHintsLocations(List<Location> mineLocations)
-        // {
-        //     return Locations.FindAll(x => !mineLocations.Contains(x));
-        // }
-        //
-        // private List<Location> DetermineMinesLocations()
-        // {
-        //     return _mines.Select(mine => mine.Location).ToList();
-        // }
-        //
         public void RevealAllSquares()
         {
             foreach (var item in Squares)

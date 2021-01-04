@@ -25,11 +25,11 @@ namespace Minesweeper
             Hint += 1;
         }
 
-        public bool IsMine { get; set; }
+        public bool IsMine { get; private set; }
 
         public bool IsRevealed { get; set; }
 
-        public int Hint { get; set; }
+        public int Hint { get; private set; }
         public Location Location { get;}
 
 

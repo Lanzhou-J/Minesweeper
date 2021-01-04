@@ -21,26 +21,6 @@ namespace Minesweeper
         {
             return !board.Squares.Any(square => square.IsMine);
         }
-
-        // public List<Hint> CreateHints()
-        // {
-        //     _mineLocations = DetermineMinesLocations();
-        //
-        //     var hintLocations = DetermineHintsLocations(_mineLocations);
-        //     
-        //     _hints = new List<Hint>();
-        //
-        //     foreach (var item in hintLocations)
-        //     {
-        //         var neighbours = item.FindNeighboursFromLocations(Locations);
-        //         var mineNeighbours = _mineLocations.FindAll(x => neighbours.Contains(x));
-        //         var mineNeighboursCount = mineNeighbours.Count;
-        //         
-        //         var hint = new Hint(item, mineNeighboursCount);
-        //         _hints.Add(hint);
-        //     }
-        //     
-        //     return _hints;
-        // }
+        
     }
 }
