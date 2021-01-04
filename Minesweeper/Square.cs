@@ -19,10 +19,6 @@ namespace Minesweeper
         {
             IsMine = true;
         }
-        public void SetHintValue(int value)
-        {
-            Hint = value;
-        }
 
         public void IncrementHint()
         {
