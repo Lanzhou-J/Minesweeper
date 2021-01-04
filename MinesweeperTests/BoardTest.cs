@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using Minesweeper;
 using Xunit;
 
@@ -69,8 +70,21 @@ namespace MinesweeperTests
         public void GetNeighboursShould_ReturnAListO8Items_WhenBoardSizeIs3_CurrentCellIsInTheMiddle()
         {
             var board = Board.CreateEmptyBoard(3);
+            var square = board.GetSquare(1, 1);
+            var neighbours = board.GetNeighbours(square);
+            Assert.Equal(8, neighbours.Count());
         }
 
+        [Fact]
+        public void GetSquareShould_ReturnSquareWithCorrectLocation()
+        {
+            var board = Board.CreateEmptyBoard(3);
+            var square = board.GetSquare(0, 0);
+            var locationX = square.Location.X;
+            var locationY = square.Location.Y;
+            Assert.Equal(0, locationX);
+            Assert.Equal(0, locationY);
+        }
 
         // [Fact]
         // public void CreateHintsShould_Return2HintsWithValue2_WhenThereAre2Mines_InASize2Board()

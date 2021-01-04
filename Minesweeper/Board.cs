@@ -108,6 +108,12 @@ namespace Minesweeper
             return neighbours;
         }
 
+        public Square GetSquare(int locationX, int locationY)
+        {
+            var square = Squares.Find(item => item.Location.X == locationX && item.Location.Y == locationY);
+            return square;
+        }
+
         // public bool AllHintsAreRevealed()
         // {
         //     return _hints.All(item => item.IsRevealed);
