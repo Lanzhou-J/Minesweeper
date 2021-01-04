@@ -61,20 +61,21 @@ namespace Minesweeper
         
             IsRevealed = true;
         }
-        //
-        // public void RevealOneSquare(Location location)
-        // {
-        //     var xValue = location.X;
-        //     var yValue = location.Y;
-        //     var square = FindSquareUsingLocationValue(xValue, yValue);
-        //     square.IsRevealed = true;
-        // }
-        //
-        // public bool OneMineIsRevealed()
-        // {
-        //     return _mines.Any(item => item.IsRevealed);
-        // }
-        //
+        
+        public void RevealOneSquare(Location location)
+        {
+            var xValue = location.X;
+            var yValue = location.Y;
+            var square = FindSquareUsingLocationValue(xValue, yValue);
+            square.IsRevealed = true;
+        }
+        
+        public bool OneMineIsRevealed()
+        {
+            var mines = Squares.FindAll(item => item.IsMine);
+            return mines.Any(item => item.IsRevealed);
+        }
+        
         public override string ToString()
         {
             var message = "";
@@ -126,10 +127,11 @@ namespace Minesweeper
             return square;
         }
 
-        // public bool AllHintsAreRevealed()
-        // {
-        //     return _hints.All(item => item.IsRevealed);
-        // }
+        public bool AllHintsAreRevealed()
+        {
+            var hints = Squares.FindAll(item => !item.IsMine);
+            return hints.All(item => item.IsRevealed);
+        }
 
     }
 }

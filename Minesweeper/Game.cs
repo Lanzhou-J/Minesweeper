@@ -45,30 +45,30 @@ namespace Minesweeper
             return difficulty;
         }
 
-        // public void Play()
-        // {
-        //     while (BoardIsNotRevealed())
-        //     {
-        //         var locationInput = _input.Ask("Please input a coordinate (e.g. 0,0):");
-        //         var newLocation = _inputParser.CreateLocationBasedOnInput(locationInput);
-        //
-        //         Board.RevealOneSquare(newLocation);
-        //
-        //         if (Board.OneMineIsRevealed())
-        //         {
-        //             Board.RevealAllSquares();
-        //             _player.State = PlayerState.Loser;
-        //             _output.Write("You are " + _player.ToString());
-        //         }
-        //         else if (Board.AllHintsAreRevealed())
-        //         {
-        //             Board.RevealAllSquares();
-        //             _player.State = PlayerState.Winner;
-        //             _output.Write("You are " + _player.ToString());
-        //         }
-        //         DisplayBoard();
-        //     }
-        // }
+        public void Play()
+        {
+            while (BoardIsNotRevealed())
+            {
+                var locationInput = _input.Ask("Please input a coordinate (e.g. 0,0):");
+                var newLocation = _inputParser.CreateLocationBasedOnInput(locationInput);
+        
+                Board.RevealOneSquare(newLocation);
+        
+                if (Board.OneMineIsRevealed())
+                {
+                    Board.RevealAllSquares();
+                    _player.State = PlayerState.Loser;
+                    _output.Write("You are " + _player.ToString());
+                }
+                else if (Board.AllHintsAreRevealed())
+                {
+                    Board.RevealAllSquares();
+                    _player.State = PlayerState.Winner;
+                    _output.Write("You are " + _player.ToString());
+                }
+                DisplayBoard();
+            }
+        }
 
         private bool BoardIsNotRevealed()
         {
