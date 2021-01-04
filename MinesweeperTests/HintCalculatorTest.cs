@@ -91,7 +91,9 @@ namespace MinesweeperTests
             hintsCalculator.SetHints(board);
 
             var squaresWithHintValueOne = board.Squares.Where(item => item.Hint == 1);
+            var squaresWithHintValueZero = board.Squares.Where(item => item.Hint == 0);
             Assert.Equal(3, squaresWithHintValueOne.Count());
+            Assert.Equal(6, squaresWithHintValueZero.Count());
         }
         
         [Fact]

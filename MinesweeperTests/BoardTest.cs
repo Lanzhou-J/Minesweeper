@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using Minesweeper;
 using Xunit;
 
@@ -104,20 +102,6 @@ namespace MinesweeperTests
             Assert.Equal(0, locationY);
         }
 
-        // [Fact]
-        // public void CreateHintsShould_Return2HintsWithValue2_WhenThereAre2Mines_InASize2Board()
-        // {
-        //     var board = Board.CreateEmptyBoardBasedOnSize(2);
-        //     board.PlaceMines(2);
-        //
-        //     var hints = board.CreateHints();
-        //     Assert.Equal(2, hints.Count);
-        //     foreach (var item in hints)
-        //     {
-        //         Assert.Equal(2, item.Value);
-        //     }
-        // }
-        
         // [Fact]
         // public void CreateHintsShould_Return8Hints_WhenThereIs1TopLeftMine_InASize3Board()
         // {
