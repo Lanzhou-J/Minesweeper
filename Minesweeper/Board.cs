@@ -100,10 +100,22 @@ namespace Minesweeper
 
         public List<Square> GetNeighbours(Square square)
         {
+            var squareX = square.Location.X;
+            var squareY = square.Location.Y;
             var neighbours = new List<Square>();
-            if (Size >= 2)
+            for (var i = -1; i <= 1; i++)
             {
-                neighbours.AddRange(Squares.Where(item => item != square));
+                for (var j = -1; j <= 1; j++)
+                {
+                    if (i==0 && j==0) continue;
+                    var xValue = squareX + i;
+                    var yValue = squareY + j;
+                    var neighbour = GetSquare(xValue, yValue);
+                    if (neighbour != null)
+                    {
+                        neighbours.Add(neighbour); 
+                    }
+                }
             }
             return neighbours;
         }
