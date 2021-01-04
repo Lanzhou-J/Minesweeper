@@ -10,16 +10,16 @@ namespace Minesweeper
         private readonly Player _player;
         private readonly IGenerateMines _minesGenerator;
         private readonly HintCalculator _hintsCalculator;
-        private Board Board { get; set; }
+        public Board Board { get; private set; }
         
-        public Game(IInput input, IOutput output, InputParser inputParser, Player player, IGenerateMines minesGenerator)
+        public Game(IInput input, IOutput output, InputParser inputParser, Player player, IGenerateMines minesGenerator, HintCalculator hintsCalculator)
         {
             _input = input;
             _output = output;
             _inputParser = inputParser;
             _player = player;
             _minesGenerator = minesGenerator;
-            _hintsCalculator = new HintCalculator();
+            _hintsCalculator = hintsCalculator;
         }
 
         public void SetUpBoard()
@@ -45,30 +45,30 @@ namespace Minesweeper
             return difficulty;
         }
 
-        // public void Play()
-        // {
-        //     while (BoardIsNotRevealed())
-        //     {
-        //         var locationInput = _input.Ask("Please input a coordinate (e.g. 0,0):");
-        //         var newLocation = _inputParser.CreateLocationBasedOnInput(locationInput);
-        //
-        //         Board.RevealOneSquare(newLocation);
-        //
-        //         if (Board.OneMineIsRevealed())
-        //         {
-        //             Board.RevealAllSquares();
-        //             _player.State = PlayerState.Loser;
-        //             _output.Write("You are " + _player.ToString());
-        //         }
-        //         else if (Board.AllHintsAreRevealed())
-        //         {
-        //             Board.RevealAllSquares();
-        //             _player.State = PlayerState.Winner;
-        //             _output.Write("You are " + _player.ToString());
-        //         }
-        //         DisplayBoard();
-        //     }
-        // }
+        public void Play()
+        {
+            while (BoardIsNotRevealed())
+            {
+                var locationInput = _input.Ask("Please input a coordinate (e.g. 0,0):");
+                var newLocation = _inputParser.CreateLocationBasedOnInput(locationInput);
+        
+                Board.RevealOneSquare(newLocation);
+        
+                if (Board.OneMineIsRevealed())
+                {
+                    Board.RevealAllSquares();
+                    _player.State = PlayerState.Loser;
+                    _output.Write("You are " + _player.ToString());
+                }
+                else if (Board.AllHintsAreRevealed())
+                {
+                    Board.RevealAllSquares();
+                    _player.State = PlayerState.Winner;
+                    _output.Write("You are " + _player.ToString());
+                }
+                DisplayBoard();
+            }
+        }
 
         private bool BoardIsNotRevealed()
         {

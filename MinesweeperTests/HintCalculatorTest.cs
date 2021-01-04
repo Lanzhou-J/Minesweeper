@@ -65,5 +65,51 @@ namespace MinesweeperTests
             var squaresWithHintValueOne = board.Squares.Where(item => item.Hint == 1);
             Assert.Equal(3, squaresWithHintValueOne.Count());
         }
+        
+        [Fact]
+        public void SetHintsShould_Set8HintsWithValue1_WhenThereIs1Mine_InTheMiddleOfASize3Board()
+        {
+            var board = Board.CreateEmptyBoard(3);
+            var square = board.GetSquare(1, 1);
+            square.SetMine();
+            
+            var hintsCalculator = new HintCalculator();
+            hintsCalculator.SetHints(board);
+
+            var squaresWithHintValueOne = board.Squares.Where(item => item.Hint == 1);
+            Assert.Equal(8, squaresWithHintValueOne.Count());
+        }
+        
+        [Fact]
+        public void SetHintsShould_Set3HintsWithValue1_WhenThereIs1Mine_InTheTopLeftCornerOfASize3Board()
+        {
+            var board = Board.CreateEmptyBoard(3);
+            var square = board.GetSquare(0, 0);
+            square.SetMine();
+            
+            var hintsCalculator = new HintCalculator();
+            hintsCalculator.SetHints(board);
+
+            var squaresWithHintValueOne = board.Squares.Where(item => item.Hint == 1);
+            var squaresWithHintValueZero = board.Squares.Where(item => item.Hint == 0);
+            Assert.Equal(3, squaresWithHintValueOne.Count());
+            Assert.Equal(6, squaresWithHintValueZero.Count());
+        }
+        
+        [Fact]
+        public void SetHintsShould_Set2HintsWithValue2_WhenThereAre2Mines_InTheTopLineOfASize2Board()
+        {
+            var board = Board.CreateEmptyBoard(2);
+            var topLeftSquare = board.GetSquare(0, 0);
+            topLeftSquare.SetMine();
+            var topRightSquare = board.GetSquare(0, 1);
+            topRightSquare.SetMine();
+
+            var hintsCalculator = new HintCalculator();
+            hintsCalculator.SetHints(board);
+
+            var squaresWithHintValueTwo = board.Squares.Where(item => item.Hint == 2);
+            Assert.Equal(2, squaresWithHintValueTwo.Count());
+        }
     }
 }

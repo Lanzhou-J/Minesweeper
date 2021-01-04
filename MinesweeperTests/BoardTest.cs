@@ -1,3 +1,4 @@
+using System.Linq;
 using Minesweeper;
 using Xunit;
 
@@ -35,62 +36,87 @@ namespace MinesweeperTests
             var board = Board.CreateEmptyBoard(2);
             Assert.Equal(2, board.Size);
         }
-        
 
-        //
-        // [Fact]
-        // public void CreateHintsShould_Return2HintsWithValue2_WhenThereAre2Mines_InASize2Board()
-        // {
-        //     var board = Board.CreateEmptyBoardBasedOnSize(2);
-        //     board.PlaceMines(2);
-        //
-        //     var hints = board.CreateHints();
-        //     Assert.Equal(2, hints.Count);
-        //     foreach (var item in hints)
-        //     {
-        //         Assert.Equal(2, item.Value);
-        //     }
-        // }
+        [Fact]
+        public void GetNeighboursShould_ReturnAnEmptyList_WhenBoardSizeIs1()
+        {
+            var board = Board.CreateEmptyBoard(1);
+            var square = board.Squares[0];
+            var neighbours = board.GetNeighbours(square);
+            Assert.Empty(neighbours);
+        }
+
+        [Fact]
+        public void GetNeighboursShould_ReturnAListOf3Item_WhenBoardSizeIs2()
+        {
+            var board = Board.CreateEmptyBoard(2);
+            var square = board.Squares[0];
+            var neighbours = board.GetNeighbours(square);
+            Assert.Equal(3, neighbours.Count());
+        }
         
-        // [Fact]
-        // public void CreateHintsShould_Return8Hints_WhenThereIs1TopLeftMine_InASize3Board()
-        // {
-        //     var board = Board.CreateEmptyBoardBasedOnSize(3, new MockMinesGenerator());
-        //     board.PlaceMines(1);
-        //
-        //     var hints = board.CreateHints();
-        //     Assert.Equal(8, hints.Count);
-        //
-        //     var bottomRightHint = hints.Find(x => x.Location.X == 2 && x.Location.Y == 2);
-        //     var bottomMiddleHint = hints.Find(x => x.Location.X == 2 && x.Location.Y == 1);
-        //     var bottomLeftHint = hints.Find(x => x.Location.X == 2 && x.Location.Y == 0);
-        //     var topMiddleHint = hints.Find(x => x.Location.X == 0 && x.Location.Y == 1);
-        //     var middleLeftHint = hints.Find(x => x.Location.X == 1 && x.Location.Y == 0);
-        //     var centerHint = hints.Find(x => x.Location.X == 1 && x.Location.Y == 1);
-        //     Assert.Equal(0, bottomRightHint.Value);
-        //     Assert.Equal(0, bottomMiddleHint.Value);
-        //     Assert.Equal(0, bottomLeftHint.Value);
-        //     Assert.Equal(1, topMiddleHint.Value);
-        //     Assert.Equal(1, middleLeftHint.Value);
-        //     Assert.Equal(1, centerHint.Value);
-        //     
-        // }
-        //
-        // [Fact]
-        // public void RevealSquaresShould_SetAllSquaresToIsRevealed()
-        // {
-        //     var board = Board.CreateEmptyBoardBasedOnSize(2);
-        //     foreach (var item in board.Squares)
-        //     {
-        //         Assert.False(item.IsRevealed);
-        //     }
-        //     board.RevealAllSquares();
-        //     foreach (var item in board.Squares)
-        //     {
-        //         Assert.True(item.IsRevealed);
-        //     }
-        // }
-        //
+        [Fact]
+        public void GetNeighboursShould_ReturnAListWithoutTheInputSquare_WhenBoardSizeIs2()
+        {
+            var board = Board.CreateEmptyBoard(2);
+            var square = board.Squares[0];
+            var neighbours = board.GetNeighbours(square);
+            Assert.DoesNotContain(square, neighbours);
+        }
+
+        [Fact]
+        public void GetNeighboursShould_ReturnAListO8Items_WhenBoardSizeIs3_CurrentSquareIsInTheMiddle()
+        {
+            var board = Board.CreateEmptyBoard(3);
+            var square = board.GetSquare(1, 1);
+            var neighbours = board.GetNeighbours(square);
+            Assert.Equal(8, neighbours.Count());
+        }
+        
+        [Fact]
+        public void GetNeighboursShould_ReturnAListWithoutInputItem_WhenBoardSizeIs3_CurrentSquareIsInTheMiddle()
+        {
+            var board = Board.CreateEmptyBoard(3);
+            var square = board.GetSquare(1, 1);
+            var neighbours = board.GetNeighbours(square);
+            Assert.DoesNotContain(square, neighbours);
+        }
+
+        [Fact]
+        public void GetNeighboursShould_ReturnAListO3Items_WhenBoardSizeIs3_CurrentSquareIsTopLeft()
+        {
+            var board = Board.CreateEmptyBoard(3);
+            var square = board.GetSquare(0, 0);
+            var neighbours = board.GetNeighbours(square);
+            Assert.Equal(3, neighbours.Count());
+        }
+
+        [Fact]
+        public void GetSquareShould_ReturnSquareWithCorrectLocation()
+        {
+            var board = Board.CreateEmptyBoard(3);
+            var square = board.GetSquare(0, 0);
+            var locationX = square.Location.X;
+            var locationY = square.Location.Y;
+            Assert.Equal(0, locationX);
+            Assert.Equal(0, locationY);
+        }
+        
+        [Fact]
+        public void RevealSquaresShould_SetAllSquaresToIsRevealed()
+        {
+            var board = Board.CreateEmptyBoard(2);
+            foreach (var item in board.Squares)
+            {
+                Assert.False(item.IsRevealed);
+            }
+            board.RevealAllSquares();
+            foreach (var item in board.Squares)
+            {
+                Assert.True(item.IsRevealed);
+            }
+        }
+        
         [Fact]
         public void ToStringShould_ReturnExpectedString_WhenThereIsNoMinesInASize1Board()
         {

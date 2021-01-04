@@ -7,7 +7,7 @@ namespace Minesweeper
     {
         public int Size { get; private set; }
         public List<Square> Squares { get; private set; }
-        public bool IsRevealed { get; set; } = false;
+        public bool IsRevealed { get; private set; } = false;
         private Board(int size)
         {
             Size = size;
@@ -40,19 +40,7 @@ namespace Minesweeper
         {
             return new Board(size);
         }
-        
 
-        //
-        // private List<Location> DetermineHintsLocations(List<Location> mineLocations)
-        // {
-        //     return Locations.FindAll(x => !mineLocations.Contains(x));
-        // }
-        //
-        // private List<Location> DetermineMinesLocations()
-        // {
-        //     return _mines.Select(mine => mine.Location).ToList();
-        // }
-        //
         public void RevealAllSquares()
         {
             foreach (var item in Squares)
@@ -62,20 +50,21 @@ namespace Minesweeper
         
             IsRevealed = true;
         }
-        //
-        // public void RevealOneSquare(Location location)
-        // {
-        //     var xValue = location.X;
-        //     var yValue = location.Y;
-        //     var square = FindSquareUsingLocationValue(xValue, yValue);
-        //     square.IsRevealed = true;
-        // }
-        //
-        // public bool OneMineIsRevealed()
-        // {
-        //     return _mines.Any(item => item.IsRevealed);
-        // }
-        //
+        
+        public void RevealOneSquare(Location location)
+        {
+            var xValue = location.X;
+            var yValue = location.Y;
+            var square = FindSquareUsingLocationValue(xValue, yValue);
+            square.IsRevealed = true;
+        }
+        
+        public bool OneMineIsRevealed()
+        {
+            var mines = Squares.FindAll(item => item.IsMine);
+            return mines.Any(item => item.IsRevealed);
+        }
+        
         public override string ToString()
         {
             var message = "";
@@ -98,11 +87,40 @@ namespace Minesweeper
             var square = Squares.Find(item => item.Location.X == x && item.Location.Y == y);
             return square;
         }
-        
-        // public bool AllHintsAreRevealed()
-        // {
-        //     return _hints.All(item => item.IsRevealed);
-        // }
+
+        public List<Square> GetNeighbours(Square square)
+        {
+            var squareX = square.Location.X;
+            var squareY = square.Location.Y;
+            var neighbours = new List<Square>();
+            for (var i = -1; i <= 1; i++)
+            {
+                for (var j = -1; j <= 1; j++)
+                {
+                    if (i==0 && j==0) continue;
+                    var xValue = squareX + i;
+                    var yValue = squareY + j;
+                    var neighbour = GetSquare(xValue, yValue);
+                    if (neighbour != null)
+                    {
+                        neighbours.Add(neighbour); 
+                    }
+                }
+            }
+            return neighbours;
+        }
+
+        public Square GetSquare(int locationX, int locationY)
+        {
+            var square = Squares.Find(item => item.Location.X == locationX && item.Location.Y == locationY);
+            return square;
+        }
+
+        public bool AllHintsAreRevealed()
+        {
+            var hints = Squares.FindAll(item => !item.IsMine);
+            return hints.All(item => item.IsRevealed);
+        }
 
     }
 }
