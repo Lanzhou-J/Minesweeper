@@ -100,7 +100,12 @@ namespace Minesweeper
 
         public List<Square> GetNeighbours(Square square)
         {
-            return new List<Square>();
+            var neighbours = new List<Square>();
+            if (Size >= 2)
+            {
+                neighbours.AddRange(Squares.Where(item => item != square));
+            }
+            return neighbours;
         }
 
         // public bool AllHintsAreRevealed()

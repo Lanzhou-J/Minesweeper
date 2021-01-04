@@ -55,6 +55,21 @@ namespace MinesweeperTests
             var neighbours = board.GetNeighbours(square);
             Assert.Equal(3, neighbours.Count());
         }
+        
+        [Fact]
+        public void GetNeighboursShould_ReturnAListWithoutTheInputSquare_WhenBoardSizeIs2()
+        {
+            var board = Board.CreateEmptyBoard(2);
+            var square = board.Squares[0];
+            var neighbours = board.GetNeighbours(square);
+            Assert.DoesNotContain(square, neighbours);
+        }
+
+        [Fact]
+        public void GetNeighboursShould_ReturnAListO8Items_WhenBoardSizeIs3_CurrentCellIsInTheMiddle()
+        {
+            var board = Board.CreateEmptyBoard(3);
+        }
 
 
         // [Fact]
