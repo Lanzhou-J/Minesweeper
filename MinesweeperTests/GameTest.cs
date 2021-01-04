@@ -25,7 +25,7 @@ namespace MinesweeperTests
          [Fact]
          public void GameShould_RevealEntireBoardAndPlayerWins_WhenInputLocationMatchesAllHintLocations()
          {
-             var difficultyLevelInput = "2";
+             const string difficultyLevelInput = "2";
              var input = new MockInput(new[]{difficultyLevelInput, "1,0", "1,1"});
              var output = new MockOutput();
              var inputParser = new InputParser();
@@ -44,7 +44,7 @@ namespace MinesweeperTests
          [Fact]
          public void GameShould_RevealEntireBoard_WhenInputLocationMatchesMineLocation()
          {
-             var difficultyLevelInput = "4";
+             const string difficultyLevelInput = "4";
              var input = new MockInput(new[]{difficultyLevelInput, "0,0"});
              var output = new MockOutput();
              var inputParser = new InputParser();
