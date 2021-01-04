@@ -24,6 +24,11 @@ namespace Minesweeper
             Hint = value;
         }
 
+        public void IncrementHint()
+        {
+            Hint += 1;
+        }
+
         public bool IsMine { get; set; }
 
         public bool IsRevealed { get; set; }

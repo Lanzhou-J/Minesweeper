@@ -6,18 +6,22 @@ namespace Minesweeper
     {
         public void SetHints(Board board)
         {
+            if (board.Size < 2 || BoardDoesNotContainAnyMine(board)) return;
             foreach (var item in board.Squares)
-            {
-                if (board.Size < 2) continue;
-                if (!board.Squares.Any(square => square.IsMine)) continue;
-                if (!item.IsMine)
+            {   if (!item.IsMine) continue;
+                var neighbours = board.GetNeighbours(item);
+                foreach (var neighbour in neighbours)
                 {
-                    item.SetHintValue(1);
+                    neighbour.IncrementHint();
                 }
             }
         }
-        
-        //
+
+        private static bool BoardDoesNotContainAnyMine(Board board)
+        {
+            return !board.Squares.Any(square => square.IsMine);
+        }
+
         // public List<Hint> CreateHints()
         // {
         //     _mineLocations = DetermineMinesLocations();
