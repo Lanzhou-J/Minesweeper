@@ -93,5 +93,21 @@ namespace MinesweeperTests
             var squaresWithHintValueOne = board.Squares.Where(item => item.Hint == 1);
             Assert.Equal(3, squaresWithHintValueOne.Count());
         }
+        
+        [Fact]
+        public void SetHintsShould_Set2HintsWithValue2_WhenThereAre2Mines_InTheTopLineOfASize2Board()
+        {
+            var board = Board.CreateEmptyBoard(2);
+            var topLeftSquare = board.GetSquare(0, 0);
+            topLeftSquare.SetMine();
+            var topRightSquare = board.GetSquare(0, 1);
+            topRightSquare.SetMine();
+
+            var hintsCalculator = new HintCalculator();
+            hintsCalculator.SetHints(board);
+
+            var squaresWithHintValueTwo = board.Squares.Where(item => item.Hint == 2);
+            Assert.Equal(2, squaresWithHintValueTwo.Count());
+        }
     }
 }
