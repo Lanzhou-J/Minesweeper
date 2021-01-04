@@ -40,28 +40,26 @@ namespace MinesweeperTests
              Assert.Equal(expectedResult, result);
              Assert.Equal("Winner",player.ToString());
          }
-//         
-//         
-//         
-//         [Fact]
-//         public void GameShould_RevealEntireBoard_WhenInputLocationMatchesMineLocation()
-//         {
-//             var difficultyLevelInput = "4";
-//             var input = new MockInput(new[]{difficultyLevelInput, "0,0"});
-//             var output = new MockOutput();
-//             var inputParser = new InputParser();
-//             var player = new Player();
-//             var minesGenerator = new MockMinesGenerator();
-//             var game = new Game(input, output, inputParser, player, minesGenerator);
-//             game.SetUpBoard();
-//             game.Play();
-//             var result = game.Board.ToString();
-//             const string expectedResult = "* * * * \n" +
-//                                           "2 3 3 2 \n" +
-//                                           "0 0 0 0 \n" +
-//                                           "0 0 0 0 \n";
-//             
-//             Assert.Equal(expectedResult, result);
-//         }
+         
+         [Fact]
+         public void GameShould_RevealEntireBoard_WhenInputLocationMatchesMineLocation()
+         {
+             var difficultyLevelInput = "4";
+             var input = new MockInput(new[]{difficultyLevelInput, "0,0"});
+             var output = new MockOutput();
+             var inputParser = new InputParser();
+             var player = new Player();
+             var minesGenerator = new MockMinesGenerator();
+             var game = new Game(input, output, inputParser, player, minesGenerator);
+             game.SetUpBoard();
+             game.Play();
+             var result = game.Board.ToString();
+             const string expectedResult = "* * * * \n" +
+                                           "2 3 3 2 \n" +
+                                           "0 0 0 0 \n" +
+                                           "0 0 0 0 \n";
+             
+             Assert.Equal(expectedResult, result);
+         }
      }
 }
