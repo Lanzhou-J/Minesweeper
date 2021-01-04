@@ -7,7 +7,7 @@ namespace Minesweeper
     {
         public int Size { get; private set; }
         public List<Square> Squares { get; private set; }
-        public bool IsRevealed { get; set; } = false;
+        public bool IsRevealed { get; private set; } = false;
         private Board(int size)
         {
             Size = size;

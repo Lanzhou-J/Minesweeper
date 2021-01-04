@@ -14,7 +14,8 @@ namespace MinesweeperTests
              var inputParser = new InputParser();
              var player = new Player();
              var minesGenerator = new MockMinesGenerator();
-             var game = new Game(input, output, inputParser, player, minesGenerator);
+             var hintsCalculator = new HintCalculator();
+             var game = new Game(input, output, inputParser, player, minesGenerator, hintsCalculator);
              game.SetUpBoard();
              var result = game.Board.ToString();
              const string expectedResult = ". . . . \n" + ". . . . \n" + ". . . . \n" + ". . . . \n";
@@ -31,7 +32,8 @@ namespace MinesweeperTests
              var inputParser = new InputParser();
              var player = new Player();
              var minesGenerator = new MockMinesGenerator();
-             var game = new Game(input, output, inputParser, player, minesGenerator);
+             var hintsCalculator = new HintCalculator();
+             var game = new Game(input, output, inputParser, player, minesGenerator, hintsCalculator);
              game.SetUpBoard();
              game.Play();
              var result = game.Board.ToString();
@@ -50,7 +52,8 @@ namespace MinesweeperTests
              var inputParser = new InputParser();
              var player = new Player();
              var minesGenerator = new MockMinesGenerator();
-             var game = new Game(input, output, inputParser, player, minesGenerator);
+             var hintsCalculator = new HintCalculator();
+             var game = new Game(input, output, inputParser, player, minesGenerator, hintsCalculator);
              game.SetUpBoard();
              game.Play();
              var result = game.Board.ToString();

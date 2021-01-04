@@ -9,7 +9,8 @@
            var inputParser = new InputParser();
            var player = new Player();
            var minesGenerator = new RandomMinesGenerator();
-           var game = new Game(input, output, inputParser, player, minesGenerator);
+           var hintsCalculator = new HintCalculator();
+           var game = new Game(input, output, inputParser, player, minesGenerator, hintsCalculator);
            
            game.SetUpBoard();
            game.Play();

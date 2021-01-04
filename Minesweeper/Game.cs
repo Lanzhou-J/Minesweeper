@@ -12,14 +12,14 @@ namespace Minesweeper
         private readonly HintCalculator _hintsCalculator;
         public Board Board { get; private set; }
         
-        public Game(IInput input, IOutput output, InputParser inputParser, Player player, IGenerateMines minesGenerator)
+        public Game(IInput input, IOutput output, InputParser inputParser, Player player, IGenerateMines minesGenerator, HintCalculator hintsCalculator)
         {
             _input = input;
             _output = output;
             _inputParser = inputParser;
             _player = player;
             _minesGenerator = minesGenerator;
-            _hintsCalculator = new HintCalculator();
+            _hintsCalculator = hintsCalculator;
         }
 
         public void SetUpBoard()
