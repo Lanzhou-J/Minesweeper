@@ -91,50 +91,57 @@ namespace MinesweeperTests
         //     }
         // }
         //
-        // [Fact]
-        // public void ToStringShould_ReturnExpectedString_WhenThereIsNoMinesInASize1Board()
-        // {
-        //     const string expectedString = ". \n";
-        //     var board = Board.CreateEmptyBoardBasedOnSize(1);
-        //     board.PlaceMines(0);
-        //     board.PlaceHints();
-        //     Assert.Equal(expectedString, board.ToString());
-        // }
-        //
-        // [Fact]
-        // public void ToStringShould_ReturnExpectedString_WhenThereIsNoMinesInASize2Board()
-        // {
-        //     var expectedString = ". . \n" + ". . \n";
-        //     var board = Board.CreateEmptyBoardBasedOnSize(2);
-        //     board.PlaceMines(0);
-        //     board.PlaceHints();
-        //     Assert.Equal(expectedString, board.ToString());
-        // }
-        //
-        // [Fact]
-        // public void ToStringShould_ReturnExpectedString_WhenThereIs1RevealedMineInASize1Board()
-        // {
-        //     const string expectedHiddenString = ". \n";
-        //     const string expectedRevealedString = "* \n";
-        //     var board = Board.CreateEmptyBoardBasedOnSize(1);
-        //     board.PlaceMines(1);
-        //     board.PlaceHints();
-        //     Assert.Equal(expectedHiddenString, board.ToString());
-        //     board.RevealAllSquares();
-        //     Assert.Equal(expectedRevealedString, board.ToString());
-        // }
-        //
-        // [Fact]
-        // public void ToStringShould_ReturnExpectedString_WhenThereIs1RevealedTopLeftMineInASize2Board()
-        // {
-        //     var mineGenerator = new MockMinesGenerator();
-        //     const string expectedString = "* 1 \n" + "1 1 \n";
-        //     var board = Board.CreateEmptyBoardBasedOnSize(2, mineGenerator);
-        //     board.PlaceMines(1);
-        //     board.PlaceHints();
-        //     board.RevealAllSquares();
-        //     Assert.Equal(expectedString, board.ToString());
-        // }
+        [Fact]
+        public void ToStringShould_ReturnExpectedString_WhenThereIsNoMinesInASize1Board()
+        {
+            const string expectedString = ". \n";
+            var board = Board.CreateEmptyBoard(1);
+            var minesGenerator = new RandomMinesGenerator();
+            var hintsCalculator = new HintCalculator();
+            minesGenerator.PlaceMines(0, board);
+            hintsCalculator.SetHints(board);
+            Assert.Equal(expectedString, board.ToString());
+        }
+        
+        [Fact]
+        public void ToStringShould_ReturnExpectedString_WhenThereIsNoMinesInASize2Board()
+        {
+            var expectedString = ". . \n" + ". . \n";
+            var board = Board.CreateEmptyBoard(2);
+            var minesGenerator = new RandomMinesGenerator();
+            var hintsCalculator = new HintCalculator();
+            minesGenerator.PlaceMines(0, board);
+            hintsCalculator.SetHints(board);
+            Assert.Equal(expectedString, board.ToString());
+        }
+        
+        [Fact]
+        public void ToStringShould_ReturnExpectedString_WhenThereIs1RevealedMineInASize1Board()
+        {
+            const string expectedHiddenString = ". \n";
+            const string expectedRevealedString = "* \n";
+            var board = Board.CreateEmptyBoard(1);
+            var minesGenerator = new RandomMinesGenerator();
+            var hintsCalculator = new HintCalculator();
+            minesGenerator.PlaceMines(1,board);
+            hintsCalculator.SetHints(board);
+            Assert.Equal(expectedHiddenString, board.ToString());
+            board.RevealAllSquares();
+            Assert.Equal(expectedRevealedString, board.ToString());
+        }
+        
+        [Fact]
+        public void ToStringShould_ReturnExpectedString_WhenThereIs1RevealedTopLeftMineInASize2Board()
+        {
+            var mineGenerator = new MockMinesGenerator();
+            var hintsCalculator = new HintCalculator();
+            const string expectedString = "* 1 \n" + "1 1 \n";
+            var board = Board.CreateEmptyBoard(2);
+            mineGenerator.PlaceMines(1, board);
+            hintsCalculator.SetHints(board);
+            board.RevealAllSquares();
+            Assert.Equal(expectedString, board.ToString());
+        }
 
     }
 }
