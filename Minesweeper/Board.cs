@@ -40,7 +40,6 @@ namespace Minesweeper
         {
             return new Board(size);
         }
-        
 
         //
         // private List<Location> DetermineHintsLocations(List<Location> mineLocations)
@@ -98,7 +97,12 @@ namespace Minesweeper
             var square = Squares.Find(item => item.Location.X == x && item.Location.Y == y);
             return square;
         }
-        
+
+        public List<Square> GetNeighbours(Square square)
+        {
+            return new List<Square>();
+        }
+
         // public bool AllHintsAreRevealed()
         // {
         //     return _hints.All(item => item.IsRevealed);

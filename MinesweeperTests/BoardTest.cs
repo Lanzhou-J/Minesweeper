@@ -35,9 +35,15 @@ namespace MinesweeperTests
             var board = Board.CreateEmptyBoard(2);
             Assert.Equal(2, board.Size);
         }
-        
 
-        //
+        [Fact]
+        public void GetNeighboursShould_ReturnAnEmptyList_WhenBoardSizeIs1()
+        {
+            var board = Board.CreateEmptyBoard(1);
+            var square = board.Squares[0];
+            var neighbours = board.GetNeighbours(square);
+            Assert.Empty(neighbours);
+        }
         // [Fact]
         // public void CreateHintsShould_Return2HintsWithValue2_WhenThereAre2Mines_InASize2Board()
         // {
