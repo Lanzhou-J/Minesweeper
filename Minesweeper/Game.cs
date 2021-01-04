@@ -10,7 +10,7 @@ namespace Minesweeper
         private readonly Player _player;
         private readonly IGenerateMines _minesGenerator;
         private readonly HintCalculator _hintsCalculator;
-        public Board Board { get; set; }
+        public Board Board { get; private set; }
         
         public Game(IInput input, IOutput output, InputParser inputParser, Player player, IGenerateMines minesGenerator)
         {
