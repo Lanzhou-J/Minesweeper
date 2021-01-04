@@ -67,7 +67,7 @@ namespace MinesweeperTests
         }
 
         [Fact]
-        public void GetNeighboursShould_ReturnAListO8Items_WhenBoardSizeIs3_CurrentCellIsInTheMiddle()
+        public void GetNeighboursShould_ReturnAListO8Items_WhenBoardSizeIs3_CurrentSquareIsInTheMiddle()
         {
             var board = Board.CreateEmptyBoard(3);
             var square = board.GetSquare(1, 1);
@@ -76,12 +76,21 @@ namespace MinesweeperTests
         }
         
         [Fact]
-        public void GetNeighboursShould_ReturnAListWithoutInputItem_WhenBoardSizeIs3_CurrentCellIsInTheMiddle()
+        public void GetNeighboursShould_ReturnAListWithoutInputItem_WhenBoardSizeIs3_CurrentSquareIsInTheMiddle()
         {
             var board = Board.CreateEmptyBoard(3);
             var square = board.GetSquare(1, 1);
             var neighbours = board.GetNeighbours(square);
             Assert.DoesNotContain(square, neighbours);
+        }
+
+        [Fact]
+        public void GetNeighboursShould_ReturnAListO3Items_WhenBoardSizeIs3_CurrentSquareIsTopLeft()
+        {
+            var board = Board.CreateEmptyBoard(3);
+            var square = board.GetSquare(0, 0);
+            var neighbours = board.GetNeighbours(square);
+            Assert.Equal(3, neighbours.Count());
         }
 
         [Fact]
