@@ -24,10 +24,10 @@ namespace Minesweeper
 
         public void SetUpBoard()
         {
-            var difficulty = SetDifficultyValue();
-            var size = difficulty;
+            var difficultyValue = SetDifficultyValue();
+            var size = difficultyValue;
             Board = Board.CreateEmptyBoard(size);
-            var numberOfMines = difficulty;
+            var numberOfMines = difficultyValue;
             _minesGenerator.PlaceMines(numberOfMines, Board);
             _hintsCalculator.SetHints(Board);
             DisplayBoard();
@@ -41,8 +41,8 @@ namespace Minesweeper
         private int SetDifficultyValue()
         {
             var difficultyInput = _input.Ask("Difficulty (a number larger than 0):");
-            var difficulty = _inputParser.SetDifficultyLevel(difficultyInput);
-            return difficulty;
+            var difficultyValue = _inputParser.SetDifficultyLevel(difficultyInput);
+            return difficultyValue;
         }
 
         public void Play()
@@ -58,13 +58,13 @@ namespace Minesweeper
                 {
                     Board.RevealAllSquares();
                     _player.State = PlayerState.Loser;
-                    _output.Write("You are " + _player.ToString());
+                    _output.Write("You are " + _player);
                 }
                 else if (Board.AllHintsAreRevealed())
                 {
                     Board.RevealAllSquares();
                     _player.State = PlayerState.Winner;
-                    _output.Write("You are " + _player.ToString());
+                    _output.Write("You are " + _player);
                 }
                 DisplayBoard();
             }
@@ -72,7 +72,7 @@ namespace Minesweeper
 
         private bool BoardIsNotRevealed()
         {
-            return Board.IsRevealed != true;
+            return !Board.IsRevealed;
         }
 
     }

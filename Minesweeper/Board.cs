@@ -93,21 +93,26 @@ namespace Minesweeper
             var squareX = square.Location.X;
             var squareY = square.Location.Y;
             var neighbours = new List<Square>();
+            AddExistingNeighboursWithinThreeByThreeAreaToList(squareX, squareY, neighbours);
+            return neighbours;
+        }
+
+        private void AddExistingNeighboursWithinThreeByThreeAreaToList(int squareX, int squareY, List<Square> neighbours)
+        {
             for (var i = -1; i <= 1; i++)
             {
                 for (var j = -1; j <= 1; j++)
                 {
-                    if (i==0 && j==0) continue;
+                    if (i == 0 && j == 0) continue;
                     var xValue = squareX + i;
                     var yValue = squareY + j;
                     var neighbour = GetSquare(xValue, yValue);
                     if (neighbour != null)
                     {
-                        neighbours.Add(neighbour); 
+                        neighbours.Add(neighbour);
                     }
                 }
             }
-            return neighbours;
         }
 
         public Square GetSquare(int locationX, int locationY)
