@@ -54,12 +54,16 @@ namespace Minesweeper
         
         public void RevealOneSquare(Location location)
         {
-            var xValue = location.X;
-            var yValue = location.Y;
-            var square = GetSquare(xValue, yValue);
+            var square = GetSquare(location);
             square.IsRevealed = true;
         }
-        
+
+        private Square GetSquare(Location location)
+        {
+            var square = Squares.Find(item => item.Location.Equals(location));
+            return square;
+        }
+
         public override string ToString()
         {
             var message = "";
