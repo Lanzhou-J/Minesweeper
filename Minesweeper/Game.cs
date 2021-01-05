@@ -58,13 +58,13 @@ namespace Minesweeper
                 {
                     Board.RevealAllSquares();
                     _player.State = PlayerState.Loser;
-                    _output.Write("You are " + _player.ToString());
+                    _output.Write("You are " + _player);
                 }
                 else if (Board.AllHintsAreRevealed())
                 {
                     Board.RevealAllSquares();
                     _player.State = PlayerState.Winner;
-                    _output.Write("You are " + _player.ToString());
+                    _output.Write("You are " + _player);
                 }
                 DisplayBoard();
             }

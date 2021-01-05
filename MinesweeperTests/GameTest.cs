@@ -63,6 +63,7 @@ namespace MinesweeperTests
                                            "0 0 0 0 \n";
              
              Assert.Equal(expectedResult, result);
+             Assert.Equal("Loser",player.ToString());
          }
      }
 }
