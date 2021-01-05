@@ -20,7 +20,7 @@ namespace Minesweeper
             IsMine = true;
         }
 
-        public void IncrementHint()
+        public void IncrementHintValueByOne()
         {
             Hint += 1;
         }
