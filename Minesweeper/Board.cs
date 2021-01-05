@@ -56,7 +56,7 @@ namespace Minesweeper
         {
             var xValue = location.X;
             var yValue = location.Y;
-            var square = FindSquareUsingLocationValue(xValue, yValue);
+            var square = GetSquare(xValue, yValue);
             square.IsRevealed = true;
         }
         
@@ -67,7 +67,7 @@ namespace Minesweeper
             {
                 for (int j = 0; j < Size; j++)
                 {
-                    message += FindSquareUsingLocationValue(i,j).ToString();
+                    message += GetSquare(i,j).ToString();
                     message += " ";
                 }
         
@@ -75,12 +75,6 @@ namespace Minesweeper
             }
         
             return message;
-        }
-        
-        private Square FindSquareUsingLocationValue(int x, int y)
-        {
-            var square = Squares.Find(item => item.Location.X == x && item.Location.Y == y);
-            return square;
         }
 
         public List<Square> GetNeighbours(Square square)
