@@ -12,3 +12,25 @@
   - When the player loses, the entire revealed board is displayed
 - If the chosen square is not a mine, that square is revealed with the number of mines that surround it, these number are the hints
 - If all of the squares are revealed except mines, the player wins
+### Game Flow Example
+```
+Please input Difficulty Value (an integer larger than 0):
+2
+Current Board:
+. . 
+. . 
+
+Please input a coordinate to reveal one square on the board (e.g. 0,0):
+0,0
+Current Board:
+2 . 
+. . 
+
+Please input a coordinate to reveal one square on the board (e.g. 0,0):
+0,1
+You are Winner
+Current Board:
+2 2 
+* * 
+
+```

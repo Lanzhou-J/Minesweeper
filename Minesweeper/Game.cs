@@ -30,6 +30,7 @@ namespace Minesweeper
             var numberOfMines = difficultyValue;
             _minesGenerator.PlaceMines(numberOfMines, Board);
             _hintsCalculator.SetHints(Board);
+            _output.Write("Current Board:");
             DisplayBoard();
         }
         
@@ -40,7 +41,7 @@ namespace Minesweeper
         
         private int SetDifficultyValue()
         {
-            var difficultyInput = _input.Ask("Difficulty (a number larger than 0):");
+            var difficultyInput = _input.Ask("Please input Difficulty Value (an integer larger than 0):");
             var difficultyValue = _inputParser.SetDifficultyLevel(difficultyInput);
             return difficultyValue;
         }
@@ -49,7 +50,7 @@ namespace Minesweeper
         {
             while (BoardIsNotRevealed())
             {
-                var locationInput = _input.Ask("Please input a coordinate (e.g. 0,0):");
+                var locationInput = _input.Ask("Please input a coordinate to reveal one square on the board (e.g. 0,0):");
                 var newLocation = _inputParser.CreateLocationBasedOnInput(locationInput);
         
                 Board.RevealOneSquare(newLocation);
@@ -66,6 +67,8 @@ namespace Minesweeper
                     _player.State = PlayerState.Winner;
                     _output.Write("You are " + _player);
                 }
+
+                _output.Write("Current Board:");
                 DisplayBoard();
             }
         }
