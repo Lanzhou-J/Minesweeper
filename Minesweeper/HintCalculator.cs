@@ -12,7 +12,7 @@ namespace Minesweeper
             var mines = GetMines(board);
             foreach (var item in mines)
             {
-                IncrementAllNeighboursHintValue(board, item);
+                IncrementAllNeighboursHintValueByOne(board, item);
             }
         }
 
@@ -21,7 +21,7 @@ namespace Minesweeper
             return board.Squares.Where(item => item.IsMine);
         }
 
-        private static void IncrementAllNeighboursHintValue(Board board, Square item)
+        private static void IncrementAllNeighboursHintValueByOne(Board board, Square item)
         {
             var neighbours = board.GetNeighbours(item);
             foreach (var neighbour in neighbours)
