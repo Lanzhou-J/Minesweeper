@@ -59,14 +59,14 @@ namespace Minesweeper
                 {
                     _output.Write(GameInstruction.GameOverMessage());
                     Board.RevealAllSquares();
-                    _player.State = PlayerState.Lose;
+                    _player.SetStateToLose();
                     _output.Write(GameInstruction.PlayerStateMessage() + _player);
                 }
                 else if (Board.AllHintsAreRevealed())
                 {
                     _output.Write(GameInstruction.GameOverMessage());
                     Board.RevealAllSquares();
-                    _player.State = PlayerState.Win;
+                    _player.SetStateToWin();
                     _output.Write(GameInstruction.PlayerStateMessage() + _player);
                 }
 
