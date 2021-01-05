@@ -38,6 +38,7 @@ namespace MinesweeperTests
              const string expectedResult = "* * \n" +
                                            "2 2 \n";
              Assert.Equal(expectedResult, result);
+             Assert.Equal(GameState.Win, game.State);
          }
          
          [Fact]
@@ -59,6 +60,7 @@ namespace MinesweeperTests
                                            "0 0 0 0 \n";
              
              Assert.Equal(expectedResult, result);
+             Assert.Equal(GameState.Lose, game.State);
          }
      }
 }

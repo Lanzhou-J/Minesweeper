@@ -9,7 +9,7 @@ namespace Minesweeper
         private readonly InputParser _inputParser;
         private readonly IGenerateMines _minesGenerator;
         private readonly HintCalculator _hintsCalculator;
-        private GameState _state;
+        public GameState State { get; private set; }
         public Board Board { get; private set; }
         
         public Game(IInput input, IOutput output, InputParser inputParser, IGenerateMines minesGenerator, HintCalculator hintsCalculator)
@@ -19,7 +19,7 @@ namespace Minesweeper
             _inputParser = inputParser;
             _minesGenerator = minesGenerator;
             _hintsCalculator = hintsCalculator;
-            _state = GameState.Unknown;
+            State = GameState.Unknown;
         }
 
         public void SetUpBoard()
@@ -59,15 +59,15 @@ namespace Minesweeper
                 {
                     _output.Write(GameInstruction.GameOverMessage());
                     Board.RevealAllSquares();
-                    _state = GameState.Lose;
-                    _output.Write(GameInstruction.ResultMessage() + _state);
+                    State = GameState.Lose;
+                    _output.Write(GameInstruction.ResultMessage() + State);
                 }
                 else if (Rule.IsWinningCondition(Board))
                 {
                     _output.Write(GameInstruction.GameOverMessage());
                     Board.RevealAllSquares();
-                    _state = GameState.Win;
-                    _output.Write(GameInstruction.ResultMessage() + _state);
+                    State = GameState.Win;
+                    _output.Write(GameInstruction.ResultMessage() + State);
                 }
 
                 _output.Write(GameInstruction.DisplayCurrentBoardMessage());

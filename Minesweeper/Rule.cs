@@ -4,14 +4,14 @@ namespace Minesweeper
 {
     public static class Rule
     {
-        public static bool IsWinningCondition(Board board)
+        public static bool IsWinningCondition(Board currentBoard)
         {
-            return AllHintsAreRevealed(board);
+            return AllHintsAreRevealed(currentBoard);
         }
         
-        public static bool IsLosingCondition(Board board)
+        public static bool IsLosingCondition(Board currentBoard)
         {
-            return OneMineIsRevealed(board);
+            return OneMineIsRevealed(currentBoard);
         }
 
         private static bool OneMineIsRevealed(Board board)
