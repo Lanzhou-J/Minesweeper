@@ -7,10 +7,10 @@
            var input = new ConsoleInput();
            var output = new ConsoleOutput();
            var inputParser = new InputParser();
-           var player = new Player();
+           // var player = new Player();
            var minesGenerator = new RandomMinesGenerator();
            var hintsCalculator = new HintCalculator();
-           var game = new Game(input, output, inputParser, player, minesGenerator, hintsCalculator);
+           var game = new Game(input, output, inputParser, minesGenerator, hintsCalculator);
            
            game.SetUpBoard();
            game.Play();

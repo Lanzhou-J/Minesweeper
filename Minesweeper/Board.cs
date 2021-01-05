@@ -115,18 +115,6 @@ namespace Minesweeper
             var square = Squares.Find(item => item.Location.X == locationX && item.Location.Y == locationY);
             return square;
         }
-        
-        public bool OneMineIsRevealed()
-        {
-            var mines = Squares.FindAll(item => item.IsMine);
-            return mines.Any(item => item.IsRevealed);
-        }
-        
-        public bool AllHintsAreRevealed()
-        {
-            var hints = Squares.FindAll(item => !item.IsMine);
-            return hints.All(item => item.IsRevealed);
-        }
 
     }
 }

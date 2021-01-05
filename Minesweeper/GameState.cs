@@ -1,9 +1,9 @@
 namespace Minesweeper
 {
-    public enum PlayerState
+    public enum GameState
     {
         Unknown,
-        Win,
-        Lose
+        Lose,
+        Win
     }
 }

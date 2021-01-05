@@ -7,19 +7,19 @@ namespace Minesweeper
         private readonly IInput _input;
         private readonly IOutput _output;
         private readonly InputParser _inputParser;
-        private readonly Player _player;
         private readonly IGenerateMines _minesGenerator;
         private readonly HintCalculator _hintsCalculator;
+        private GameState _state;
         public Board Board { get; private set; }
         
-        public Game(IInput input, IOutput output, InputParser inputParser, Player player, IGenerateMines minesGenerator, HintCalculator hintsCalculator)
+        public Game(IInput input, IOutput output, InputParser inputParser, IGenerateMines minesGenerator, HintCalculator hintsCalculator)
         {
             _input = input;
             _output = output;
             _inputParser = inputParser;
-            _player = player;
             _minesGenerator = minesGenerator;
             _hintsCalculator = hintsCalculator;
+            _state = GameState.Unknown;
         }
 
         public void SetUpBoard()
@@ -55,19 +55,19 @@ namespace Minesweeper
         
                 Board.RevealOneSquare(newLocation);
         
-                if (Board.OneMineIsRevealed())
+                if (Rule.IsLosingCondition(Board))
                 {
                     _output.Write(GameInstruction.GameOverMessage());
                     Board.RevealAllSquares();
-                    _player.SetStateToLose();
-                    _output.Write(GameInstruction.PlayerStateMessage() + _player);
+                    _state = GameState.Lose;
+                    _output.Write(GameInstruction.ResultMessage() + _state);
                 }
-                else if (Board.AllHintsAreRevealed())
+                else if (Rule.IsWinningCondition(Board))
                 {
                     _output.Write(GameInstruction.GameOverMessage());
                     Board.RevealAllSquares();
-                    _player.SetStateToWin();
-                    _output.Write(GameInstruction.PlayerStateMessage() + _player);
+                    _state = GameState.Win;
+                    _output.Write(GameInstruction.ResultMessage() + _state);
                 }
 
                 _output.Write(GameInstruction.DisplayCurrentBoardMessage());
