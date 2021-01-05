@@ -35,5 +35,5 @@ Current Board:
 * * 
 
 ```
-
+### Class Diagram
 ![alt text](docs/Minesweeper-Final.png)
