@@ -11,11 +11,21 @@ namespace Minesweeper
         
         public void PlaceMines(int number, Board board)
         {
-            var selectedSquares = board.Squares.OrderBy(x => _random.Next()).Take(number);
+            var selectedSquares = RandomlySelectSquares(number, board);
+            PlaceMineOnEachOfTheSelectedSquares(selectedSquares);
+        }
+
+        private static void PlaceMineOnEachOfTheSelectedSquares(IEnumerable<Square> selectedSquares)
+        {
             foreach (var item in selectedSquares)
             {
                 item.SetMine();
             }
+        }
+
+        private IEnumerable<Square> RandomlySelectSquares(int number, Board board)
+        {
+            return board.Squares.OrderBy(x => _random.Next()).Take(number);
         }
     }
 }
