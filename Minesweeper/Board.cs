@@ -7,11 +7,12 @@ namespace Minesweeper
     {
         public int Size { get; private set; }
         public List<Square> Squares { get; private set; }
-        public bool IsRevealed { get; private set; } = false;
+        public bool IsRevealed { get; private set; }
         private Board(int size)
         {
             Size = size;
             Squares = CreateSquares();
+            IsRevealed = false;
         }
 
         private List<Square> CreateSquares()
@@ -57,12 +58,6 @@ namespace Minesweeper
             var yValue = location.Y;
             var square = FindSquareUsingLocationValue(xValue, yValue);
             square.IsRevealed = true;
-        }
-        
-        public bool OneMineIsRevealed()
-        {
-            var mines = Squares.FindAll(item => item.IsMine);
-            return mines.Any(item => item.IsRevealed);
         }
         
         public override string ToString()
@@ -120,7 +115,13 @@ namespace Minesweeper
             var square = Squares.Find(item => item.Location.X == locationX && item.Location.Y == locationY);
             return square;
         }
-
+        
+        public bool OneMineIsRevealed()
+        {
+            var mines = Squares.FindAll(item => item.IsMine);
+            return mines.Any(item => item.IsRevealed);
+        }
+        
         public bool AllHintsAreRevealed()
         {
             var hints = Squares.FindAll(item => !item.IsMine);

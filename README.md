@@ -28,9 +28,16 @@ Current Board:
 
 Please input a coordinate to reveal one square on the board (e.g. 0,0):
 0,1
-You are Winner
+Game Over!
+Result: Win
 Current Board:
 2 2 
 * * 
 
 ```
+### Class Diagram
+(click to enlarge image)
+![alt text](docs/Minesweeper-Final.png)
+
+### Flowchart
+![alt text](docs/Minesweeper-Page-12.png)
