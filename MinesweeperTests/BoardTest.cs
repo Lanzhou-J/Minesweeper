@@ -74,19 +74,31 @@ namespace MinesweeperTests
         }
         
         [Fact]
-        public void GetNeighboursShould_ReturnAListWithoutInputItem_WhenBoardSizeIs3_CurrentSquareIsInTheMiddle()
+        public void GetNeighboursShould_ReturnAListWithoutTheInputItem_WhenBoardSizeIs3_CurrentSquareIsInTheMiddle()
         {
             var board = Board.CreateEmptyBoard(3);
-            var square = board.GetSquare(1, 1);
+            var centerLocation = new Location(1,1);
+            var square = board.GetSquare(centerLocation);
             var neighbours = board.GetNeighbours(square);
             Assert.DoesNotContain(square, neighbours);
         }
-
+        
         [Fact]
-        public void GetNeighboursShould_ReturnAListO3Items_WhenBoardSizeIs3_CurrentSquareIsTopLeft()
+        public void GetNeighboursShould_ReturnAListO5Items_WhenBoardSizeIs3_CurrentSquareIsOnTheEdge()
         {
             var board = Board.CreateEmptyBoard(3);
-            var square = board.GetSquare(0, 0);
+            var edgeLocation = new Location(1,0);
+            var square = board.GetSquare(edgeLocation);
+            var neighbours = board.GetNeighbours(square);
+            Assert.Equal(5, neighbours.Count());
+        }
+
+        [Fact]
+        public void GetNeighboursShould_ReturnAListO3Items_WhenBoardSizeIs3_CurrentSquareIsOnTheCorner()
+        {
+            var board = Board.CreateEmptyBoard(3);
+            var cornerLocation = new Location(0,0);
+            var square = board.GetSquare(cornerLocation);
             var neighbours = board.GetNeighbours(square);
             Assert.Equal(3, neighbours.Count());
         }

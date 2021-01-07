@@ -58,7 +58,7 @@ namespace Minesweeper
             square.IsRevealed = true;
         }
 
-        private Square GetSquare(Location location)
+        public Square GetSquare(Location location)
         {
             var square = Squares.Find(item => item.Location.Equals(location));
             return square;
