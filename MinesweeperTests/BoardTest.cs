@@ -68,7 +68,8 @@ namespace MinesweeperTests
         public void GetNeighboursShould_ReturnAListO8Items_WhenBoardSizeIs3_CurrentSquareIsInTheMiddle()
         {
             var board = Board.CreateEmptyBoard(3);
-            var square = board.GetSquare(1, 1);
+            var centerLocation = new Location(1,1);
+            var square = board.GetSquare(centerLocation);
             var neighbours = board.GetNeighbours(square);
             Assert.Equal(8, neighbours.Count());
         }
@@ -107,7 +108,8 @@ namespace MinesweeperTests
         public void GetSquareShould_ReturnSquareWithCorrectLocation()
         {
             var board = Board.CreateEmptyBoard(3);
-            var square = board.GetSquare(0, 0);
+            var location = new Location(0, 0); 
+            var square = board.GetSquare(location);
             var locationX = square.Location.X;
             var locationY = square.Location.Y;
             Assert.Equal(0, locationX);

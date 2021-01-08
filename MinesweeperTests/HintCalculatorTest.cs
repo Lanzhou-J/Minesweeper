@@ -70,7 +70,8 @@ namespace MinesweeperTests
         public void SetHintsShould_Set8HintsWithValue1_WhenThereIs1Mine_InTheMiddleOfASize3Board()
         {
             var board = Board.CreateEmptyBoard(3);
-            var square = board.GetSquare(1, 1);
+            var centerLocation = new Location(1,1);
+            var square = board.GetSquare(centerLocation);
             square.SetMine();
             
             var hintsCalculator = new HintGenerator();
@@ -84,7 +85,8 @@ namespace MinesweeperTests
         public void SetHintsShould_Set3HintsWithValue1_WhenThereIs1Mine_InTheTopLeftCornerOfASize3Board()
         {
             var board = Board.CreateEmptyBoard(3);
-            var square = board.GetSquare(0, 0);
+            var topLeft = new Location(0,0);
+            var square = board.GetSquare(topLeft);
             square.SetMine();
             
             var hintsCalculator = new HintGenerator();
@@ -100,9 +102,11 @@ namespace MinesweeperTests
         public void SetHintsShould_Set2HintsWithValue2_WhenThereAre2Mines_InTheTopLineOfASize2Board()
         {
             var board = Board.CreateEmptyBoard(2);
-            var topLeftSquare = board.GetSquare(0, 0);
+            var topLeft = new Location(0,0);
+            var topLeftSquare = board.GetSquare(topLeft);
             topLeftSquare.SetMine();
-            var topRightSquare = board.GetSquare(0, 1);
+            var topRight = new Location(0,1);
+            var topRightSquare = board.GetSquare(topRight);
             topRightSquare.SetMine();
 
             var hintsCalculator = new HintGenerator();

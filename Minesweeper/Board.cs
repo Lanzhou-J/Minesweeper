@@ -71,7 +71,8 @@ namespace Minesweeper
             {
                 for (int j = 0; j < Size; j++)
                 {
-                    message += GetSquare(i,j).ToString();
+                    var location = new Location(i, j);
+                    message += GetSquare(location).ToString();
                     message += " ";
                 }
         
@@ -99,7 +100,8 @@ namespace Minesweeper
                     if (i == 0 && j == 0) continue;
                     var xValue = squareX + i;
                     var yValue = squareY + j;
-                    var neighbour = GetSquare(xValue, yValue);
+                    var location = new Location(xValue, yValue);
+                    var neighbour = GetSquare(location);
                     if (neighbour != null)
                     {
                         neighbours.Add(neighbour);
@@ -108,11 +110,11 @@ namespace Minesweeper
             }
         }
 
-        public Square GetSquare(int locationX, int locationY)
-        {
-            var square = Squares.Find(item => item.Location.X == locationX && item.Location.Y == locationY);
-            return square;
-        }
+        // public Square GetSquare(int locationX, int locationY)
+        // {
+        //     var square = Squares.Find(item => item.Location.X == locationX && item.Location.Y == locationY);
+        //     return square;
+        // }
 
     }
 }
