@@ -26,7 +26,6 @@ namespace Minesweeper
             var neighbours = board.GetNeighbours(item);
             foreach (var neighbour in neighbours)
             {
-                // neighbour.IncrementHintValueByOne();
                 neighbour.Hint += 1;
             }
         }

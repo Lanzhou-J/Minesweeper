@@ -27,11 +27,6 @@ namespace Minesweeper
             IsMine = true;
         }
 
-        // public void IncrementHintValueByOne()
-        // {
-        //     Hint += 1;
-        // }
-        
         public override string ToString()
         {
             if (!IsRevealed) return ".";

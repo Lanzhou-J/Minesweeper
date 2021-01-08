@@ -110,11 +110,5 @@ namespace Minesweeper
             }
         }
 
-        // public Square GetSquare(int locationX, int locationY)
-        // {
-        //     var square = Squares.Find(item => item.Location.X == locationX && item.Location.Y == locationY);
-        //     return square;
-        // }
-
     }
 }
