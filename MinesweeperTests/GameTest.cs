@@ -13,9 +13,9 @@ namespace MinesweeperTests
              var output = new MockOutput();
              var inputParser = new InputParser();
              var minesGenerator = new MockMinesGenerator();
-             var hintsCalculator = new HintCalculator();
+             var hintsCalculator = new HintGenerator();
              var game = new Game(input, output, inputParser, minesGenerator, hintsCalculator);
-             game.SetUpBoard();
+             game.CreateBoard();
              var result = game.Board.ToString();
              const string expectedResult = ". . . . \n" + ". . . . \n" + ". . . . \n" + ". . . . \n";
              
@@ -23,16 +23,16 @@ namespace MinesweeperTests
          }        
          
          [Fact]
-         public void GameShould_RevealEntireBoardAndPlayerWins_WhenInputLocationMatchesAllHintLocations()
+         public void GameShould_RevealEntireBoardAndWinTheGame_WhenInputLocationMatchesAllHintLocations()
          {
              const string difficultyLevelInput = "2";
              var input = new MockInput(new[]{difficultyLevelInput, "1,0", "1,1"});
              var output = new MockOutput();
              var inputParser = new InputParser();
              var minesGenerator = new MockMinesGenerator();
-             var hintsCalculator = new HintCalculator();
+             var hintsCalculator = new HintGenerator();
              var game = new Game(input, output, inputParser, minesGenerator, hintsCalculator);
-             game.SetUpBoard();
+             game.CreateBoard();
              game.Play();
              var result = game.Board.ToString();
              const string expectedResult = "* * \n" +
@@ -42,16 +42,16 @@ namespace MinesweeperTests
          }
          
          [Fact]
-         public void GameShould_RevealEntireBoard_WhenInputLocationMatchesMineLocation()
+         public void GameShould_RevealEntireBoardAndLoseTheGame_WhenInputLocationMatchesMineLocation()
          {
              const string difficultyLevelInput = "4";
              var input = new MockInput(new[]{difficultyLevelInput, "0,0"});
              var output = new MockOutput();
              var inputParser = new InputParser();
              var minesGenerator = new MockMinesGenerator();
-             var hintsCalculator = new HintCalculator();
+             var hintsCalculator = new HintGenerator();
              var game = new Game(input, output, inputParser, minesGenerator, hintsCalculator);
-             game.SetUpBoard();
+             game.CreateBoard();
              game.Play();
              var result = game.Board.ToString();
              const string expectedResult = "* * * * \n" +

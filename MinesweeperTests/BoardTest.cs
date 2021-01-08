@@ -135,7 +135,7 @@ namespace MinesweeperTests
             const string expectedString = ". \n";
             var board = Board.CreateEmptyBoard(1);
             var minesGenerator = new RandomMinesGenerator();
-            var hintsCalculator = new HintCalculator();
+            var hintsCalculator = new HintGenerator();
             minesGenerator.PlaceMines(0, board);
             hintsCalculator.SetHints(board);
             Assert.Equal(expectedString, board.ToString());
@@ -147,7 +147,7 @@ namespace MinesweeperTests
             var expectedString = ". . \n" + ". . \n";
             var board = Board.CreateEmptyBoard(2);
             var minesGenerator = new RandomMinesGenerator();
-            var hintsCalculator = new HintCalculator();
+            var hintsCalculator = new HintGenerator();
             minesGenerator.PlaceMines(0, board);
             hintsCalculator.SetHints(board);
             Assert.Equal(expectedString, board.ToString());
@@ -160,7 +160,7 @@ namespace MinesweeperTests
             const string expectedRevealedString = "* \n";
             var board = Board.CreateEmptyBoard(1);
             var minesGenerator = new RandomMinesGenerator();
-            var hintsCalculator = new HintCalculator();
+            var hintsCalculator = new HintGenerator();
             minesGenerator.PlaceMines(1,board);
             hintsCalculator.SetHints(board);
             Assert.Equal(expectedHiddenString, board.ToString());
@@ -172,7 +172,7 @@ namespace MinesweeperTests
         public void ToStringShould_ReturnExpectedString_WhenThereIs1RevealedTopLeftMineInASize2Board()
         {
             var mineGenerator = new MockMinesGenerator();
-            var hintsCalculator = new HintCalculator();
+            var hintsCalculator = new HintGenerator();
             const string expectedString = "* 1 \n" + "1 1 \n";
             var board = Board.CreateEmptyBoard(2);
             mineGenerator.PlaceMines(1, board);

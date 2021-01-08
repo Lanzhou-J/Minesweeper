@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Minesweeper
 {
-    public class HintCalculator
+    public class HintGenerator
     {
         public void SetHints(Board board)
         {
@@ -26,7 +26,8 @@ namespace Minesweeper
             var neighbours = board.GetNeighbours(item);
             foreach (var neighbour in neighbours)
             {
-                neighbour.IncrementHintValueByOne();
+                // neighbour.IncrementHintValueByOne();
+                neighbour.Hint += 1;
             }
         }
 

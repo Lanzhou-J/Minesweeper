@@ -10,7 +10,7 @@ namespace MinesweeperTests
         public void SetHintsShould_setHintTo0_WhenThereIsOnly1MineSquare()
         {
             var mineGenerator = new RandomMinesGenerator();
-            var hintsCalculator = new HintCalculator();
+            var hintsCalculator = new HintGenerator();
             var board = Board.CreateEmptyBoard(1);
             mineGenerator.PlaceMines(1, board);
 
@@ -26,7 +26,7 @@ namespace MinesweeperTests
         public void SetHintsShould_setHintTo0_WhenThereIs1Square()
         {
             var mineGenerator = new RandomMinesGenerator();
-            var hintsCalculator = new HintCalculator();
+            var hintsCalculator = new HintGenerator();
             var board = Board.CreateEmptyBoard(1);
             mineGenerator.PlaceMines(0, board);
         
@@ -41,7 +41,7 @@ namespace MinesweeperTests
         public void SetHintsShould_setHintsTo0_WhenThereIsNoMine_InASize2Board()
         {
             var mineGenerator = new RandomMinesGenerator();
-            var hintsCalculator = new HintCalculator();
+            var hintsCalculator = new HintGenerator();
             var board = Board.CreateEmptyBoard(2);
             mineGenerator.PlaceMines(0, board);
             hintsCalculator.SetHints(board);
@@ -57,7 +57,7 @@ namespace MinesweeperTests
         {
             var board = Board.CreateEmptyBoard(2);
             var mineGenerator = new RandomMinesGenerator();
-            var hintsCalculator = new HintCalculator();
+            var hintsCalculator = new HintGenerator();
             mineGenerator.PlaceMines(1, board);
         
             hintsCalculator.SetHints(board);
@@ -73,7 +73,7 @@ namespace MinesweeperTests
             var square = board.GetSquare(1, 1);
             square.SetMine();
             
-            var hintsCalculator = new HintCalculator();
+            var hintsCalculator = new HintGenerator();
             hintsCalculator.SetHints(board);
 
             var squaresWithHintValueOne = board.Squares.Where(item => item.Hint == 1);
@@ -87,7 +87,7 @@ namespace MinesweeperTests
             var square = board.GetSquare(0, 0);
             square.SetMine();
             
-            var hintsCalculator = new HintCalculator();
+            var hintsCalculator = new HintGenerator();
             hintsCalculator.SetHints(board);
 
             var squaresWithHintValueOne = board.Squares.Where(item => item.Hint == 1);
@@ -105,7 +105,7 @@ namespace MinesweeperTests
             var topRightSquare = board.GetSquare(0, 1);
             topRightSquare.SetMine();
 
-            var hintsCalculator = new HintCalculator();
+            var hintsCalculator = new HintGenerator();
             hintsCalculator.SetHints(board);
 
             var squaresWithHintValueTwo = board.Squares.Where(item => item.Hint == 2);
