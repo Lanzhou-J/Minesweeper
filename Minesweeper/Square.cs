@@ -7,7 +7,7 @@ namespace Minesweeper
 
         public bool IsRevealed { get; set; }
 
-        public int Hint { get; private set; }
+        public int Hint { get; set; }
         public Location Location { get;}
         public Square(Location location)
         {
@@ -27,11 +27,6 @@ namespace Minesweeper
             IsMine = true;
         }
 
-        public void IncrementHintValueByOne()
-        {
-            Hint += 1;
-        }
-        
         public override string ToString()
         {
             if (!IsRevealed) return ".";

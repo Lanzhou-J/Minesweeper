@@ -17,7 +17,7 @@ namespace Minesweeper
             return "Please input a coordinate to reveal one square on the board (e.g. 0,0):";
         }
         
-        public static string PlayerStateMessage()
+        public static string ResultMessage()
         {
             return "Result: ";
         }

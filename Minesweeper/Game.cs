@@ -7,29 +7,29 @@ namespace Minesweeper
         private readonly IInput _input;
         private readonly IOutput _output;
         private readonly InputParser _inputParser;
-        private readonly Player _player;
         private readonly IGenerateMines _minesGenerator;
-        private readonly HintCalculator _hintsCalculator;
+        private readonly HintGenerator _hintsGenerator;
+        public GameState State { get; private set; }
         public Board Board { get; private set; }
         
-        public Game(IInput input, IOutput output, InputParser inputParser, Player player, IGenerateMines minesGenerator, HintCalculator hintsCalculator)
+        public Game(IInput input, IOutput output, InputParser inputParser, IGenerateMines minesGenerator, HintGenerator hintsGenerator)
         {
             _input = input;
             _output = output;
             _inputParser = inputParser;
-            _player = player;
             _minesGenerator = minesGenerator;
-            _hintsCalculator = hintsCalculator;
+            _hintsGenerator = hintsGenerator;
+            State = GameState.Unknown;
         }
 
-        public void SetUpBoard()
+        public void CreateBoard()
         {
             var difficultyValue = SetDifficultyValue();
             var size = difficultyValue;
             Board = Board.CreateEmptyBoard(size);
             var numberOfMines = difficultyValue;
             _minesGenerator.PlaceMines(numberOfMines, Board);
-            _hintsCalculator.SetHints(Board);
+            _hintsGenerator.SetHints(Board);
             _output.Write(GameInstruction.DisplayCurrentBoardMessage());
             DisplayBoard();
         }
@@ -55,19 +55,19 @@ namespace Minesweeper
         
                 Board.RevealOneSquare(newLocation);
         
-                if (Board.OneMineIsRevealed())
+                if (Rule.IsLosingCondition(Board))
                 {
                     _output.Write(GameInstruction.GameOverMessage());
                     Board.RevealAllSquares();
-                    _player.SetStateToLose();
-                    _output.Write(GameInstruction.PlayerStateMessage() + _player);
+                    State = GameState.Lose;
+                    _output.Write(GameInstruction.ResultMessage() + State);
                 }
-                else if (Board.AllHintsAreRevealed())
+                else if (Rule.IsWinningCondition(Board))
                 {
                     _output.Write(GameInstruction.GameOverMessage());
                     Board.RevealAllSquares();
-                    _player.SetStateToWin();
-                    _output.Write(GameInstruction.PlayerStateMessage() + _player);
+                    State = GameState.Win;
+                    _output.Write(GameInstruction.ResultMessage() + State);
                 }
 
                 _output.Write(GameInstruction.DisplayCurrentBoardMessage());
