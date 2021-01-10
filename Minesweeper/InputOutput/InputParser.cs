@@ -30,10 +30,6 @@ namespace Minesweeper
        {
            return input.IndexOf(delimiter, StringComparison.Ordinal);
        }
-
-       public int SetDifficultyLevel(string input)
-       {
-           return int.Parse(input);
-       }
+       
     }
 }

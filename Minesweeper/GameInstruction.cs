@@ -26,5 +26,10 @@ namespace Minesweeper
         {
             return "Game Over!";
         }
+        
+        public static string InputNotValidMessage()
+        {
+            return "Input is not valid.";
+        }
     }
 }

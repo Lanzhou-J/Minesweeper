@@ -1,4 +1,6 @@
-﻿namespace Minesweeper
+﻿using System;
+
+namespace Minesweeper
 {
     class Program
     {
@@ -10,9 +12,20 @@
            var minesGenerator = new RandomMinesGenerator();
            var hintsCalculator = new HintGenerator();
            var game = new Game(input, output, inputParser, minesGenerator, hintsCalculator);
+
+           try
+           {
+               game.CreateBoard();
+               game.Play();
+           }
+           catch (Exception ex)
+           {
+               Console.WriteLine();
+               Console.WriteLine($"{ex.Message}");
+               
+               Environment.Exit(0);
+           }
            
-           game.CreateBoard();
-           game.Play();
         }
     }
 }

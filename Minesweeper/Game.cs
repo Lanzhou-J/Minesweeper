@@ -42,8 +42,19 @@ namespace Minesweeper
         private int SetDifficultyValue()
         {
             var difficultyInput = _input.Ask(GameInstruction.InputDifficultyValueMessage());
-            var difficultyValue = _inputParser.SetDifficultyLevel(difficultyInput);
+            while (DifficultyInputIsNotValid(difficultyInput))
+            {
+                _output.Write(GameInstruction.InputNotValidMessage());
+                difficultyInput = _input.Ask(GameInstruction.InputDifficultyValueMessage());
+            }
+            
+            var difficultyValue = int.Parse(difficultyInput);
             return difficultyValue;
+        }
+
+        private static bool DifficultyInputIsNotValid(string difficultyInput)
+        {
+            return !InputValidator.IsValidDifficultyInput(difficultyInput);
         }
 
         public void Play()
@@ -51,6 +62,11 @@ namespace Minesweeper
             while (BoardIsNotRevealed())
             {
                 var locationInput = _input.Ask(GameInstruction.InputLocationValueMessage());
+                while (LocationInputIsNotValid(locationInput))
+                {
+                    _output.Write(GameInstruction.InputNotValidMessage());
+                    locationInput = _input.Ask(GameInstruction.InputLocationValueMessage());
+                }
                 var newLocation = _inputParser.CreateLocationBasedOnInput(locationInput);
         
                 Board.RevealOneSquare(newLocation);
@@ -73,6 +89,11 @@ namespace Minesweeper
                 _output.Write(GameInstruction.DisplayCurrentBoardMessage());
                 DisplayBoard();
             }
+        }
+
+        private static bool LocationInputIsNotValid(string locationInput)
+        {
+            return !InputValidator.IsValidLocationInput(locationInput);
         }
 
         private bool BoardIsNotRevealed()
