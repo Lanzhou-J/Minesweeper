@@ -1,12 +1,11 @@
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Minesweeper
 {
     public class Board
     {
-        public int Size { get; private set; }
-        public List<Square> Squares { get; private set; }
+        public int Size { get; }
+        public List<Square> Squares { get; }
         public bool IsRevealed { get; private set; }
         private Board(int size)
         {
@@ -67,9 +66,9 @@ namespace Minesweeper
         public override string ToString()
         {
             var message = "";
-            for (int i = 0; i < Size; i++)
+            for (var i = 0; i < Size; i++)
             {
-                for (int j = 0; j < Size; j++)
+                for (var j = 0; j < Size; j++)
                 {
                     var location = new Location(i, j);
                     message += GetSquare(location).ToString();
@@ -82,7 +81,7 @@ namespace Minesweeper
             return message;
         }
 
-        public List<Square> GetNeighbours(Square square)
+        public IEnumerable<Square> GetNeighbours(Square square)
         {
             var squareX = square.Location.X;
             var squareY = square.Location.Y;
