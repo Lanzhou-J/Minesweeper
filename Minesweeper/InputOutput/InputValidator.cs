@@ -10,9 +10,10 @@ namespace Minesweeper
             return Regex.IsMatch(input, IntegerLargerThanZero);
         }
 
-        public static bool IsValidLocationInput(string input, int size)
+        public static bool IsValidLocationInput(string input)
         {
-            return true;
+            var locationInputPattern = "^[0-9]*,[0-9]*$";
+            return Regex.IsMatch(input, locationInputPattern);
         }
     }
 }

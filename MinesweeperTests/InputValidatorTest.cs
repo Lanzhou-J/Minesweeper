@@ -35,12 +35,24 @@ namespace MinesweeperTests
             Assert.False(result);
         }
 
-        [Fact]
-        public void IsValidLocationInputShould_ReturnTrue_WhenInputIsInCorrectFormatAndWithinBoardScope()
+        [Theory]
+        [InlineData("0,0")]
+        [InlineData("3,3")]
+        [InlineData("1,1")]
+        public void IsValidLocationInputShould_ReturnTrue_WhenInputIsInCorrectFormatAndWithinBoardScope(string input)
         {
-            var input = "0,0";
-            var result = InputValidator.IsValidLocationInput(input, 4);
+            var result = InputValidator.IsValidLocationInput(input);
             Assert.True(result);
+        }
+        
+        [Theory]
+        [InlineData("0")]
+        [InlineData("5.5")]
+        [InlineData("7&28")]
+        public void IsValidLocationInputShould_ReturnFalse_WhenInputFormatIsWrong(string input)
+        {
+            var result = InputValidator.IsValidLocationInput(input);
+            Assert.False(result);
         }
     }
 }

@@ -62,6 +62,11 @@ namespace Minesweeper
             while (BoardIsNotRevealed())
             {
                 var locationInput = _input.Ask(GameInstruction.InputLocationValueMessage());
+                while (LocationInputIsNotValid(locationInput))
+                {
+                    _output.Write(GameInstruction.InputNotValidMessage());
+                    locationInput = _input.Ask(GameInstruction.InputLocationValueMessage());
+                }
                 var newLocation = _inputParser.CreateLocationBasedOnInput(locationInput);
         
                 Board.RevealOneSquare(newLocation);
@@ -84,6 +89,11 @@ namespace Minesweeper
                 _output.Write(GameInstruction.DisplayCurrentBoardMessage());
                 DisplayBoard();
             }
+        }
+
+        private static bool LocationInputIsNotValid(string locationInput)
+        {
+            return !InputValidator.IsValidLocationInput(locationInput);
         }
 
         private bool BoardIsNotRevealed()
