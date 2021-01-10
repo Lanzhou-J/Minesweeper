@@ -139,7 +139,7 @@ namespace MinesweeperTests
             var minesGenerator = new RandomMinesGenerator();
             var hintsCalculator = new HintGenerator();
             minesGenerator.PlaceMines(0, board);
-            hintsCalculator.SetHints(board);
+            HintGenerator.SetHints(board);
             Assert.Equal(expectedString, board.ToString());
         }
         
@@ -151,7 +151,7 @@ namespace MinesweeperTests
             var minesGenerator = new RandomMinesGenerator();
             var hintsCalculator = new HintGenerator();
             minesGenerator.PlaceMines(0, board);
-            hintsCalculator.SetHints(board);
+            HintGenerator.SetHints(board);
             Assert.Equal(expectedString, board.ToString());
         }
         
@@ -164,7 +164,7 @@ namespace MinesweeperTests
             var minesGenerator = new RandomMinesGenerator();
             var hintsCalculator = new HintGenerator();
             minesGenerator.PlaceMines(1,board);
-            hintsCalculator.SetHints(board);
+            HintGenerator.SetHints(board);
             Assert.Equal(expectedHiddenString, board.ToString());
             board.RevealAllSquares();
             Assert.Equal(expectedRevealedString, board.ToString());
@@ -178,7 +178,7 @@ namespace MinesweeperTests
             const string expectedString = "* 1 \n" + "1 1 \n";
             var board = Board.CreateEmptyBoard(2);
             mineGenerator.PlaceMines(1, board);
-            hintsCalculator.SetHints(board);
+            HintGenerator.SetHints(board);
             board.RevealAllSquares();
             Assert.Equal(expectedString, board.ToString());
         }

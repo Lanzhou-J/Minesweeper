@@ -1,5 +1,3 @@
-using System.Data;
-
 namespace Minesweeper
 {
     public class Game
@@ -29,7 +27,7 @@ namespace Minesweeper
             Board = Board.CreateEmptyBoard(size);
             var numberOfMines = difficultyValue;
             _minesGenerator.PlaceMines(numberOfMines, Board);
-            _hintsGenerator.SetHints(Board);
+            HintGenerator.SetHints(Board);
             _output.Write(GameInstruction.DisplayCurrentBoardMessage);
             DisplayBoard();
         }

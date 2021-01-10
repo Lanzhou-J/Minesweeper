@@ -5,7 +5,7 @@ namespace Minesweeper
 {
     public class HintGenerator
     {
-        public void SetHints(Board board)
+        public static void SetHints(Board board)
         {
             if (BoardSizeIsTooSmall(board)) return;
             if (BoardDoesNotContainAnyMine(board)) return;
