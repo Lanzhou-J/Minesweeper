@@ -42,7 +42,7 @@ namespace Minesweeper
         private int SetDifficultyValue()
         {
             var difficultyInput = _input.Ask(GameInstruction.InputDifficultyValueMessage());
-            var difficultyValue = _inputParser.SetDifficultyLevel(difficultyInput);
+            var difficultyValue = int.Parse(difficultyInput);
             return difficultyValue;
         }
 
