@@ -42,8 +42,19 @@ namespace Minesweeper
         private int SetDifficultyValue()
         {
             var difficultyInput = _input.Ask(GameInstruction.InputDifficultyValueMessage());
+            while (DifficultyInputIsNotValid(difficultyInput))
+            {
+                _output.Write(GameInstruction.InputNotValidMessage());
+                difficultyInput = _input.Ask(GameInstruction.InputDifficultyValueMessage());
+            }
+            
             var difficultyValue = int.Parse(difficultyInput);
             return difficultyValue;
+        }
+
+        private static bool DifficultyInputIsNotValid(string difficultyInput)
+        {
+            return !InputValidator.IsValidDifficultyInput(difficultyInput);
         }
 
         public void Play()
