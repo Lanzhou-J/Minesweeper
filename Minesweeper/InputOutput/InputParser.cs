@@ -4,7 +4,7 @@ namespace Minesweeper
 {
     public class InputParser
     {
-       public Location CreateLocationBasedOnInput(string input)
+       public static Location CreateLocationBasedOnInput(string input)
        {
             const string delimiter = ",";
             var delimiterIndex = GetDelimiterIndex(input, delimiter);

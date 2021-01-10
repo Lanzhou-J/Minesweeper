@@ -12,8 +12,7 @@ namespace MinesweeperTests
         [InlineData(20,20, "20,20")]
         public void CreateLocationBasedOnInputShould_ReturnLocationWithCorrectPropertyValue_BasedOnInput(int xValue, int yValue, string input)
         {
-            var inputParser = new InputParser();
-            var result = inputParser.CreateLocationBasedOnInput(input);
+            var result = InputParser.CreateLocationBasedOnInput(input);
             Assert.Equal(xValue, result.X);
             Assert.Equal(yValue, result.Y);
         }

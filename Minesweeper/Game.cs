@@ -4,19 +4,15 @@ namespace Minesweeper
     {
         private readonly IInput _input;
         private readonly IOutput _output;
-        private readonly InputParser _inputParser;
         private readonly IGenerateMines _minesGenerator;
-        private readonly HintGenerator _hintsGenerator;
         public GameState State { get; private set; }
         public Board Board { get; private set; }
         
-        public Game(IInput input, IOutput output, InputParser inputParser, IGenerateMines minesGenerator, HintGenerator hintsGenerator)
+        public Game(IInput input, IOutput output, IGenerateMines minesGenerator)
         {
             _input = input;
             _output = output;
-            _inputParser = inputParser;
             _minesGenerator = minesGenerator;
-            _hintsGenerator = hintsGenerator;
             State = GameState.Unknown;
         }
 
@@ -104,7 +100,7 @@ namespace Minesweeper
                 locationInput = _input.Ask(GameInstruction.InputLocationValueMessage);
             }
 
-            var newLocation = _inputParser.CreateLocationBasedOnInput(locationInput);
+            var newLocation = InputParser.CreateLocationBasedOnInput(locationInput);
             return newLocation;
         }
 
