@@ -8,10 +8,8 @@ namespace Minesweeper
         {
            var input = new ConsoleInput();
            var output = new ConsoleOutput();
-           var inputParser = new InputParser();
            var minesGenerator = new RandomMinesGenerator();
-           var hintsCalculator = new HintGenerator();
-           var game = new Game(input, output, inputParser, minesGenerator, hintsCalculator);
+           var game = new Game(input, output, minesGenerator);
 
            try
            {

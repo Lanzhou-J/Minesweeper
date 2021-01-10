@@ -137,21 +137,19 @@ namespace MinesweeperTests
             const string expectedString = ". \n";
             var board = Board.CreateEmptyBoard(1);
             var minesGenerator = new RandomMinesGenerator();
-            var hintsCalculator = new HintGenerator();
             minesGenerator.PlaceMines(0, board);
-            hintsCalculator.SetHints(board);
+            HintGenerator.SetHints(board);
             Assert.Equal(expectedString, board.ToString());
         }
         
         [Fact]
         public void ToStringShould_ReturnExpectedString_WhenThereIsNoMinesInASize2Board()
         {
-            var expectedString = ". . \n" + ". . \n";
+            const string expectedString = ". . \n" + ". . \n";
             var board = Board.CreateEmptyBoard(2);
             var minesGenerator = new RandomMinesGenerator();
-            var hintsCalculator = new HintGenerator();
             minesGenerator.PlaceMines(0, board);
-            hintsCalculator.SetHints(board);
+            HintGenerator.SetHints(board);
             Assert.Equal(expectedString, board.ToString());
         }
         
@@ -162,9 +160,8 @@ namespace MinesweeperTests
             const string expectedRevealedString = "* \n";
             var board = Board.CreateEmptyBoard(1);
             var minesGenerator = new RandomMinesGenerator();
-            var hintsCalculator = new HintGenerator();
             minesGenerator.PlaceMines(1,board);
-            hintsCalculator.SetHints(board);
+            HintGenerator.SetHints(board);
             Assert.Equal(expectedHiddenString, board.ToString());
             board.RevealAllSquares();
             Assert.Equal(expectedRevealedString, board.ToString());
@@ -174,13 +171,30 @@ namespace MinesweeperTests
         public void ToStringShould_ReturnExpectedString_WhenThereIs1RevealedTopLeftMineInASize2Board()
         {
             var mineGenerator = new MockMinesGenerator();
-            var hintsCalculator = new HintGenerator();
             const string expectedString = "* 1 \n" + "1 1 \n";
             var board = Board.CreateEmptyBoard(2);
             mineGenerator.PlaceMines(1, board);
-            hintsCalculator.SetHints(board);
+            HintGenerator.SetHints(board);
             board.RevealAllSquares();
             Assert.Equal(expectedString, board.ToString());
+        }
+
+        [Fact]
+        public void HasLocationShould_ReturnTrue_WhenLocationIsOnTheBoard()
+        {
+            var board = Board.CreateEmptyBoard(2);
+            var location = new Location(0,0);
+            var result = board.HasLocation(location);
+            Assert.True(result);
+        }
+        
+        [Fact]
+        public void HasLocationShould_ReturnFalse_WhenLocationIsNotOnTheBoard()
+        {
+            var board = Board.CreateEmptyBoard(2);
+            var location = new Location(3,3);
+            var result = board.HasLocation(location);
+            Assert.False(result);
         }
 
     }

@@ -11,10 +11,8 @@ namespace MinesweeperTests
              const string difficultyLevelInput = "4";
              var input = new MockInput(new[]{difficultyLevelInput});
              var output = new MockOutput();
-             var inputParser = new InputParser();
              var minesGenerator = new MockMinesGenerator();
-             var hintsCalculator = new HintGenerator();
-             var game = new Game(input, output, inputParser, minesGenerator, hintsCalculator);
+             var game = new Game(input, output, minesGenerator);
              game.CreateBoard();
              var result = game.Board.ToString();
              const string expectedResult = ". . . . \n" + ". . . . \n" + ". . . . \n" + ". . . . \n";
@@ -28,10 +26,8 @@ namespace MinesweeperTests
              const string difficultyLevelInput = "2";
              var input = new MockInput(new[]{difficultyLevelInput, "1,0", "1,1"});
              var output = new MockOutput();
-             var inputParser = new InputParser();
              var minesGenerator = new MockMinesGenerator();
-             var hintsCalculator = new HintGenerator();
-             var game = new Game(input, output, inputParser, minesGenerator, hintsCalculator);
+             var game = new Game(input, output, minesGenerator);
              game.CreateBoard();
              game.Play();
              var result = game.Board.ToString();
@@ -47,10 +43,8 @@ namespace MinesweeperTests
              const string difficultyLevelInput = "4";
              var input = new MockInput(new[]{difficultyLevelInput, "0,0"});
              var output = new MockOutput();
-             var inputParser = new InputParser();
              var minesGenerator = new MockMinesGenerator();
-             var hintsCalculator = new HintGenerator();
-             var game = new Game(input, output, inputParser, minesGenerator, hintsCalculator);
+             var game = new Game(input, output, minesGenerator);
              game.CreateBoard();
              game.Play();
              var result = game.Board.ToString();
@@ -62,5 +56,5 @@ namespace MinesweeperTests
              Assert.Equal(expectedResult, result);
              Assert.Equal(GameState.Lose, game.State);
          }
-     }
+    }
 }
