@@ -2,7 +2,7 @@ using System;
 
 namespace Minesweeper
 {
-    public class InputParser
+    public static class InputParser
     {
        public static Location CreateLocationBasedOnInput(string input)
        {

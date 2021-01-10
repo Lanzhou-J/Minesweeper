@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Minesweeper
 {
-    public class HintGenerator
+    public static class HintGenerator
     {
         public static void SetHints(Board board)
         {
