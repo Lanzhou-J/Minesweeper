@@ -61,22 +61,9 @@ namespace Minesweeper
         {
             while (BoardIsNotRevealed())
             {
-                var locationInput = _input.Ask(GameInstruction.InputLocationValueMessage());
-                while (LocationInputIsNotValid(locationInput))
-                {
-                    _output.Write(GameInstruction.InputNotValidMessage());
-                    locationInput = _input.Ask(GameInstruction.InputLocationValueMessage());
-                }
-                var newLocation = _inputParser.CreateLocationBasedOnInput(locationInput);
+                var newLocation = CreateLocationBasedOnInput();
 
-                if (Board.HasLocation(newLocation))
-                {
-                    Board.RevealOneSquare(newLocation);
-                }
-                else
-                {
-                    _output.Write(GameInstruction.WrongLocationMessage());
-                }
+                RevealTheSquareIfLocationIsOnBoard(newLocation);
 
                 if (Rule.IsLosingCondition(Board))
                 {
@@ -96,6 +83,31 @@ namespace Minesweeper
                 _output.Write(GameInstruction.DisplayCurrentBoardMessage());
                 DisplayBoard();
             }
+        }
+
+        private void RevealTheSquareIfLocationIsOnBoard(Location newLocation)
+        {
+            if (Board.HasLocation(newLocation))
+            {
+                Board.RevealOneSquare(newLocation);
+            }
+            else
+            {
+                _output.Write(GameInstruction.WrongLocationMessage());
+            }
+        }
+
+        private Location CreateLocationBasedOnInput()
+        {
+            var locationInput = _input.Ask(GameInstruction.InputLocationValueMessage());
+            while (LocationInputIsNotValid(locationInput))
+            {
+                _output.Write(GameInstruction.InputNotValidMessage());
+                locationInput = _input.Ask(GameInstruction.InputLocationValueMessage());
+            }
+
+            var newLocation = _inputParser.CreateLocationBasedOnInput(locationInput);
+            return newLocation;
         }
 
         private static bool LocationInputIsNotValid(string locationInput)
