@@ -68,9 +68,16 @@ namespace Minesweeper
                     locationInput = _input.Ask(GameInstruction.InputLocationValueMessage());
                 }
                 var newLocation = _inputParser.CreateLocationBasedOnInput(locationInput);
-        
-                Board.RevealOneSquare(newLocation);
-        
+
+                if (Board.HasLocation(newLocation))
+                {
+                    Board.RevealOneSquare(newLocation);
+                }
+                else
+                {
+                    _output.Write(GameInstruction.WrongLocationMessage());
+                }
+
                 if (Rule.IsLosingCondition(Board))
                 {
                     _output.Write(GameInstruction.GameOverMessage());

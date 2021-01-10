@@ -31,5 +31,10 @@ namespace Minesweeper
         {
             return "Input is not valid.";
         }
+        
+        public static string WrongLocationMessage()
+        {
+            return "The coordinate is not on the board.";
+        }
     }
 }

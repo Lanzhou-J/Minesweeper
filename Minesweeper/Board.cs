@@ -112,7 +112,7 @@ namespace Minesweeper
 
         public bool HasLocation(Location location)
         {
-            return true;
+            return location.X < Size && location.X >= 0 && location.Y < Size && location.Y >= 0;
         }
 
     }
