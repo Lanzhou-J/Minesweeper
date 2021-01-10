@@ -110,5 +110,10 @@ namespace Minesweeper
             }
         }
 
+        public bool HasLocation(Location location)
+        {
+            return true;
+        }
+
     }
 }

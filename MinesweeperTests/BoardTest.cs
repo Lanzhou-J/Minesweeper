@@ -183,5 +183,23 @@ namespace MinesweeperTests
             Assert.Equal(expectedString, board.ToString());
         }
 
+        [Fact]
+        public void HasLocationShould_ReturnTrue_WhenLocationIsOnTheBoard()
+        {
+            var board = Board.CreateEmptyBoard(2);
+            var location = new Location(0,0);
+            var result = board.HasLocation(location);
+            Assert.True(result);
+        }
+        
+        [Fact]
+        public void HasLocationShould_ReturnFalse_WhenLocationIsNotOnTheBoard()
+        {
+            var board = Board.CreateEmptyBoard(2);
+            var location = new Location(3,3);
+            var result = board.HasLocation(location);
+            Assert.False(result);
+        }
+
     }
 }
