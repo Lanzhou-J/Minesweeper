@@ -6,8 +6,16 @@ namespace Minesweeper
     {
         public string Ask(string question)
         {
-            Console.WriteLine(question);
-            return Console.ReadLine();
+            try
+            {
+                Console.WriteLine(question);
+                return Console.ReadLine();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Something goes wrong when collecting user input.", e);
+            }
+            
         }
     }
 }
