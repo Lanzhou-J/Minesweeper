@@ -86,11 +86,11 @@ namespace Minesweeper
             var squareX = square.Location.X;
             var squareY = square.Location.Y;
             var neighbours = new List<Square>();
-            AddExistingNeighboursWithinThreeByThreeAreaToList(squareX, squareY, neighbours);
+            AddNeighboursWithinThreeByThreeAreaToList(squareX, squareY, neighbours);
             return neighbours;
         }
 
-        private void AddExistingNeighboursWithinThreeByThreeAreaToList(int centerX, int centerY, ICollection<Square> neighbours)
+        private void AddNeighboursWithinThreeByThreeAreaToList(int centerX, int centerY, ICollection<Square> neighbours)
         {
             for (var deltaX = -1; deltaX <= 1; deltaX++)
             {

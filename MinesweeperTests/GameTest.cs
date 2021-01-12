@@ -15,7 +15,10 @@ namespace MinesweeperTests
              var game = new Game(input, output, minesGenerator);
              game.CreateBoard();
              var result = game.Board.ToString();
-             const string expectedResult = ". . . . \n" + ". . . . \n" + ". . . . \n" + ". . . . \n";
+             const string expectedResult = ". . . . \n" + 
+                                           ". . . . \n" + 
+                                           ". . . . \n" + 
+                                           ". . . . \n";
              
              Assert.Equal(expectedResult, result);
          }        

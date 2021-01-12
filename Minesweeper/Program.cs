@@ -13,8 +13,7 @@ namespace Minesweeper
            
                game.CreateBoard();
                game.Play();
-
-           
+            
         }
     }
 }
