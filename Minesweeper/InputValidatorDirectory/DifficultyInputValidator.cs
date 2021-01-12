@@ -12,7 +12,7 @@ namespace Minesweeper
             {
                 return true;
             }
-            throw new InvalidInputException("Input is invalid.");
+            throw new InvalidInputException("Difficulty value input is invalid.");
 
         }
     }
