@@ -12,7 +12,7 @@ namespace Minesweeper
 
         public const string GameOverMessage = "Game Over!";
 
-        public const string InputNotValidMessage = "Input is not valid.";
+        // public const string InputNotValidMessage = "Input is not valid.";
 
         public const string WrongLocationMessage = "The coordinate is not on the board.";
     }

@@ -1,3 +1,5 @@
+using System;
+
 namespace Minesweeper
 {
     public class Game
@@ -35,20 +37,27 @@ namespace Minesweeper
         
         private int SetDifficultyValue()
         {
-            var difficultyInput = _input.Ask(GameInstruction.InputDifficultyValueMessage);
-            while (DifficultyInputIsNotValid(difficultyInput))
+            var difficultyInput = "";
+            var isInputValid = false;
+            while (isInputValid == false)
             {
-                _output.Write(GameInstruction.InputNotValidMessage);
-                difficultyInput = _input.Ask(GameInstruction.InputDifficultyValueMessage);
+                try
+                {
+                    difficultyInput = _input.Ask(GameInstruction.InputDifficultyValueMessage);
+                    var validator = new DifficultyInputValidator();
+                    if (validator.IsValid(difficultyInput))
+                    {
+                        isInputValid = true;
+                    }
+                }
+                catch (InvalidInputException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
             }
             
             var difficultyValue = int.Parse(difficultyInput);
             return difficultyValue;
-        }
-
-        private static bool DifficultyInputIsNotValid(string difficultyInput)
-        {
-            return !InputValidator.IsValidDifficultyInput(difficultyInput);
         }
 
         public void Play()
@@ -96,7 +105,7 @@ namespace Minesweeper
             var locationInput = _input.Ask(GameInstruction.InputLocationValueMessage);
             while (LocationInputIsNotValid(locationInput))
             {
-                _output.Write(GameInstruction.InputNotValidMessage);
+                // _output.Write(GameInstruction.InputNotValidMessage);
                 locationInput = _input.Ask(GameInstruction.InputLocationValueMessage);
             }
 
