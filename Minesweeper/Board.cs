@@ -23,11 +23,11 @@ namespace Minesweeper
             }
             else
             {
-                for (var i = 0; i < Size; i++)
+                for (var xValue = 0; xValue < Size; xValue++)
                 {
-                    for (var j = 0; j < Size; j++)
+                    for (var yValue = 0; yValue < Size; yValue++)
                     {
-                        var location = new Location(i, j);
+                        var location = new Location(xValue, yValue);
                         var square = new Square(location);
                         squares.Add(square);
                     }
@@ -66,11 +66,11 @@ namespace Minesweeper
         public override string ToString()
         {
             var message = "";
-            for (var i = 0; i < Size; i++)
+            for (var xValue = 0; xValue < Size; xValue++)
             {
-                for (var j = 0; j < Size; j++)
+                for (var yValue = 0; yValue < Size; yValue++)
                 {
-                    var location = new Location(i, j);
+                    var location = new Location(xValue, yValue);
                     message += GetSquare(location).ToString();
                     message += " ";
                 }
@@ -90,19 +90,20 @@ namespace Minesweeper
             return neighbours;
         }
 
-        private void AddExistingNeighboursWithinThreeByThreeAreaToList(int squareX, int squareY, List<Square> neighbours)
+        private void AddExistingNeighboursWithinThreeByThreeAreaToList(int centerX, int centerY, ICollection<Square> neighbours)
         {
-            for (var i = -1; i <= 1; i++)
+            for (var deltaX = -1; deltaX <= 1; deltaX++)
             {
-                for (var j = -1; j <= 1; j++)
+                for (var deltaY = -1; deltaY <= 1; deltaY++)
                 {
-                    if (i == 0 && j == 0) continue;
-                    var xValue = squareX + i;
-                    var yValue = squareY + j;
-                    var location = new Location(xValue, yValue);
-                    var neighbour = GetSquare(location);
-                    if (neighbour != null)
+                    if (deltaX == 0 && deltaY == 0) continue;
+                    var neighbourXValue = centerX + deltaX;
+                    var neighbourYValue = centerY + deltaY;
+                    var neighbourLocation = new Location(neighbourXValue, neighbourYValue);
+
+                    if (HasLocation(neighbourLocation))
                     {
+                        var neighbour = GetSquare(neighbourLocation);
                         neighbours.Add(neighbour);
                     }
                 }

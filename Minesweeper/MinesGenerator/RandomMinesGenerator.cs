@@ -17,9 +17,9 @@ namespace Minesweeper
 
         private static void PlaceMineOnEachOfTheSelectedSquares(IEnumerable<Square> selectedSquares)
         {
-            foreach (var item in selectedSquares)
+            foreach (var square in selectedSquares)
             {
-                item.SetMine();
+                square.SetMine();
             }
         }
 
