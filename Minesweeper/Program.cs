@@ -10,19 +10,10 @@ namespace Minesweeper
            var output = new ConsoleOutput();
            var minesGenerator = new RandomMinesGenerator();
            var game = new Game(input, output, minesGenerator);
-
-           try
-           {
+           
                game.CreateBoard();
                game.Play();
-           }
-           catch (Exception ex)
-           {
-               Console.WriteLine();
-               Console.WriteLine($"{ex.Message}");
-               
-               Environment.Exit(0);
-           }
+
            
         }
     }
