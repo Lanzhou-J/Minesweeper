@@ -3,7 +3,7 @@ using Xunit;
 
 namespace MinesweeperTests
 {
-    public class RuleTest
+    public class WinLoseCheckerTest
     {
         [Fact]
         public void IsWinningConditionShould_ReturnTrue_WhenAllHintsOnBoardAreRevealed()
