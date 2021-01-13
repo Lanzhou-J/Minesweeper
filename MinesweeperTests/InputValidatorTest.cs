@@ -39,7 +39,7 @@ namespace MinesweeperTests
         [InlineData("0,0")]
         [InlineData("3,3")]
         [InlineData("1,1")]
-        public void IsValidLocationInputShould_ReturnTrue_WhenInputIsInCorrectFormatAndWithinBoardScope(string input)
+        public void IsValidLocationInputShould_ReturnTrue_WhenInputIsFormatIsCorrect(string input)
         {
             var result = InputValidator.IsValidLocationInput(input);
             Assert.True(result);
