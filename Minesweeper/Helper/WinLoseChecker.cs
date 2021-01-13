@@ -4,26 +4,16 @@ namespace Minesweeper
 {
     public static class WinLoseChecker
     {
-        public static bool IsWinningCondition(Board currentBoard)
+        public static bool IsWinningConditionWhenAllHintsAreRevealed(Board currentBoard)
         {
-            return AllHintsAreRevealed(currentBoard);
+            var hints = currentBoard.Squares.Where(item => !item.IsMine);
+            return hints.All(item => item.IsRevealed);
         }
         
-        public static bool IsLosingCondition(Board currentBoard)
+        public static bool IsLosingConditionWhenOneMineIsRevealed(Board currentBoard)
         {
-            return OneMineIsRevealed(currentBoard);
-        }
-
-        private static bool OneMineIsRevealed(Board board)
-        {
-            var mines = board.Squares.Where(item => item.IsMine);
+            var mines = currentBoard.Squares.Where(item => item.IsMine);
             return mines.Any(item => item.IsRevealed);
-        }
-
-        private static bool AllHintsAreRevealed(Board board)
-        {
-            var hints = board.Squares.Where(item => !item.IsMine);
-            return hints.All(item => item.IsRevealed);
         }
     }
 }

@@ -9,9 +9,9 @@ namespace Minesweeper
         
         private readonly Random _random = new Random();
         
-        public void PlaceMines(int number, Board board)
+        public void PlaceMines(int numberOfMines, Board board)
         {
-            var selectedSquares = RandomlySelectSquares(number, board);
+            var selectedSquares = RandomlySelectSquares(numberOfMines, board);
             PlaceMineOnEachOfTheSelectedSquares(selectedSquares);
         }
 
