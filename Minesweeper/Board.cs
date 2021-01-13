@@ -1,17 +1,16 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 
 namespace Minesweeper
 {
     public class Board
     {
-        public int Size { get; }
+        public int Length { get; }
         public IList<Square> Squares { get; }
         public bool IsRevealed { get; private set; }
-        private Board(int size)
+        private Board(int length)
         {
-            Size = size;
+            Length = length;
             Squares = CreateSquares();
             IsRevealed = false;
         }
@@ -19,15 +18,15 @@ namespace Minesweeper
         private IList<Square> CreateSquares()
         {
             var squares = new List<Square>();
-            if (Size == 0)
+            if (Length == 0)
             {
                 squares = null;
             }
             else
             {
-                for (var xValue = 0; xValue < Size; xValue++)
+                for (var xValue = 0; xValue < Length; xValue++)
                 {
-                    for (var yValue = 0; yValue < Size; yValue++)
+                    for (var yValue = 0; yValue < Length; yValue++)
                     {
                         var location = new Location(xValue, yValue);
                         var square = new Square(location);
@@ -45,9 +44,9 @@ namespace Minesweeper
 
         public void RevealAllSquares()
         {
-            foreach (var item in Squares)
+            foreach (var square in Squares)
             {
-                item.IsRevealed = true;
+                square.IsRevealed = true;
             }
         
             IsRevealed = true;
@@ -68,9 +67,9 @@ namespace Minesweeper
         public override string ToString()
         {
             var message = "";
-            for (var xValue = 0; xValue < Size; xValue++)
+            for (var xValue = 0; xValue < Length; xValue++)
             {
-                for (var yValue = 0; yValue < Size; yValue++)
+                for (var yValue = 0; yValue < Length; yValue++)
                 {
                     var location = new Location(xValue, yValue);
                     message += GetSquare(location).ToString();
@@ -114,7 +113,7 @@ namespace Minesweeper
 
         public bool HasLocation(Location location)
         {
-            return location.X < Size && location.X >= 0 && location.Y < Size && location.Y >= 0;
+            return location.X < Length && location.X >= 0 && location.Y < Length && location.Y >= 0;
         }
 
     }

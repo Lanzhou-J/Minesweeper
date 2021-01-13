@@ -27,14 +27,14 @@ namespace MinesweeperTests
         public void CreateEmptyBoardShould_CreateASize1Board_WhenInputIs1()
         {
             var board = Board.CreateEmptyBoard(1);
-            Assert.Equal(1, board.Size);
+            Assert.Equal(1, board.Length);
         }
         
         [Fact]
         public void CreateEmptyBoardShould_CreateASize2Board_WhenInputIs2()
         {
             var board = Board.CreateEmptyBoard(2);
-            Assert.Equal(2, board.Size);
+            Assert.Equal(2, board.Length);
         }
 
         [Fact]

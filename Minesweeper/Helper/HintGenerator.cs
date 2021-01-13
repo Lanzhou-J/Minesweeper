@@ -32,7 +32,7 @@ namespace Minesweeper
 
         private static bool BoardSizeIsTooSmall(Board board)
         {
-            return board.Size < 2;
+            return board.Length < 2;
         }
 
         private static bool BoardDoesNotContainAnyMine(Board board)
