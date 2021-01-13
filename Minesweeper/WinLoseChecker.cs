@@ -2,7 +2,7 @@ using System.Linq;
 
 namespace Minesweeper
 {
-    public static class Rule
+    public static class WinLoseChecker
     {
         public static bool IsWinningCondition(Board currentBoard)
         {

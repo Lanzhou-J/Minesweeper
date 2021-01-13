@@ -59,14 +59,14 @@ namespace Minesweeper
 
                 RevealTheSquareIfLocationIsOnBoard(newLocation);
 
-                if (Rule.IsLosingCondition(Board))
+                if (WinLoseChecker.IsLosingCondition(Board))
                 {
                     _output.Write(GameInstruction.GameOverMessage);
                     Board.RevealAllSquares();
                     State = GameState.Lose;
                     _output.Write(GameInstruction.ResultMessage + State);
                 }
-                else if (Rule.IsWinningCondition(Board))
+                else if (WinLoseChecker.IsWinningCondition(Board))
                 {
                     _output.Write(GameInstruction.GameOverMessage);
                     Board.RevealAllSquares();

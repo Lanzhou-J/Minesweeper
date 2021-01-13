@@ -17,7 +17,7 @@ namespace MinesweeperTests
             var hintTwo = board.GetSquare(bottomRight);
             hintOne.Reveal();
             hintTwo.Reveal();
-            var result = Rule.IsWinningCondition(board);
+            var result = WinLoseChecker.IsWinningCondition(board);
             Assert.True(result);
         }
         
@@ -30,7 +30,7 @@ namespace MinesweeperTests
             var bottomLeft = new Location(1,0);
             var hintOne = board.GetSquare(bottomLeft);
             hintOne.Reveal();
-            var result = Rule.IsWinningCondition(board);
+            var result = WinLoseChecker.IsWinningCondition(board);
             Assert.False(result);
         }
         
@@ -43,7 +43,7 @@ namespace MinesweeperTests
             var topLeft = new Location(0,0);
             var mineOne = board.GetSquare(topLeft);
             mineOne.Reveal();
-            var result = Rule.IsLosingCondition(board);
+            var result = WinLoseChecker.IsLosingCondition(board);
             Assert.True(result);
         }
         
@@ -53,7 +53,7 @@ namespace MinesweeperTests
             var board = Board.CreateEmptyBoard(2);
             var mineGenerator = new MockMinesGenerator();
             mineGenerator.PlaceMines(2, board);
-            var result = Rule.IsLosingCondition(board);
+            var result = WinLoseChecker.IsLosingCondition(board);
             Assert.False(result);
         }
     }
