@@ -37,7 +37,7 @@ Current Board:
 ```
 ### Class Diagram
 (click to enlarge image)
-![class diagram](docs/Minesweeper-Rule2.png)
+![class diagram](docs/Minesweeper-Rule3.png)
 
 ### Flowchart
 ![flowchart](docs/Minesweeper-Flowchart3.png)
