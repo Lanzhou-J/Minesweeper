@@ -16,13 +16,13 @@ namespace Minesweeper
 
         private static bool OneMineIsRevealed(Board board)
         {
-            var mines = board.Squares.FindAll(item => item.IsMine);
+            var mines = board.Squares.Where(item => item.IsMine);
             return mines.Any(item => item.IsRevealed);
         }
 
         private static bool AllHintsAreRevealed(Board board)
         {
-            var hints = board.Squares.FindAll(item => !item.IsMine);
+            var hints = board.Squares.Where(item => !item.IsMine);
             return hints.All(item => item.IsRevealed);
         }
     }

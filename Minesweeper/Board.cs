@@ -1,11 +1,13 @@
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace Minesweeper
 {
     public class Board
     {
         public int Size { get; }
-        public List<Square> Squares { get; }
+        public IList<Square> Squares { get; }
         public bool IsRevealed { get; private set; }
         private Board(int size)
         {
@@ -14,7 +16,7 @@ namespace Minesweeper
             IsRevealed = false;
         }
 
-        private List<Square> CreateSquares()
+        private IList<Square> CreateSquares()
         {
             var squares = new List<Square>();
             if (Size == 0)
@@ -59,7 +61,7 @@ namespace Minesweeper
 
         public Square GetSquare(Location location)
         {
-            var square = Squares.Find(item => item.Location.Equals(location));
+            var square = Squares.SingleOrDefault(item => item.Location.Equals(location));
             return square;
         }
 
