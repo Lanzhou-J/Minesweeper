@@ -40,4 +40,4 @@ Current Board:
 ![class diagram](docs/Minesweeper-Rule3.png)
 
 ### Flowchart
-![flowchart](docs/Minesweeper-Flowchart3.png)
+![flowchart](docs/Minesweeper-Flowchart.png)
