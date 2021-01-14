@@ -86,13 +86,13 @@ namespace Minesweeper
         {
             var squareX = square.Location.X;
             var squareY = square.Location.Y;
-            var neighbours = new List<Square>();
-            AddNeighboursWithinThreeByThreeAreaToList(squareX, squareY, neighbours);
+            var neighbours = GetNeighboursWithinThreeByThreeAreaToList(squareX, squareY);
             return neighbours;
         }
 
-        private void AddNeighboursWithinThreeByThreeAreaToList(int centerX, int centerY, ICollection<Square> neighbours)
+        private IEnumerable<Square> GetNeighboursWithinThreeByThreeAreaToList(int centerX, int centerY)
         {
+            var neighbours = new List<Square>();
             for (var deltaX = -1; deltaX <= 1; deltaX++)
             {
                 for (var deltaY = -1; deltaY <= 1; deltaY++)
@@ -109,6 +109,8 @@ namespace Minesweeper
                     }
                 }
             }
+
+            return neighbours;
         }
 
         public bool HasLocation(Location location)
